@@ -1,0 +1,15 @@
+{
+"name": "Китайция-улетайция 2026",
+"short_name": "Китайция",
+"start_url": "/",
+"display": "standalone",
+"background_color": "#fafafa",
+"theme_color": "#fafafa",
+"icons": [
+{
+"src": "icon.png",
+"sizes": "192x192",
+"type": "image/png"
+}
+]
+}
