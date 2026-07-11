@@ -1,109 +1,950 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<base href="/Kitaitsiyа-uletaisitiya/">
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#DCFF03">
 <title>Китайция-улетайция 2026</title>
 
 <link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon1.jpg">
 
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Китайция">
 
 <style>
+:root {
+    --acid: #DCFF03;
+    --ink: #111111;
+    --violet: #D790F8;
+    --blue: #0066ff;
+    --orange: #ff8a00;
+    --paper: #fffdf2;
+    --line: rgba(17, 17, 17, 0.16);
+}
+
+* { box-sizing: border-box; }
+
 body {
-    font-family: "Courier New", Courier, monospace; /* Шрифт в стиле печатной машинки */
     margin: 0;
-    padding: 20px;
-    background: #DCFF03; /* Фон страницы */
-    color: #111;
-    line-height: 1.5;
+    padding: 18px;
+    background: var(--acid);
+    color: var(--ink);
+    font-family: "Courier New", Courier, monospace;
+    line-height: 1.45;
 }
 
-.container {
-    max-width: 500px;
-    margin: auto;
-    text-align: center; /* Центрирование заголовка */
+.app {
+    max-width: 720px;
+    margin: 0 auto;
 }
 
-/* Заголовок */
+header {
+    padding: 12px 0 16px;
+}
+
 h1 {
-    font-weight: bold;      /* Жирный */
-    font-size: 28px;        /* Большой */
-    margin-bottom: 20px;
-    line-height: 1.2;
-    color: #000000;         /* Черный цвет заголовка */
+    margin: 0;
+    font-size: clamp(30px, 9vw, 56px);
+    line-height: 0.92;
+    letter-spacing: 0;
 }
 
-h1 span {
-    display: block;         /* Перевод на новую строку */
-    font-size: 15px;        /* Немного меньше для "2026" */
+.subtitle {
+    margin: 12px 0 0;
+    font-size: 14px;
+    max-width: 36em;
 }
 
-/* Окно с аннотацией */
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 16px 0 8px;
+}
+
+.chip {
+    border: 1px solid var(--ink);
+    border-radius: 999px;
+    padding: 5px 9px;
+    background: rgba(255, 255, 255, 0.55);
+    font-size: 12px;
+    white-space: nowrap;
+}
+
 details {
-    background: #D790F8;
-    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid var(--ink);
     border-radius: 12px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    text-align: left;
-    color: #FFFFFF;  /* Белый цвет текста аннотации */
+    background: var(--paper);
+    overflow: hidden;
+    box-shadow: 4px 4px 0 rgba(17, 17, 17, 0.2);
 }
 
-summary {
-    font-size: 15px;
-    font-weight: 600;
+details > summary {
+    list-style: none;
     cursor: pointer;
+    padding: 14px 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
 }
 
-.text {
-   font-size: 15px; 
-   margin-top: 10px;
+details > summary::-webkit-details-marker { display: none; }
+
+details > summary::after {
+    content: "+";
+    flex: 0 0 auto;
+    width: 24px;
+    height: 24px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--ink);
+    border-radius: 50%;
+    background: var(--acid);
+}
+
+details[open] > summary::after { content: "-"; }
+
+.intro {
+    background: var(--violet);
+    color: white;
+}
+
+.panel {
+    padding: 0 14px 16px;
+}
+
+.panel p,
+.panel li {
+    font-size: 14px;
+}
+
+.links {
+    display: grid;
+    gap: 8px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.links a,
+.map-link {
+    color: var(--blue);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.day-summary {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 3px 10px;
+}
+
+.day-date {
+    font-size: 22px;
+    grid-row: span 2;
+}
+
+.day-title {
+    font-size: 16px;
+}
+
+.day-meta {
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+.activities {
+    display: grid;
+    gap: 10px;
+}
+
+.activity {
+    margin: 0;
+    border-radius: 10px;
+    box-shadow: none;
+    border-color: var(--line);
+}
+
+.activity > summary {
+    padding: 12px;
+}
+
+.activity-row {
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    gap: 10px;
+    align-items: start;
+}
+
+.icon {
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--ink);
+    border-radius: 11px;
+    display: grid;
+    place-items: center;
+    background: white;
+    font-size: 22px;
+}
+
+.activity-title {
+    display: block;
+    font-size: 15px;
+}
+
+.activity-time {
+    display: block;
+    margin-top: 3px;
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(17, 17, 17, 0.72);
+}
+
+.activity-body {
+    padding: 0 12px 14px 64px;
+    font-size: 14px;
+}
+
+.activity-body p {
+    margin: 8px 0;
+}
+
+.tag {
+    display: inline-block;
+    margin: 6px 5px 0 0;
+    padding: 3px 7px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    font-size: 11px;
+    background: rgba(220, 255, 3, 0.45);
+}
+
+.route {
+    color: var(--blue);
+}
+
+.food {
+    color: var(--orange);
+}
+
+.note {
+    margin-top: 14px;
+    padding: 11px;
+    border-left: 4px solid var(--ink);
+    background: rgba(255, 255, 255, 0.65);
+    font-size: 13px;
+}
+
+footer {
+    padding: 24px 0 36px;
+    font-size: 12px;
+    opacity: 0.72;
 }
 </style>
 </head>
 
 <body>
+<main class="app">
+    <header>
+        <h1>Китайция-улетайция_<br>2026</h1>
+        <p class="subtitle">Офлайн-маршрут по Шанхаю и Пекину: дни, активности, комментарии, дороги и быстрые ссылки на Baidu Maps.</p>
+        <div class="chips">
+            <span class="chip">31.07 - 14.08</span>
+            <span class="chip">Шанхай</span>
+            <span class="chip">Пекин</span>
+            <span class="chip">PWA offline</span>
+        </div>
+    </header>
 
-<div class="container">
+    <details class="intro" open>
+        <summary>Аннотация</summary>
+        <div class="panel">
+            <p>Китай - страна с закрытым интернетом, поэтому этот сайт лучше заранее добавить на экран iPhone и проверить без интернета.</p>
+            <ol>
+                <li>Откройте сайт в Safari.</li>
+                <li>Нажмите Share -> Add to Home Screen.</li>
+                <li>Откройте сайт через появившуюся иконку.</li>
+                <li>Выключите Wi-Fi и мобильную сеть, проверьте, что маршрут открывается офлайн.</li>
+            </ol>
+            <p>План плотный, но не каменный. Если в моменте жарко, устали или хочется уйти в другую сторону - меняем маршрут, но предупреждаем друг друга заранее.</p>
+            <p>Важно: ссылки на карты требуют интернет, но само расписание должно открываться офлайн после первого запуска.</p>
+        </div>
+    </details>
 
-<h1>Китайция-улетайция_ <span>2026</span></h1>
+    <details>
+        <summary>Полезные ссылки</summary>
+        <div class="panel">
+            <ul class="links">
+                <li><a href="https://map.baidu.com/" target="_blank" rel="noopener">Baidu Maps</a> - местные карты и построение маршрутов</li>
+                <li><a href="https://www.12306.cn/en/index.html" target="_blank" rel="noopener">12306 China Railway</a> - поезда</li>
+                <li><a href="https://www.shanghaidisneyresort.com/en/" target="_blank" rel="noopener">Shanghai Disney Resort</a> - билеты и расписание</li>
+                <li><a href="https://www.universalbeijingresort.com/en" target="_blank" rel="noopener">Universal Beijing Resort</a> - билеты и расписание</li>
+                <li><a href="https://www.travelchinaguide.com/attraction/beijing/greatwall.htm" target="_blank" rel="noopener">Mutianyu Great Wall</a> - справка по Великой стене</li>
+                <li><a href="https://translate.baidu.com/" target="_blank" rel="noopener">Baidu Translate</a> - переводчик</li>
+            </ul>
+            <div class="note">В Китае часть привычных сервисов может не открываться. Перед вылетом проверьте VPN, eSIM, Alipay/WeChat Pay и офлайн-доступ к этому сайту.</div>
+        </div>
+    </details>
 
-<details>
-<summary>Аннотация_</summary>
-<div class="text">
-Тут сейчас будет очень длинный текст о поездке, содержащий важную информацию, которую стоит прочесть. Если вы не любите читать лонг-риды - это полностью ваша проблема. Советую набраться терпения и научиться читать. Я вот потратила свое, чтобы создать эту полезную сводку для вас.<br>
- <br>
-1. Китай - страна с очень закрытым интернетом (Россия к этому стремится, но у нас, слава богу, еще не все так плохо). Есть небольшая вероятность, что эта ссылка может не открыться в нужный момент в Китае, поэтому просьба потратить 1 минуту своего драгоценного времени и сделать несколько не очень сложных манипуляций для того, чтобы открывать этот лэндинг офлайн:<br>
-- нажмите три точки в правом нижнем углу Safari --> Share --> Add to Homescreen<br>
-- после того, как сайт был добавлен на главный экран откройте его еще раз через главный экран<br>
-- закройте сайт и Safari<br>
-- вырубите нахуй вайфай и мобильную сеть --> проверьте, что сайт с главного экрана открывается без помощи всяких интернетов<br>
-- вы молодец, похвалите себя<br>
- <br>
-2. Давайте еще немного подушним и создадим свод правил:<br>
-Правило 1: пердеть и рыгать только в пределах своего номера<br>
-Правило 2: программа нашей поездки очень плотная и насыщенная. Если вы не хотите учавствовать в том или ином мероприятии - это полное ваше право. Программа была написана мной, находясь в Москве в довольно отдохнувшем состоянии, поэтому даже я могу нахуй послать себя предыдущую и все поменять в моменте. Главное - давайте предупреждать друг друга об изменениях ЗАРАНЕЕ (ну, хотя бы, за пару часов)<br>
-Правило 3: мы делимся как инфузории-туфельки - также легко. Если вам не нравится активность, то вы, конечно, идете нахуй, но можете найти единомышленников и сооперироваться на другу активность вместо предложенной<br>
- <br>
-3. Добавить о мессенджере<br>
- <br>
-4. Добавить о VPN<br>
- <br>
-Тут будет очень длинный текст
-</div>
-</details>
+    <section id="days"></section>
 
-</div>
+    <footer>
+        Китайция-улетайция 2026. Сайт хранит маршрут локально и не отправляет данные.
+    </footer>
+</main>
 
 <script>
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('service-worker.js');
+const days = [
+  {
+    date: "31.07, пятница",
+    title: "Вылет из Москвы",
+    meta: "Работа -> Шереметьево -> рейс в Шанхай",
+    activities: [
+      {
+        time: "15:30",
+        duration: "30 мин",
+        icon: "🚕",
+        title: "Выезд в сторону БЦ «Водный стадион»",
+        location: "БЦ Водный стадион",
+        map: "БЦ Водный стадион Москва",
+        comment: "Стартовый буфер перед аэропортом. Лучше не планировать никаких сложных дел после этого времени.",
+        route: "Такси/машина. Проверить пробки заранее: Ленинградское шоссе и подъезды к Шереметьево могут внезапно стать драмой.",
+        tags: ["дорога", "Москва"]
+      },
+      {
+        time: "16:00",
+        duration: "30 мин",
+        icon: "🏢",
+        title: "Точка сбора у работы",
+        location: "БЦ «Водный стадион»",
+        map: "БЦ Водный стадион Москва",
+        comment: "Финальная сверка: паспорта, билеты, зарядки, power bank, карты, eSIM/VPN.",
+        route: "Дальше ехать в Шереметьево на машине/такси.",
+        tags: ["сбор", "документы"]
+      },
+      {
+        time: "16:30",
+        duration: "3 ч 30 мин",
+        icon: "✈️",
+        title: "Шереметьево и вылет",
+        location: "Аэропорт Шереметьево",
+        map: "Sheremetyevo International Airport",
+        comment: "Регистрация, багаж, контроль, вода, перекус. Вылет в 20:00, прилет в Шанхай 01.08 в 09:50.",
+        route: "Такси/машина до SVO. В аэропорту держать запас, особенно если терминал окажется не тот, который хотелось бы.",
+        tags: ["рейс", "SVO"]
+      }
+    ]
+  },
+  {
+    date: "01.08, суббота",
+    title: "Первый день в Шанхае",
+    meta: "Прилет, Nanjing Road, Bund",
+    activities: [
+      {
+        time: "09:50",
+        duration: "2 ч 20 мин",
+        icon: "🛬",
+        title: "Прилет в Шанхай и дорога в центр",
+        location: "Shanghai Pudong International Airport",
+        map: "Shanghai Pudong International Airport",
+        comment: "Паспортный контроль, багаж, eSIM/Alipay/WeChat Pay. День легкий, без музеев и героизма.",
+        route: "Метро из PVG в район Nanjing East Road / People's Square. Если совсем устали: такси до центра.",
+        tags: ["прилет", "метро"]
+      },
+      {
+        time: "13:00",
+        duration: "1 ч",
+        icon: "🥟",
+        title: "Первый обед рядом с жильем",
+        location: "Nanjing East Road",
+        map: "Nanjing East Road Shanghai",
+        comment: "Лапша, дамплинги, простая локальная еда. Главная задача - не уснуть лицом в тарелку.",
+        route: "Пешком от жилья или короткий участок на метро до East Nanjing Road.",
+        tags: ["еда", "Шанхай"]
+      },
+      {
+        time: "14:00",
+        duration: "2 ч 30 мин",
+        icon: "🛍️",
+        title: "Nanjing Road East",
+        location: "Nanjing Road Pedestrian Street",
+        map: "Nanjing Road Pedestrian Street Shanghai",
+        comment: "Первое знакомство с городом: витрины, толпы, вывески, неоновый Шанхай в дневном режиме.",
+        route: "Пешком. Держаться ближе к жилью, чтобы можно было быстро отступить.",
+        tags: ["прогулка", "центр"]
+      },
+      {
+        time: "16:30",
+        duration: "2 ч",
+        icon: "🌃",
+        title: "The Bund днем и вечером",
+        location: "The Bund",
+        map: "The Bund Shanghai",
+        comment: "Виды на Pudong, первая большая фотосессия, вечерняя подсветка.",
+        route: "Пешком от Nanjing East Road до набережной. Обратно тоже пешком, если живете в центре.",
+        tags: ["виды", "вечер"]
+      }
+    ]
+  },
+  {
+    date: "02.08, воскресенье",
+    title: "Старый город, 1000 Trees, Xintiandi",
+    meta: "Без Disney: выходной оставляем под гибкие прогулки",
+    activities: [
+      {
+        time: "09:25",
+        duration: "2 ч",
+        icon: "🏮",
+        title: "Yu Garden и старый город",
+        location: "Yu Garden",
+        map: "Yu Garden Shanghai",
+        comment: "Сад Юйюань, старый город, чайный домик. Лучше прийти утром до основной жары и толпы.",
+        route: "Метро до станции Yuyuan Garden, дальше пешком.",
+        tags: ["сад", "старый город"]
+      },
+      {
+        time: "11:30",
+        duration: "1 ч",
+        icon: "🥟",
+        title: "Обед в Yuyuan Bazaar",
+        location: "Yuyuan Bazaar",
+        map: "Yuyuan Bazaar Shanghai",
+        comment: "Xiaolongbao, лапша, уличные закуски. Не переедать до состояния «я садовый камень».",
+        route: "Пешком внутри района Yu Garden.",
+        tags: ["еда"]
+      },
+      {
+        time: "13:15",
+        duration: "2 ч",
+        icon: "🌳",
+        title: "Tian An 1000 Trees",
+        location: "Tian An 1000 Trees",
+        map: "Tian An 1000 Trees Shanghai",
+        comment: "Тот самый ТЦ с деревьями. Хорошая точка для фото и кондиционера.",
+        route: "Метро/такси от Yu Garden. Если жара жесткая, такси будет человеческим решением.",
+        tags: ["архитектура", "фото"]
+      },
+      {
+        time: "15:15",
+        duration: "1 ч 30 мин",
+        icon: "🎨",
+        title: "M50 Art District",
+        location: "M50 Art District",
+        map: "M50 Art District Shanghai",
+        comment: "Галереи, граффити, индустриальный район рядом с 1000 Trees.",
+        route: "Пешком/короткое такси от 1000 Trees.",
+        tags: ["арт", "прогулка"]
+      },
+      {
+        time: "17:30",
+        duration: "3 ч 30 мин",
+        icon: "🍸",
+        title: "Xintiandi вечером",
+        location: "Xintiandi",
+        map: "Xintiandi Shanghai",
+        comment: "Shikumen-кварталы, красивые улицы, кафе, ужин и вечерний вайб.",
+        route: "Метро или такси до Xintiandi. Обратно в центр на метро/такси.",
+        tags: ["вечер", "еда"]
+      }
+    ]
+  },
+  {
+    date: "03.08, понедельник",
+    title: "Shanghai Disneyland",
+    meta: "Перенесено с воскресенья на будний день",
+    activities: [
+      {
+        time: "09:00",
+        duration: "12 ч",
+        icon: "🏰",
+        title: "Shanghai Disneyland",
+        location: "Shanghai Disneyland",
+        map: "Shanghai Disneyland",
+        comment: "Полный день: Zootopia, TRON, Pirates, castle show, вечерний фейерверк. Билеты и расписание проверить заранее.",
+        route: "Метро до станции Disney Resort. После фейерверка возможны очереди на вход в метро.",
+        tags: ["парк", "аттракционы"]
+      },
+      {
+        time: "12:30",
+        duration: "1 ч",
+        icon: "🍔",
+        title: "Обед в Disney",
+        location: "Shanghai Disneyland",
+        map: "Shanghai Disneyland",
+        comment: "В парке дороже обычного, но лучше поесть нормально, иначе вечерний фейерверк встретит пустой желудок.",
+        route: "Внутри парка.",
+        tags: ["еда"]
+      }
+    ]
+  },
+  {
+    date: "04.08, вторник",
+    title: "Jing'an, Starbucks, LV, French Concession",
+    meta: "Красивый центр без больших очередей",
+    activities: [
+      {
+        time: "09:30",
+        duration: "1 ч",
+        icon: "🛕",
+        title: "Jing'an Temple",
+        location: "Jing'an Temple",
+        map: "Jing'an Temple Shanghai",
+        comment: "Храм посреди небоскребов. Хороший контраст старого и нового Шанхая.",
+        route: "Метро до Jing'an Temple.",
+        tags: ["храм", "фото"]
+      },
+      {
+        time: "10:30",
+        duration: "1 ч 30 мин",
+        icon: "☕",
+        title: "Starbucks Reserve Roastery",
+        location: "Starbucks Reserve Roastery Shanghai",
+        map: "Starbucks Reserve Roastery Shanghai",
+        comment: "Большой Reserve Roastery: кофе, интерьер, сувениры, пауза в кондиционере.",
+        route: "Пешком или короткое метро/такси от Jing'an.",
+        tags: ["еда", "кофе"]
+      },
+      {
+        time: "13:00",
+        duration: "1 ч 30 мин",
+        icon: "🚢",
+        title: "The Louis / Louis Vuitton ship",
+        location: "The Louis Shanghai",
+        map: "The Louis Louis Vuitton Shanghai",
+        comment: "Корабль Louis Vuitton: фото, витрины, прогулка вокруг объекта. Внутренние выставки/кафе лучше проверить ближе к дате.",
+        route: "Пешком в районе West Nanjing Road / Taikoo Hui.",
+        tags: ["дизайн", "фото"]
+      },
+      {
+        time: "15:00",
+        duration: "3 ч 30 мин",
+        icon: "🌿",
+        title: "Former French Concession",
+        location: "Former French Concession",
+        map: "Former French Concession Shanghai",
+        comment: "Fuxing Park, Wukang Road, Anfu Road, красивые улицы, кафе, магазины.",
+        route: "Метро/такси от West Nanjing Road, дальше пешком.",
+        tags: ["вайб", "прогулка"]
+      }
+    ]
+  },
+  {
+    date: "05.08, среда",
+    title: "Zhujiajiao и вечер у реки",
+    meta: "Водный городок на авто",
+    activities: [
+      {
+        time: "10:00",
+        duration: "5 ч",
+        icon: "🛶",
+        title: "Zhujiajiao Water Town",
+        location: "Zhujiajiao Ancient Town",
+        map: "Zhujiajiao Ancient Town Shanghai",
+        comment: "Мосты, каналы, старые улицы, Kezhi Garden, лодка по каналам. Будний день должен быть комфортнее выходного.",
+        route: "Авто из Шанхая около 1-1,5 часа в одну сторону. Обратно тем же авто.",
+        tags: ["за город", "лодка"]
+      },
+      {
+        time: "18:30",
+        duration: "2 ч",
+        icon: "🚤",
+        title: "Huangpu River или прогулка по Bund",
+        location: "Huangpu River Cruise",
+        map: "Huangpu River Cruise Shanghai",
+        comment: "Если есть силы - вечерний круиз. Если нет - бесплатная прогулка по Bund, тоже отлично.",
+        route: "Такси/метро до Bund pier или прогулка от жилья.",
+        tags: ["река", "вечер"]
+      }
+    ]
+  },
+  {
+    date: "06.08, четверг",
+    title: "Pudong и финальный Шанхай",
+    meta: "Башни, виды, сбор вещей",
+    activities: [
+      {
+        time: "10:00",
+        duration: "2 ч",
+        icon: "🏙️",
+        title: "Lujiazui / Shanghai Tower",
+        location: "Shanghai Tower",
+        map: "Shanghai Tower",
+        comment: "Смотровая Shanghai Tower или бесплатная прогулка у башен, если не хочется платить.",
+        route: "Метро до Lujiazui.",
+        tags: ["виды", "Pudong"]
+      },
+      {
+        time: "13:00",
+        duration: "2 ч",
+        icon: "🌊",
+        title: "Pudong Riverside",
+        location: "Pudong Riverside Promenade",
+        map: "Pudong Riverside Promenade Shanghai",
+        comment: "Виды на Bund с другой стороны, моллы, кондиционер, спокойный темп.",
+        route: "Пешком от Lujiazui.",
+        tags: ["прогулка", "виды"]
+      },
+      {
+        time: "15:30",
+        duration: "2 ч 30 мин",
+        icon: "🧧",
+        title: "Tianzifang",
+        location: "Tianzifang",
+        map: "Tianzifang Shanghai",
+        comment: "Финальные шанхайские улочки, сувениры, фото. Можно сократить, если хочется просто собрать вещи.",
+        route: "Метро до Dapuqiao.",
+        tags: ["сувениры", "прогулка"]
+      }
+    ]
+  },
+  {
+    date: "07.08, пятница",
+    title: "Переезд в Пекин и первый вечер",
+    meta: "Скоростной поезд, Wangfujing",
+    activities: [
+      {
+        time: "10:00",
+        duration: "5 ч",
+        icon: "🚄",
+        title: "Скоростной поезд Шанхай - Пекин",
+        location: "Shanghai Hongqiao Railway Station",
+        map: "Shanghai Hongqiao Railway Station",
+        comment: "Поезд лучше брать заранее. Цель - приехать в Пекин днем и не убиться вечером.",
+        route: "Метро до Shanghai Hongqiao Railway Station. В Пекине прибытие на Beijing South, дальше метро/такси до Wangfujing/Dongcheng.",
+        tags: ["поезд", "переезд"]
+      },
+      {
+        time: "17:00",
+        duration: "3 ч 30 мин",
+        icon: "🥢",
+        title: "Wangfujing и первый ужин в Пекине",
+        location: "Wangfujing Street",
+        map: "Wangfujing Street Beijing",
+        comment: "Первая прогулка по центру, еда, без героизма после поезда.",
+        route: "Пешком от жилья, если живете в Wangfujing/Dongcheng; иначе метро до Wangfujing.",
+        tags: ["еда", "Пекин"]
+      }
+    ]
+  },
+  {
+    date: "08.08, суббота",
+    title: "798 и Sanlitun",
+    meta: "Выходной без тяжелых парков",
+    activities: [
+      {
+        time: "10:15",
+        duration: "2 ч 45 мин",
+        icon: "🖼️",
+        title: "798 Art District",
+        location: "798 Art District",
+        map: "798 Art District Beijing",
+        comment: "Галереи, индустриальная архитектура, кофе, фото. Часть выставок может быть платной.",
+        route: "Метро/такси до 798. Из центра часто удобнее такси.",
+        tags: ["арт", "фото"]
+      },
+      {
+        time: "14:30",
+        duration: "4 ч",
+        icon: "👟",
+        title: "Sanlitun Taikoo Li",
+        location: "Sanlitun Taikoo Li",
+        map: "Sanlitun Taikoo Li Beijing",
+        comment: "Городской шоппинг: Nike, Adidas, Uniqlo, lifestyle-магазины, street style. Это не outlet, зато хороший современный район.",
+        route: "Такси/метро от 798 до Sanlitun, обратно такси/метро в Dongcheng.",
+        tags: ["шоппинг", "город"]
+      }
+    ]
+  },
+  {
+    date: "09.08, воскресенье",
+    title: "Temple of Heaven, Qianmen, Houhai",
+    meta: "Просторные прогулки вместо толповых хитов",
+    activities: [
+      {
+        time: "09:00",
+        duration: "2 ч 30 мин",
+        icon: "🌤️",
+        title: "Temple of Heaven",
+        location: "Temple of Heaven",
+        map: "Temple of Heaven Beijing",
+        comment: "Храм Неба, парк, утренние танцы/тайчи, центральные павильоны. Приходить рано.",
+        route: "Метро до Tiantan Dongmen или Qianmen, в зависимости от входа.",
+        tags: ["парк", "храм"]
+      },
+      {
+        time: "13:00",
+        duration: "2 ч 30 мин",
+        icon: "🏮",
+        title: "Qianmen / Dashilar",
+        location: "Qianmen Street",
+        map: "Qianmen Street Beijing",
+        comment: "Старая торговая улица, хутуны, сувениры. Толпы не так критичны: можно менять темп.",
+        route: "Метро до Qianmen или короткое такси от Temple of Heaven.",
+        tags: ["старый город", "сувениры"]
+      },
+      {
+        time: "16:00",
+        duration: "4 ч",
+        icon: "🌙",
+        title: "Shichahai / Houhai",
+        location: "Shichahai",
+        map: "Shichahai Beijing",
+        comment: "Озера, хутуны, неспешный вечер и ужин.",
+        route: "Метро/такси до Shichahai, обратно такси/метро.",
+        tags: ["вечер", "еда"]
+      }
+    ]
+  },
+  {
+    date: "10.08, понедельник",
+    title: "Universal Beijing Resort",
+    meta: "Будний день для парка",
+    activities: [
+      {
+        time: "09:00",
+        duration: "12 ч",
+        icon: "🎢",
+        title: "Universal Studios Beijing",
+        location: "Universal Beijing Resort",
+        map: "Universal Beijing Resort",
+        comment: "Harry Potter, Transformers, Jurassic World, WaterWorld, Minions, CityWalk. Билеты и часы работы проверить ближе к дате.",
+        route: "Метро до Universal Resort station. После закрытия возможны очереди.",
+        tags: ["парк", "аттракционы"]
+      },
+      {
+        time: "12:30",
+        duration: "1 ч",
+        icon: "🍜",
+        title: "Обед в Universal",
+        location: "Universal Beijing Resort",
+        map: "Universal Beijing Resort",
+        comment: "Еда в парке дороже, но экономить на обеде в такой день - сомнительная магия.",
+        route: "Внутри парка.",
+        tags: ["еда"]
+      }
+    ]
+  },
+  {
+    date: "11.08, вторник",
+    title: "Великая стена Mutianyu",
+    meta: "Перенесено с выходных на будний день",
+    activities: [
+      {
+        time: "08:30",
+        duration: "6 ч 30 мин",
+        icon: "🧱",
+        title: "Mutianyu Great Wall",
+        location: "Mutianyu Great Wall",
+        map: "Mutianyu Great Wall Beijing",
+        comment: "Стена: подъем канаткой, прогулка по башням, спуск. Выйти рано, взять воду, кепку и терпение.",
+        route: "Авто из Пекина около 1,5 часа в одну сторону. Обратно тем же авто.",
+        tags: ["стена", "за город"]
+      },
+      {
+        time: "18:30",
+        duration: "1 ч 30 мин",
+        icon: "🍲",
+        title: "Спокойный ужин после стены",
+        location: "Wangfujing",
+        map: "Wangfujing Beijing",
+        comment: "После стены не надо планировать подвиги. Еда, душ, спать.",
+        route: "Пешком или короткое такси от жилья.",
+        tags: ["еда", "отдых"]
+      }
+    ]
+  },
+  {
+    date: "12.08, среда",
+    title: "Forbidden City, Jingshan, Beihai",
+    meta: "Будний день для главной классики",
+    activities: [
+      {
+        time: "08:30",
+        duration: "4 ч",
+        icon: "🏯",
+        title: "Forbidden City",
+        location: "Forbidden City",
+        map: "Forbidden City Beijing",
+        comment: "Запретный город: центральная ось, боковые дворы. Билеты покупать заранее, паспорт взять с собой.",
+        route: "Метро до Tiananmen East/West, дальше пешком с учетом контроля.",
+        tags: ["музей", "классика"]
+      },
+      {
+        time: "13:30",
+        duration: "1 ч 30 мин",
+        icon: "⛰️",
+        title: "Jingshan Park",
+        location: "Jingshan Park",
+        map: "Jingshan Park Beijing",
+        comment: "Подъем на холм за видом на Forbidden City сверху.",
+        route: "Пешком от северного выхода Forbidden City.",
+        tags: ["вид", "парк"]
+      },
+      {
+        time: "15:20",
+        duration: "1 ч 40 мин",
+        icon: "🪷",
+        title: "Beihai Park",
+        location: "Beihai Park",
+        map: "Beihai Park Beijing",
+        comment: "Озеро, белая пагода, тень и пауза после большого музейного дня.",
+        route: "Пешком/короткое такси от Jingshan.",
+        tags: ["парк", "отдых"]
+      },
+      {
+        time: "18:00",
+        duration: "3 ч 30 мин",
+        icon: "🌙",
+        title: "Shichahai / Houhai вечером",
+        location: "Houhai",
+        map: "Houhai Beijing",
+        comment: "Озера, хутуны, ужин, вечерняя прогулка.",
+        route: "Пешком от Beihai или короткое такси.",
+        tags: ["вечер", "еда"]
+      }
+    ]
+  },
+  {
+    date: "13.08, четверг",
+    title: "Панды и аутлет",
+    meta: "Финальный шоппинг без люкса",
+    activities: [
+      {
+        time: "09:15",
+        duration: "2 ч 45 мин",
+        icon: "🐼",
+        title: "Beijing Zoo",
+        location: "Beijing Zoo",
+        map: "Beijing Zoo",
+        comment: "Панды + основная прогулка. Утром панды обычно бодрее, чем люди после отпуска.",
+        route: "Метро до Beijing Zoo station.",
+        tags: ["панды", "зоопарк"]
+      },
+      {
+        time: "14:00",
+        duration: "4 ч",
+        icon: "👟",
+        title: "Scitech Premium Outlet",
+        location: "Scitech Premium Outlet",
+        map: "Scitech Premium Outlet Beijing",
+        comment: "Основной аутлет под спорт и масс-маркет: Nike, Adidas, New Balance, Skechers, Asics, local sportswear. Покупки в бюджет не включены.",
+        route: "Такси от Beijing Zoo около 60-120 CNY по трафику. С покупками обратно тоже лучше такси.",
+        tags: ["аутлет", "шоппинг"]
+      },
+      {
+        time: "20:30",
+        duration: "2 ч",
+        icon: "🎒",
+        title: "Сбор вещей и онлайн-регистрация",
+        location: "Wangfujing / Dongcheng",
+        map: "Wangfujing Beijing",
+        comment: "Проверить паспорта, билеты, багаж, ручную кладь, зарядки. Не планировать позднюю ночь.",
+        route: "Такси/метро от аутлета до жилья.",
+        tags: ["сборы", "финал"]
+      }
+    ]
+  },
+  {
+    date: "14.08, пятница",
+    title: "Вылет из Пекина",
+    meta: "PEK -> SVO, Hainan Airlines 14:25",
+    activities: [
+      {
+        time: "08:30",
+        duration: "45 мин",
+        icon: "🥣",
+        title: "Завтрак и checkout",
+        location: "Dongcheng / Wangfujing",
+        map: "Dongcheng Beijing",
+        comment: "Финально проверить вещи и документы. Лучше выйти без беготни.",
+        route: "Пешком рядом с жильем.",
+        tags: ["еда", "checkout"]
+      },
+      {
+        time: "09:15",
+        duration: "1 ч",
+        icon: "🚕",
+        title: "Дорога в Beijing Capital Airport",
+        location: "Beijing Capital International Airport",
+        map: "Beijing Capital International Airport",
+        comment: "Международный вылет в 14:25, лучше приехать заранее.",
+        route: "Такси/трансфер из Dongcheng/Wangfujing до PEK: ориентир 45-60 минут, 120-180 CNY.",
+        tags: ["аэропорт", "дорога"]
+      },
+      {
+        time: "14:25",
+        duration: "8 ч 40 мин",
+        icon: "✈️",
+        title: "Вылет в Москву",
+        location: "Beijing Capital International Airport",
+        map: "Beijing Capital International Airport",
+        comment: "Hainan Airlines PEK -> SVO. До свидания, Китайция.",
+        route: "После контроля найти гейт, воду и что-то съедобное перед рейсом.",
+        tags: ["рейс", "домой"]
+      }
+    ]
+  }
+];
+
+function baiduSearchLink(query) {
+    return "https://map.baidu.com/search/" + encodeURIComponent(query);
+}
+
+function renderActivity(activity) {
+    const tags = (activity.tags || []).map(tag => `<span class="tag">${tag}</span>`).join("");
+    return `
+        <details class="activity">
+            <summary>
+                <span class="activity-row">
+                    <span class="icon" aria-hidden="true">${activity.icon}</span>
+                    <span>
+                        <span class="activity-title">${activity.title}</span>
+                        <span class="activity-time">${activity.time} · ${activity.duration}</span>
+                    </span>
+                </span>
+            </summary>
+            <div class="activity-body">
+                <p><strong>Локация:</strong> ${activity.location}</p>
+                <p>${activity.comment}</p>
+                <p class="route"><strong>Дорога:</strong> ${activity.route}</p>
+                <p><a class="map-link" href="${baiduSearchLink(activity.map)}" target="_blank" rel="noopener">Открыть в Baidu Maps</a></p>
+                <div>${tags}</div>
+            </div>
+        </details>
+    `;
+}
+
+function renderDay(day) {
+    return `
+        <details>
+            <summary>
+                <span class="day-summary">
+                    <span class="day-date">${day.date.slice(0, 5)}</span>
+                    <span class="day-title">${day.title}</span>
+                    <span class="day-meta">${day.date} · ${day.meta}</span>
+                </span>
+            </summary>
+            <div class="panel activities">
+                ${day.activities.map(renderActivity).join("")}
+            </div>
+        </details>
+    `;
+}
+
+document.getElementById("days").innerHTML = days.map(renderDay).join("");
+
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker.register("service-worker.js");
+    });
 }
 </script>
-
 </body>
 </html>
