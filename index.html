@@ -139,6 +139,84 @@ details[open] > summary::after { content: "-"; }
     text-underline-offset: 3px;
 }
 
+.bar-guide {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.42);
+}
+
+.bar-guide h3,
+.bar-group h4 {
+    margin: 0;
+    letter-spacing: 0;
+}
+
+.bar-guide h3 {
+    font-size: 17px;
+}
+
+.bar-hint {
+    margin: 7px 0 14px;
+    opacity: 0.9;
+}
+
+.bar-list,
+.bar-group {
+    display: grid;
+    gap: 10px;
+}
+
+.bar-group {
+    gap: 0;
+}
+
+.bar-group h4 {
+    padding: 12px 0 7px;
+    font-size: 14px;
+}
+
+.bar-item {
+    padding: 10px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.34);
+}
+
+.bar-name,
+.bar-note {
+    display: block;
+}
+
+.bar-name {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.bar-note {
+    margin-top: 3px;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.map-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 8px;
+}
+
+.map-button {
+    display: inline-flex;
+    align-items: center;
+    min-height: 36px;
+    padding: 7px 10px;
+    border: 1px solid var(--ink);
+    border-radius: 6px;
+    background: white;
+    color: var(--ink);
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
 .day-summary {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -254,7 +332,7 @@ footer {
 <main class="app">
     <header>
         <h1>Китайция-улетайция_<br>2026</h1>
-        <p class="subtitle">Офлайн-маршрут по Шанхаю и Пекину: дни, активности, комментарии, дороги и быстрые ссылки на Baidu Maps.</p>
+        <p class="subtitle">Офлайн-маршрут по Шанхаю и Пекину: дни, активности, комментарии, дороги и быстрые ссылки на Baidu Maps и AMap.</p>
         <div class="chips">
             <span class="chip">31.07 - 14.08</span>
             <span class="chip">Шанхай</span>
@@ -275,6 +353,11 @@ footer {
             </ol>
             <p>План плотный, но не каменный. Если в моменте жарко, устали или хочется уйти в другую сторону - меняем маршрут, но предупреждаем друг друга заранее.</p>
             <p>Важно: ссылки на карты требуют интернет, но само расписание должно открываться офлайн после первого запуска.</p>
+            <div class="bar-guide">
+                <h3>Бары по районам</h3>
+                <p class="bar-hint">Выбирайте по силам и ближайшей вечерней локации. Перед выходом проверьте часы и действующий вход в AMap или Dianping.</p>
+                <div id="bar-list" class="bar-list"></div>
+            </div>
         </div>
     </details>
 
@@ -301,6 +384,122 @@ footer {
 </main>
 
 <script>
+const bars = [
+  {
+    city: "上海市",
+    group: "Шанхай · у дома, M50 / 1000 Trees",
+    name: "W BAR 艺术民谣鸡尾酒吧 (M50店)",
+    query: "W BAR艺术民谣鸡尾酒吧M50店 莫干山路50号M50创意园3号楼107",
+    note: "Самый близкий вариант: коктейли и живая музыка внутри M50, рядом с 1000 Trees."
+  },
+  {
+    city: "上海市",
+    group: "Шанхай · The Bund",
+    name: "The Captain 船长酒吧",
+    query: "The Captain船长酒吧 福州路37号6楼 上海",
+    note: "Неформальный rooftop с видом на Pudong; удобно после вечерней набережной."
+  },
+  {
+    city: "上海市",
+    group: "Шанхай · The Bund",
+    name: "The Fellas Terrace",
+    query: "The Fellas Terrace 延安东路7号7楼 上海",
+    note: "Терраса с панорамой, более нарядный вариант для коктейля или позднего ужина."
+  },
+  {
+    city: "上海市",
+    group: "Шанхай · Wukang / French Concession",
+    name: "The Union Trading Company",
+    query: "The Union Trading Company 衡山路306号 上海",
+    note: "Сильные авторские коктейли; удобно завершить маршрут по French Concession."
+  },
+  {
+    city: "上海市",
+    group: "Шанхай · Wukang / French Concession",
+    name: "Bar No. 3",
+    query: "Bar No.3 兴国路277号 上海",
+    note: "Тихий коктейльный бар напротив Wukang Mansion: подходит для спокойного nightcap."
+  },
+  {
+    city: "北京市",
+    group: "Пекин · у дома, Xiaoyun Road / Liangma River",
+    name: "Arrow Factory Brewing 箭厂啤酒",
+    query: "Arrow Factory Brewing箭厂啤酒 新东路1号 北京",
+    note: "Ближайший к жилью вариант: крафтовое пиво, еда и терраса у Liangma River."
+  },
+  {
+    city: "北京市",
+    group: "Пекин · Sanlitun",
+    name: "Jing-A Brewing 京A (幸福村店)",
+    query: "京A精酿啤酒 幸福村中路57号 北京",
+    note: "Пекинское крафтовое пиво и BBQ; живой, но не клубный формат."
+  },
+  {
+    city: "北京市",
+    group: "Пекин · Sanlitun",
+    name: "Slow Boat 悠航鲜啤 (三里屯店)",
+    query: "悠航SLOWBOAT三里屯店 南三里屯路6号 北京",
+    note: "Непафосный паб с собственным пивом и бургерами, удобно для простого вечера."
+  },
+  {
+    city: "北京市",
+    group: "Пекин · Sanlitun",
+    name: "The Local",
+    query: "The Local 三里屯南街4号院 北京",
+    note: "Паб и events-пространство; хороший вариант, если хочется общения, еды и более шумного вечера."
+  },
+  {
+    city: "北京市",
+    group: "Пекин · Shichahai / Houhai",
+    name: "Great Leap Brewing #6 大跃啤酒",
+    query: "大跃啤酒 豆角胡同6号 北京",
+    note: "Атмосферный дворик в хутунах недалеко от Shichahai; вход легко пройти мимо."
+  }
+];
+
+function baiduPlaceLink(item) {
+    const params = new URLSearchParams({
+        query: item.query,
+        region: item.city,
+        output: "html",
+        src: "Kitaitsiya-uletaistiya"
+    });
+    return "https://api.map.baidu.com/place/search?" + params.toString();
+}
+
+function amapPlaceLink(item) {
+    const params = new URLSearchParams({
+        keyword: item.query,
+        city: item.city,
+        callnative: "1"
+    });
+    return "https://uri.amap.com/search?" + params.toString();
+}
+
+function renderBars() {
+    const groups = new Map();
+    bars.forEach(bar => {
+        if (!groups.has(bar.group)) groups.set(bar.group, []);
+        groups.get(bar.group).push(bar);
+    });
+
+    return Array.from(groups, ([group, items]) => `
+        <section class="bar-group">
+            <h4>${group}</h4>
+            ${items.map(item => `
+                <div class="bar-item">
+                    <span class="bar-name">${item.name}</span>
+                    <span class="bar-note">${item.note}</span>
+                    <span class="map-actions">
+                        <a class="map-button" href="${baiduPlaceLink(item)}" target="_blank" rel="noopener">Baidu</a>
+                        <a class="map-button" href="${amapPlaceLink(item)}" target="_blank" rel="noopener">AMap</a>
+                    </span>
+                </div>
+            `).join("")}
+        </section>
+    `).join("");
+}
+
 const days = [
   {
     date: "31.07, пятница",
@@ -938,6 +1137,7 @@ function renderDay(day) {
     `;
 }
 
+document.getElementById("bar-list").innerHTML = renderBars();
 document.getElementById("days").innerHTML = days.map(renderDay).join("");
 
 if ("serviceWorker" in navigator) {
