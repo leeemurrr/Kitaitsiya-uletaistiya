@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#DCFF03">
 <title>Китайция-улетайция 2026</title>
 
-<link rel="manifest" href="manifest.json?v=4">
+<link rel="manifest" href="manifest.json?v=5">
 <link rel="apple-touch-icon" href="icon1.jpg">
 
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -197,15 +197,22 @@ details[open] > summary::after { content: "-"; }
 }
 
 .map-actions {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
     gap: 7px;
     margin-top: 8px;
+}
+
+.map-target {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 7px;
 }
 
 .map-button {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     min-height: 36px;
     padding: 7px 10px;
     border: 1px solid var(--ink);
@@ -215,6 +222,62 @@ details[open] > summary::after { content: "-"; }
     font-size: 12px;
     font-weight: 700;
     text-decoration: none;
+}
+
+.cn-copy {
+    display: inline-flex;
+    flex: 1 1 220px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    min-width: 0;
+    min-height: 36px;
+    padding: 7px 9px;
+    border: 1px solid var(--ink);
+    border-radius: 6px;
+    background: var(--acid);
+    color: var(--ink);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.cn-copy-text {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.cn-copy-action {
+    flex: 0 0 auto;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.copy-toast {
+    position: fixed;
+    z-index: 20;
+    left: 50%;
+    bottom: calc(18px + env(safe-area-inset-bottom));
+    max-width: min(90vw, 520px);
+    padding: 9px 12px;
+    border: 1px solid var(--ink);
+    border-radius: 6px;
+    background: var(--ink);
+    color: white;
+    font-size: 12px;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, 8px);
+    transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.copy-toast.is-visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
 }
 
 .day-summary {
@@ -393,6 +456,7 @@ const bars = [
     city: "上海市",
     group: "Шанхай · у дома, M50 / 1000 Trees",
     name: "W BAR 艺术民谣鸡尾酒吧 (M50店)",
+    cn: "W BAR艺术民谣鸡尾酒吧（M50店）",
     query: "W BAR艺术民谣鸡尾酒吧M50店 莫干山路50号M50创意园3号楼107",
     note: "Самый близкий вариант: коктейли и живая музыка внутри M50, рядом с 1000 Trees."
   },
@@ -400,6 +464,7 @@ const bars = [
     city: "上海市",
     group: "Шанхай · The Bund",
     name: "The Captain 船长酒吧",
+    cn: "船长酒吧（福州路37号6楼）",
     query: "The Captain船长酒吧 福州路37号6楼 上海",
     note: "Неформальный rooftop с видом на Pudong; удобно после вечерней набережной."
   },
@@ -407,6 +472,7 @@ const bars = [
     city: "上海市",
     group: "Шанхай · The Bund",
     name: "The Fellas Terrace",
+    cn: "The Fellas Terrace（延安东路7号7楼）",
     query: "The Fellas Terrace 延安东路7号7楼 上海",
     note: "Терраса с панорамой, более нарядный вариант для коктейля или позднего ужина."
   },
@@ -414,6 +480,7 @@ const bars = [
     city: "上海市",
     group: "Шанхай · Wukang / French Concession",
     name: "The Union Trading Company",
+    cn: "The Union Trading Company（衡山路306号）",
     query: "The Union Trading Company 衡山路306号 上海",
     note: "Сильные авторские коктейли; удобно завершить маршрут по French Concession."
   },
@@ -421,6 +488,7 @@ const bars = [
     city: "上海市",
     group: "Шанхай · Wukang / French Concession",
     name: "Bar No. 3",
+    cn: "Bar No.3（兴国路277号）",
     query: "Bar No.3 兴国路277号 上海",
     note: "Тихий коктейльный бар напротив Wukang Mansion: подходит для спокойного nightcap."
   },
@@ -428,6 +496,7 @@ const bars = [
     city: "北京市",
     group: "Пекин · у дома, Xiaoyun Road / Liangma River",
     name: "Arrow Factory Brewing 箭厂啤酒",
+    cn: "箭厂啤酒（新东路1号）",
     query: "Arrow Factory Brewing箭厂啤酒 新东路1号 北京",
     note: "Ближайший к жилью вариант: крафтовое пиво, еда и терраса у Liangma River."
   },
@@ -435,6 +504,7 @@ const bars = [
     city: "北京市",
     group: "Пекин · Sanlitun",
     name: "Jing-A Brewing 京A (幸福村店)",
+    cn: "京A精酿啤酒（幸福村店）",
     query: "京A精酿啤酒 幸福村中路57号 北京",
     note: "Пекинское крафтовое пиво и BBQ; живой, но не клубный формат."
   },
@@ -442,6 +512,7 @@ const bars = [
     city: "北京市",
     group: "Пекин · Sanlitun",
     name: "Slow Boat 悠航鲜啤 (三里屯店)",
+    cn: "悠航鲜啤（南三里屯店）",
     query: "悠航SLOWBOAT三里屯店 南三里屯路6号 北京",
     note: "Непафосный паб с собственным пивом и бургерами, удобно для простого вечера."
   },
@@ -449,6 +520,7 @@ const bars = [
     city: "北京市",
     group: "Пекин · Sanlitun",
     name: "The Local",
+    cn: "The Local（三里屯南街4号院）",
     query: "The Local 三里屯南街4号院 北京",
     note: "Паб и events-пространство; хороший вариант, если хочется общения, еды и более шумного вечера."
   },
@@ -456,6 +528,7 @@ const bars = [
     city: "北京市",
     group: "Пекин · Shichahai / Houhai",
     name: "Great Leap Brewing #6 大跃啤酒",
+    cn: "大跃啤酒（豆角胡同6号）",
     query: "大跃啤酒 豆角胡同6号 北京",
     note: "Атмосферный дворик в хутунах недалеко от Shichahai; вход легко пройти мимо."
   }
@@ -463,7 +536,7 @@ const bars = [
 
 function baiduPlaceLink(item) {
     const params = new URLSearchParams({
-        query: item.query,
+        query: item.cn || item.query,
         region: item.city,
         output: "html",
         src: "Kitaitsiya-uletaistiya"
@@ -473,7 +546,7 @@ function baiduPlaceLink(item) {
 
 function amapPlaceLink(item) {
     const params = new URLSearchParams({
-        keyword: item.query,
+        keyword: item.cn || item.query,
         city: item.city,
         callnative: "1"
     });
@@ -495,8 +568,11 @@ function renderBars() {
                     <span class="bar-name">${item.name}</span>
                     <span class="bar-note">${item.note}</span>
                     <span class="map-actions">
-                        <a class="map-button" href="${baiduPlaceLink(item)}" target="_blank" rel="noopener">Baidu</a>
-                        <a class="map-button" href="${amapPlaceLink(item)}" target="_blank" rel="noopener">AMap</a>
+                        <span class="map-target">
+                            ${renderCopyButton(item.cn || item.query)}
+                            <a class="map-button" href="${baiduPlaceLink(item)}" target="_blank" rel="noopener">Baidu</a>
+                            <a class="map-button" href="${amapPlaceLink(item)}" target="_blank" rel="noopener">AMap</a>
+                        </span>
                     </span>
                 </div>
             `).join("")}
@@ -518,6 +594,8 @@ const days = [
                                "title":  "Выезд с работы в Шереметьево",
                                "location":  "БЦ «Водный стадион»",
                                "map":  "БЦ «Водный стадион» Moscow",
+                               "cn":  "莫斯科沃德内体育场商务中心",
+                               "city":  "莫斯科",
                                "comment":  "Такси; заложен запас на пятничный трафик.",
                                "route":  "Такси; заложен запас на пятничный трафик.",
                                "category":  "Дорога",
@@ -535,6 +613,8 @@ const days = [
                                "title":  "Регистрация, багаж, контроль",
                                "location":  "Шереметьево",
                                "map":  "Шереметьево Moscow",
+                               "cn":  "谢列梅捷沃国际机场",
+                               "city":  "莫斯科",
                                "comment":  "Быть в аэропорту не позднее 16:30.",
                                "route":  "Быть в аэропорту не позднее 16:30.",
                                "category":  "Дорога",
@@ -552,6 +632,8 @@ const days = [
                                "title":  "Прямой перелёт; билеты уже куплены",
                                "location":  "Москва → Шанхай",
                                "map":  "Шанхай Moscow",
+                               "cn":  "上海浦东国际机场",
+                               "city":  "上海市",
                                "comment":  "Прилёт 01.08 в 09:50 по местному времени.",
                                "route":  "Прилёт 01.08 в 09:50 по местному времени.",
                                "category":  "Дорога",
@@ -576,6 +658,8 @@ const days = [
                                "title":  "Check-in и багаж",
                                "location":  "Yuanjing Road, Putuo",
                                "map":  "31.25511,121.44139 Shanghai",
+                               "cn":  "远景路（上海市普陀区）",
+                               "city":  "上海市",
                                "comment":  "Вся бронь 01–09.08: 5900 CNY на две пары ÷ 2 = 2950 CNY на вашу пару.",
                                "route":  "Аэропорт Пудун (PVG): Паспортный контроль, багаж, eSIM/наличные. Не планировать билеты с жёстким временем до обеда. PVG → Yuanjing Road: Метро Line 2 → Line 4 до Zhongtan Road, затем пешком. Адрес проживания: 31.25511 N, 121.44139 E. Такси после перелёта займёт примерно 55–75 минут и будет заметно дороже.",
                                "category":  "Жилье",
@@ -593,6 +677,8 @@ const days = [
                                "title":  "Обед без очередей",
                                "location":  "Рядом с Yuanjing Road",
                                "map":  "31.25511,121.44139 Shanghai",
+                               "cn":  "远景路（上海市普陀区）",
+                               "city":  "上海市",
                                "comment":  "Примерно на двоих.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -610,6 +696,8 @@ const days = [
                                "title":  "Душ, сон и восстановление после перелёта",
                                "location":  "Апартаменты",
                                "map":  "31.25511,121.44139 Shanghai",
+                               "cn":  "远景路（上海市普陀区）",
+                               "city":  "上海市",
                                "comment":  "Не сокращать отдых: впереди прогулка и ранний старт в Disney.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Жилье",
@@ -627,6 +715,8 @@ const days = [
                                "title":  "Галереи, граффити и индустриальные дворы",
                                "location":  "M50 Creative Park",
                                "map":  "M50 Creative Park Shanghai",
+                               "cn":  "M50创意园（莫干山路50号）",
+                               "city":  "上海市",
                                "comment":  "Некоторые галереи закрываются около 18:00.",
                                "route":  "Yuanjing Road → M50: Пешком. Близкая к жилью активность; маршрут около Suzhou Creek.",
                                "category":  "Развлечения",
@@ -644,6 +734,8 @@ const days = [
                                "title":  "Архитектура, террасы, магазины и фотографии на закате",
                                "location":  "Tian An 1000 Trees",
                                "map":  "Tian An 1000 Trees Shanghai",
+                               "cn":  "天安千树（莫干山路600号）",
+                               "city":  "上海市",
                                "comment":  "Лучшие общие ракурсы есть с противоположного берега.",
                                "route":  "M50 → Tian An 1000 Trees: Пешком вдоль Suzhou Creek. Около 15–20 минут.",
                                "category":  "Развлечения",
@@ -661,6 +753,8 @@ const days = [
                                "title":  "Ужин",
                                "location":  "Tian An 1000 Trees",
                                "map":  "Tian An 1000 Trees Shanghai",
+                               "cn":  "天安千树（莫干山路600号）",
+                               "city":  "上海市",
                                "comment":  "На двоих.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -685,6 +779,8 @@ const days = [
                                "title":  "Завтрак",
                                "location":  "Рядом с Yuanjing Road",
                                "map":  "31.25511,121.44139 Shanghai",
+                               "cn":  "远景路（上海市普陀区）",
+                               "city":  "上海市",
                                "comment":  "На двоих; день перед Disney держим без жёсткой вечерней программы.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -702,6 +798,8 @@ const days = [
                                "title":  "Самостоятельная прогулка до встречи с Келли",
                                "location":  "EKA Tianwu, 金桥路535号",
                                "map":  "EKA Tianwu, 金桥路535号 Shanghai",
+                               "cn":  "EKA·天物（金桥路535号）",
+                               "city":  "上海市",
                                "comment":  "Сначала пройти индустриальные корпуса и наметить кафе; адрес встречи: No. 535 Jinqiao Road, Pudong New Area.",
                                "route":  "Yuanjing Road → EKA Tianwu: Метро до EKA Tianwu. Zhongtan Road 中潭路, Line 4 (фиолетовая) → Century Avenue 世纪大道; пересадка на Line 6 (розовая) → Jinqiao Road 金桥路, выход 3; затем 15–20 минут пешком или короткая поездка на велосипеде/такси.",
                                "category":  "Развлечения",
@@ -719,6 +817,8 @@ const days = [
                                "title":  "Встреча и обед с Келли",
                                "location":  "EKA Tianwu",
                                "map":  "EKA Tianwu Shanghai",
+                               "cn":  "EKA·天物（金桥路535号）",
+                               "city":  "上海市",
                                "comment":  "Бюджет на вашу пару; расходы Келли не включены.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -736,6 +836,8 @@ const days = [
                                "title":  "Прогулка с Келли по кварталу",
                                "location":  "EKA Tianwu",
                                "map":  "EKA Tianwu Shanghai",
+                               "cn":  "EKA·天物（金桥路535号）",
+                               "city":  "上海市",
                                "comment":  "Не бронировать на вторую половину дня активности с фиксированным временем.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Развлечения",
@@ -753,6 +855,8 @@ const days = [
                                "title":  "Свободный вечер с Келли; опционально бар или прогулка",
                                "location":  "По выбору Келли / EKA Tianwu",
                                "map":  "EKA Tianwu 金桥路535号 Shanghai",
+                               "cn":  "EKA·天物（金桥路535号）",
+                               "city":  "上海市",
                                "comment":  "Можно остаться в EKA либо поехать в выбранный Келли район. Бар оставить опцией без брони.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Развлечения",
@@ -770,6 +874,8 @@ const days = [
                                "title":  "Ужин и, при желании, напитки",
                                "location":  "По плану Келли",
                                "map":  "EKA Tianwu 金桥路535号 Shanghai",
+                               "cn":  "EKA·天物（金桥路535号）",
+                               "city":  "上海市",
                                "comment":  "Ориентировочный бюджет на двоих; скорректировать по факту.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -794,6 +900,8 @@ const days = [
                                "title":  "Завтрак",
                                "location":  "Рядом с Yuanjing Road",
                                "map":  "31.25511,121.44139 Shanghai",
+                               "cn":  "远景路（上海市普陀区）",
+                               "city":  "上海市",
                                "comment":  "На двоих.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -811,6 +919,8 @@ const days = [
                                "title":  "Контроль и вход; получить birthday button",
                                "location":  "Shanghai Disneyland",
                                "map":  "Shanghai Disneyland Shanghai",
+                               "cn":  "上海迪士尼乐园",
+                               "city":  "上海市",
                                "comment":  "Паспорт и билеты держать под рукой.",
                                "route":  "Yuanjing Road → Shanghai Disney Resort: Zhongtan Road Line 4 → Caoyang Road Line 11 → Disney Resort. На автомобиле без пробок около 40 минут; метро надёжнее утром. Проверить время открытия парка накануне.",
                                "category":  "Развлечения",
@@ -828,6 +938,8 @@ const days = [
                                "title":  "День рождения: главные аттракционы с утра",
                                "location":  "Shanghai Disneyland",
                                "map":  "Shanghai Disneyland Shanghai",
+                               "cn":  "上海迪士尼乐园",
+                               "city":  "上海市",
                                "comment":  "Билеты куплены: 23 569 RUB ÷ 3 × 2 ÷ 12 = 1309,39 CNY на вашу пару.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Развлечения",
@@ -845,6 +957,8 @@ const days = [
                                "title":  "Праздничный обед",
                                "location":  "Shanghai Disneyland",
                                "map":  "Shanghai Disneyland Shanghai",
+                               "cn":  "上海迪士尼乐园",
+                               "city":  "上海市",
                                "comment":  "На двоих.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -862,6 +976,8 @@ const days = [
                                "title":  "Аттракционы, шоу и фотографии",
                                "location":  "Shanghai Disneyland",
                                "map":  "Shanghai Disneyland Shanghai",
+                               "cn":  "上海迪士尼乐园",
+                               "city":  "上海市",
                                "comment":  "Premier Access не включён в бюджет.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Развлечения",
@@ -879,6 +995,8 @@ const days = [
                                "title":  "Ужин",
                                "location":  "Shanghai Disneyland",
                                "map":  "Shanghai Disneyland Shanghai",
+                               "cn":  "上海迪士尼乐园",
+                               "city":  "上海市",
                                "comment":  "На двоих.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -896,6 +1014,8 @@ const days = [
                                "title":  "Вечерние зоны, парад и финальное шоу",
                                "location":  "Shanghai Disneyland",
                                "map":  "Shanghai Disneyland Shanghai",
+                               "cn":  "上海迪士尼乐园",
+                               "city":  "上海市",
                                "comment":  "Точное время шоу проверить в приложении Disney.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Развлечения",
@@ -920,6 +1040,8 @@ const days = [
                                "title":  "Поздний завтрак после Disney",
                                "location":  "Рядом с Yuanjing Road",
                                "map":  "31.25511,121.44139 Shanghai",
+                               "cn":  "远景路（上海市普陀区）",
+                               "city":  "上海市",
                                "comment":  "На двоих.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -937,6 +1059,8 @@ const days = [
                                "title":  "Осмотреть корабль Louis Vuitton и сделать фотографии",
                                "location":  "The Louis, HKRI Taikoo Hui",
                                "map":  "The Louis, HKRI Taikoo Hui Shanghai",
+                               "cn":  "路易号（上海兴业太古汇）",
+                               "city":  "上海市",
                                "comment":  "Шопинг не планируется; утром обычно комфортнее фотографировать фасад.",
                                "route":  "Yuanjing Road → Nanjing West Road: Метро к The Louis. Zhongtan Road 中潭路, Line 4 (фиолетовая) → Jinshajiang Road 金沙江路; пересадка на Line 13 (розовая) → West Nanjing Road 南京西路.",
                                "category":  "Развлечения",
@@ -954,6 +1078,8 @@ const days = [
                                "title":  "Кофе и осмотр большой обжарочной",
                                "location":  "Starbucks Reserve Roastery",
                                "map":  "Starbucks Reserve Roastery Shanghai",
+                               "cn":  "星巴克臻选上海烘焙工坊",
+                               "city":  "上海市",
                                "comment":  "Nanjing West Road 789; идти пешком около 8–10 минут от The Louis.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -971,6 +1097,8 @@ const days = [
                                "title":  "Обед: блюда приезжают по рельсам под потолком",
                                "location":  "SPACELAB, Century Link Mall",
                                "map":  "SPACELAB, Century Link Mall Shanghai",
+                               "cn":  "SPACELAB失重餐厅（世纪汇店）",
+                               "city":  "上海市",
                                "comment":  "Century Avenue 1192, Century Link Mall L3; выход 11/12. В будний день очередь обычно мягче.",
                                "route":  "West Nanjing Road → Century Avenue: Метро к SPACELAB. West Nanjing Road 南京西路, Line 2 (зелёная) → Century Avenue 世纪大道, без пересадок.",
                                "category":  "Еда",
@@ -988,6 +1116,11 @@ const days = [
                                "title":  "Пешеходная улица и набережная без шопинга",
                                "location":  "Nanjing East Road → The Bund",
                                "map":  "The Bund Shanghai",
+                               "cn":  [
+                                          "南京东路步行街",
+                                          "上海外滩"
+                                      ],
+                               "city":  "上海市",
                                "comment":  "В жару делать паузы в кондиционируемых помещениях; этот блок объединяет всю запланированную прогулку по Nanjing Road.",
                                "route":  "Century Avenue → East Nanjing Road: Метро к началу прогулки. Century Avenue 世纪大道, Line 2 (зелёная) → East Nanjing Road 南京东路, без пересадок.",
                                "category":  "Развлечения",
@@ -1005,6 +1138,8 @@ const days = [
                                "title":  "Jin Mao Skywalk на закате",
                                "location":  "Jin Mao Tower, 88F",
                                "map":  "Jin Mao Tower, 88F Shanghai",
+                               "cn":  "金茂云中漫步",
+                               "city":  "上海市",
                                "comment":  "Рекомендуемый слот 18:30: закат 04.08 ориентировочно в 18:47, поэтому будут дневной вид, закат и первые огни. 288 CNY × 2; бронировать заранее.",
                                "route":  "The Bund → Jin Mao Tower: Метро и пешком до Skywalk. East Nanjing Road 南京东路, Line 2 (зелёная) → Lujiazui 陆家嘴; затем 12–15 минут пешком до Jin Mao Tower. Jin Mao Tower: Регистрация, контроль и запас перед Skywalk. Прибыть минимум за 30 минут; активность зависит от погоды и ветра.",
                                "category":  "Развлечения",
@@ -1022,6 +1157,8 @@ const days = [
                                "title":  "Ужин после Skywalk",
                                "location":  "The Bund",
                                "map":  "The Bund Shanghai",
+                               "cn":  "金茂云中漫步",
+                               "city":  "上海市",
                                "comment":  "Выбирать место в одном-двух кварталах от первой линии: обычно дешевле и меньше ожидание.",
                                "route":  "Jin Mao Tower → The Bund: Возвращение на западный берег. Lujiazui 陆家嘴, Line 2 (зелёная) → East Nanjing Road 南京东路; метро надёжнее парома по времени.",
                                "category":  "Еда",
@@ -1039,6 +1176,8 @@ const days = [
                                "title":  "Ночная набережная; опционально The Captain или The Fellas",
                                "location":  "The Bund",
                                "map":  "The Bund Shanghai",
+                               "cn":  "上海外滩",
+                               "city":  "上海市",
                                "comment":  "Бар не бронировать заранее: оставить по силам и погоде.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Развлечения",
@@ -1056,6 +1195,8 @@ const days = [
                                "title":  "Напитки с видом",
                                "location":  "Бар у The Bund, опционально",
                                "map":  "Бар у The Bund, опционально Shanghai",
+                               "cn":  "上海外滩",
+                               "city":  "上海市",
                                "comment":  "Бюджет только если решите зайти; при пропуске поставить 0.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -1080,6 +1221,8 @@ const days = [
                                "title":  "Неспешный завтрак",
                                "location":  "Рядом с Yuanjing Road",
                                "map":  "31.25511,121.44139 Shanghai",
+                               "cn":  "远景路（上海市普陀区）",
+                               "city":  "上海市",
                                "comment":  "Восстановительный день после Disney и Skywalk.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -1097,6 +1240,8 @@ const days = [
                                "title":  "Мотоциклетный магазин и шоурум",
                                "location":  "Chemichen / 车迷辰",
                                "map":  "Chemichen / 车迷辰 Shanghai",
+                               "cn":  "车迷辰（上海）摩托车用品有限公司",
+                               "city":  "上海市",
                                "comment":  "Проверить часы и действующий вход в Amap/Dianping накануне.",
                                "route":  "Yuanjing Road → Chemichen: Такси. Координаты 31.23261 N, 121.36709 E; 上海市普陀区交暨路207弄5号齐成创业园A座1层108室.",
                                "category":  "Развлечения",
@@ -1114,6 +1259,8 @@ const days = [
                                "title":  "Обед",
                                "location":  "Putuo",
                                "map":  "Putuo Shanghai",
+                               "cn":  "上海市普陀区",
+                               "city":  "上海市",
                                "comment":  "На двоих.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -1131,6 +1278,11 @@ const days = [
                                "title":  "Баня-спа: выбрать один вариант в день поездки",
                                "location":  "Cheersum 浅深·休闲 или Young·SPACE 漾·SPACE汤泉生活",
                                "map":  "Cheersum 浅深休闲 Putuo Shanghai",
+                               "cn":  [
+                                          "浅深休闲会所（浅深上海普陀店）",
+                                          "漾·SPACE汤泉生活"
+                                      ],
+                               "city":  "上海市",
                                "comment":  "В своде заложен базовый бюджет Cheersum около 198 CNY × 2. Если выберете Young·SPACE, заменить сумму на фактическую: ориентир 598–798 CNY на пару.",
                                "route":  "Putuo → выбранная баня: Такси; выбрать один из двух вариантов. Cheersum ближе и логичнее по маршруту; Young·SPACE находится в Pudong и потребует больше времени на дорогу.",
                                "category":  "Развлечения",
@@ -1148,6 +1300,11 @@ const days = [
                                "title":  "Ужин и напитки",
                                "location":  "В выбранной бане",
                                "map":  "Cheersum 浅深休闲 Putuo Shanghai",
+                               "cn":  [
+                                          "浅深休闲会所（浅深上海普陀店）",
+                                          "漾·SPACE汤泉生活"
+                                      ],
+                               "city":  "上海市",
                                "comment":  "Проверить, включён ли буфет в выбранный тариф; при включённом питании поставить 0.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -1172,6 +1329,8 @@ const days = [
                                "title":  "Завтрак",
                                "location":  "Рядом с Yuanjing Road",
                                "map":  "31.25511,121.44139 Shanghai",
+                               "cn":  "远景路（上海市普陀区）",
+                               "city":  "上海市",
                                "comment":  "На двоих.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -1189,6 +1348,11 @@ const days = [
                                "title":  "Площадь, парк и городской центр",
                                "location":  "Peoples Square + Peoples Park",
                                "map":  "Peoples Square + Peoples Park Shanghai",
+                               "cn":  [
+                                          "上海人民广场",
+                                          "人民公园"
+                                      ],
+                               "city":  "上海市",
                                "comment":  "Начать с открытого пространства до усиления жары.",
                                "route":  "Yuanjing Road → Peoples Square: Метро. Zhongtan Road 中潭路, Line 4 (фиолетовая) → Shanghai Railway Station 上海火车站; пересадка на Line 1 (красная) → Peoples Square 人民广场.",
                                "category":  "Развлечения",
@@ -1206,6 +1370,8 @@ const days = [
                                "title":  "Музей, опционально по предварительной записи",
                                "location":  "Shanghai Museum, Peoples Square",
                                "map":  "Shanghai Museum, Peoples Square Shanghai",
+                               "cn":  "上海博物馆（人民广场馆）",
+                               "city":  "上海市",
                                "comment":  "Если нет записи или не хочется музея, оставить время на New World City и отдых в кондиционере.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Развлечения",
@@ -1223,6 +1389,8 @@ const days = [
                                "title":  "Обед: огненные рёбра, милкшейки и блюда с трюфелем",
                                "location":  "3号仓库, New World City",
                                "map":  "3号仓库, New World City Shanghai",
+                               "cn":  "3号仓库·创意中国菜（新世界城店）",
+                               "city":  "上海市",
                                "comment":  "New World City, 4F A29; заказать рёбра заранее и проверить очередь в Dianping.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -1240,6 +1408,11 @@ const days = [
                                "title":  "Сад, старые улицы, чайные и фотографии",
                                "location":  "Yu Garden + City God Temple",
                                "map":  "Yu Garden + City God Temple Shanghai",
+                               "cn":  [
+                                          "豫园",
+                                          "上海城隍庙"
+                                      ],
+                               "city":  "上海市",
                                "comment":  "Ориентир 40 CNY с человека; сначала пройти платный сад, затем торговые улицы.",
                                "route":  "Peoples Square → Yuyuan Garden: Метро. Peoples Square 人民广场, Line 8 (синяя) → Dashijie 大世界; пересадка на Line 14 (оливковая) → Yuyuan Garden 豫园. При жаре такси проще.",
                                "category":  "Развлечения",
@@ -1257,6 +1430,8 @@ const days = [
                                "title":  "Прогулка по кварталам и старым переулкам",
                                "location":  "Xintiandi + шикумэнь",
                                "map":  "Xintiandi + шикумэнь Shanghai",
+                               "cn":  "上海新天地",
+                               "city":  "上海市",
                                "comment":  "Вечером температура переносится легче.",
                                "route":  "Yuyuan Garden → Xintiandi: Метро. Yuyuan Garden 豫园, Line 10 (сиреневая) → Xintiandi 新天地, без пересадок.",
                                "category":  "Развлечения",
@@ -1274,6 +1449,8 @@ const days = [
                                "title":  "Ужин",
                                "location":  "Xintiandi",
                                "map":  "Xintiandi Shanghai",
+                               "cn":  "上海新天地",
+                               "city":  "上海市",
                                "comment":  "На двоих.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -1291,6 +1468,8 @@ const days = [
                                "title":  "Караоке, опционально",
                                "location":  "Chun K / 纯K, Dapuqiao",
                                "map":  "Chun K / 纯K, Dapuqiao Shanghai",
+                               "cn":  "纯K（打浦桥店）",
+                               "city":  "上海市",
                                "comment":  "Sun Moon Light Center, Xujiahui Road 618. Проверить пакет и свободные комнаты в Dianping в тот же день; если устали, пропустить и поставить 0.",
                                "route":  "Xintiandi → Chun K Dapuqiao: Метро к караоке. Xintiandi 新天地, Line 13 (розовая) → Madang Road 马当路; пересадка на Line 9 (голубая) → Dapuqiao 打浦桥.",
                                "category":  "Развлечения",
@@ -1315,6 +1494,8 @@ const days = [
                                "title":  "Завтрак",
                                "location":  "Рядом с Yuanjing Road",
                                "map":  "31.25511,121.44139 Shanghai",
+                               "cn":  "远景路（上海市普陀区）",
+                               "city":  "上海市",
                                "comment":  "На двоих.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -1332,6 +1513,8 @@ const days = [
                                "title":  "Главный классический сад Сучжоу",
                                "location":  "Humble Administrators Garden / 拙政园",
                                "map":  "Humble Administrators Garden / 拙政园 Shanghai",
+                               "cn":  "拙政园",
+                               "city":  "苏州市",
                                "comment":  "Ориентир 80 CNY × 2; купить билет заранее, прийти до дневной жары.",
                                "route":  "Yuanjing Road → Shanghai Railway Station: Такси или метро. Ближайший удобный вокзал. На метро: Zhongtan Road 中潭路, Line 4 (фиолетовая) → Shanghai Railway Station 上海火车站, одна остановка. Shanghai Railway Station: Контроль, билет и посадка. Купить день-в-день можно при наличии мест, но пятница и летние каникулы повышают риск. Для фиксированного утреннего поезда лучше купить в 12306 за 1–3 дня; билет привязан к паспорту. Shanghai Station → Suzhou Station: Скоростной поезд, 2-й класс. Ориентир 40 CNY × 2 в одну сторону; выбрать поезд, прибывающий на Suzhou 苏州, не Suzhou North. Suzhou Station → Humble Administrators Garden: Метро / короткое такси. Метро Line 4 → Beisita 北寺塔, затем 15–20 минут пешком; такси быстрее.",
                                "category":  "Развлечения",
@@ -1349,6 +1532,8 @@ const days = [
                                "title":  "Обед",
                                "location":  "Pingjiang Road",
                                "map":  "Pingjiang Road Shanghai",
+                               "cn":  "平江路历史街区",
+                               "city":  "上海市",
                                "comment":  "На двоих.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -1366,6 +1551,8 @@ const days = [
                                "title":  "Каналы, переулки, чайные и мостики",
                                "location":  "Pingjiang Road / 平江路",
                                "map":  "Pingjiang Road / 平江路 Shanghai",
+                               "cn":  "平江路历史街区",
+                               "city":  "苏州市",
                                "comment":  "Идти медленно и заходить в помещения в самые жаркие часы.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Развлечения",
@@ -1383,6 +1570,8 @@ const days = [
                                "title":  "Музей Бэй Юймина, опционально по записи",
                                "location":  "Suzhou Museum / 苏州博物馆",
                                "map":  "Suzhou Museum / 苏州博物馆 Shanghai",
+                               "cn":  "苏州博物馆本馆",
+                               "city":  "苏州市",
                                "comment":  "Вход обычно бесплатный, но нужен слот. Если записи нет, заменить на Lion Grove Garden / 狮子林.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Развлечения",
@@ -1400,6 +1589,8 @@ const days = [
                                "title":  "Канал и вечерняя подсветка",
                                "location":  "Shantang Street / 山塘街",
                                "map":  "Shantang Street / 山塘街 Shanghai",
+                               "cn":  "七里山塘景区",
+                               "city":  "苏州市",
                                "comment":  "Пятничным вечером людно; держаться подальше от узкого главного входа.",
                                "route":  "Suzhou Museum → Shantang Street: Такси / метро. Такси экономит силы; на метро идти через Beisita и Shantang Jie.",
                                "category":  "Развлечения",
@@ -1417,6 +1608,8 @@ const days = [
                                "title":  "Ужин",
                                "location":  "Shantang Street",
                                "map":  "Shantang Street Shanghai",
+                               "cn":  "七里山塘景区",
+                               "city":  "上海市",
                                "comment":  "На двоих.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -1441,6 +1634,8 @@ const days = [
                                "title":  "Завтрак",
                                "location":  "Рядом с Yuanjing Road",
                                "map":  "31.25511,121.44139 Shanghai",
+                               "cn":  "远景路（上海市普陀区）",
+                               "city":  "上海市",
                                "comment":  "На двоих.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -1458,6 +1653,8 @@ const days = [
                                "title":  "Парфюмерный магазин в исторической вилле",
                                "location":  "To Summer, 湖南路111号",
                                "map":  "To Summer, 湖南路111号 Shanghai",
+                               "cn":  "观夏闲庭（湖南路111号）",
+                               "city":  "上海市",
                                "comment":  "Прийти к открытию; магазин небольшой, в выходной возможна очередь.",
                                "route":  "Yuanjing Road → Shanghai Library: Метро. Zhongtan Road 中潭路, Line 4 (фиолетовая) → Hailun Road 海伦路; пересадка на Line 10 (сиреневая) → Shanghai Library 上海图书馆.",
                                "category":  "Развлечения",
@@ -1475,6 +1672,11 @@ const days = [
                                "title":  "Французская концессия, виллы и книжные магазины",
                                "location":  "Wukang Road + Anfu Road",
                                "map":  "Wukang Road + Anfu Road Shanghai",
+                               "cn":  [
+                                          "武康路历史文化名街",
+                                          "安福路"
+                                      ],
+                               "city":  "上海市",
                                "comment":  "Маршрут пешком; воду купить до выхода на Wukang Road.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Развлечения",
@@ -1492,6 +1694,8 @@ const days = [
                                "title":  "Обед",
                                "location":  "Wukang / Anfu Road",
                                "map":  "Wukang / Anfu Road Shanghai",
+                               "cn":  "武康路历史文化名街",
+                               "city":  "上海市",
                                "comment":  "На двоих.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -1509,6 +1713,8 @@ const days = [
                                "title":  "Кофе в замороженном стаканчике",
                                "location":  "CUBIC 3, Yongkang Road 58",
                                "map":  "CUBIC 3, Yongkang Road 58 Shanghai",
+                               "cn":  "CUBIC 3（永康路58号）",
+                               "city":  "上海市",
                                "comment":  "Проверить действующий филиал и часы в Dianping накануне.",
                                "route":  "Wukang Road → Yongkang Road: Пешком. Около 30–35 минут; при сильной жаре резерв: велосипед или такси 15–25 CNY.",
                                "category":  "Еда",
@@ -1526,6 +1732,8 @@ const days = [
                                "title":  "Кофе, десерт и альпака",
                                "location":  "La Cour Bar \u0026 Café, 长乐路462号",
                                "map":  "La Cour Bar \u0026 Café, 长乐路462号 Shanghai",
+                               "cn":  "LA COUR BAR\u0026CAFE（长乐路462号）",
+                               "city":  "上海市",
                                "comment":  "Не кормить животное без разрешения персонала; проверить актуальные часы.",
                                "route":  "Yongkang Road → La Cour: Пешком. Идти по тихим улицам French Concession; при жаре взять короткое такси.",
                                "category":  "Еда",
@@ -1543,6 +1751,11 @@ const days = [
                                "title":  "Вечерняя прогулка по French Concession",
                                "location":  "Fuxing Park + Sinan Mansions",
                                "map":  "Fuxing Park + Sinan Mansions Shanghai",
+                               "cn":  [
+                                          "复兴公园",
+                                          "思南公馆"
+                                      ],
+                               "city":  "上海市",
                                "comment":  "Логичное продолжение пешего маршрута без возврата на Nanjing Road.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Развлечения",
@@ -1560,6 +1773,8 @@ const days = [
                                "title":  "Ужин",
                                "location":  "French Concession",
                                "map":  "French Concession Shanghai",
+                               "cn":  "上海衡复历史文化风貌区",
+                               "city":  "上海市",
                                "comment":  "Выбрать ближайшее место по Dianping, чтобы не добавлять лишний переезд.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -1577,6 +1792,11 @@ const days = [
                                "title":  "Опционально бар: Union Trading Company или Bar No. 3",
                                "location":  "French Concession",
                                "map":  "French Concession Shanghai",
+                               "cn":  [
+                                          "The Union Trading Company（衡山路306号）",
+                                          "Bar No.3（兴国路277号）"
+                                      ],
+                               "city":  "上海市",
                                "comment":  "Оба варианта удобны после прогулки; кальянная исключена, бронирование не обязательно.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Развлечения",
@@ -1594,6 +1814,11 @@ const days = [
                                "title":  "Напитки",
                                "location":  "Выбранный бар, опционально",
                                "map":  "Выбранный бар, опционально Shanghai",
+                               "cn":  [
+                                          "The Union Trading Company（衡山路306号）",
+                                          "Bar No.3（兴国路277号）"
+                                      ],
+                               "city":  "上海市",
                                "comment":  "Если бар пропускаете, поставить 0.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -1611,6 +1836,8 @@ const days = [
                                "title":  "Сбор вещей перед поездом",
                                "location":  "Yuanjing Road",
                                "map":  "31.25511,121.44139 Shanghai",
+                               "cn":  "远景路（上海市普陀区）",
+                               "city":  "上海市",
                                "comment":  "Паспорта и билеты положить отдельно.",
                                "route":  "French Concession → Yuanjing Road: Такси. Последний вечер в Шанхае; после возвращения собрать вещи.",
                                "category":  "Жилье",
@@ -1635,6 +1862,8 @@ const days = [
                                "title":  "Завтрак",
                                "location":  "Рядом с Yuanjing Road",
                                "map":  "31.25511,121.44139 Shanghai",
+                               "cn":  "远景路（上海市普陀区）",
+                               "city":  "上海市",
                                "comment":  "На двоих.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -1652,6 +1881,8 @@ const days = [
                                "title":  "Check-out",
                                "location":  "Yuanjing Road",
                                "map":  "31.25511,121.44139 Shanghai",
+                               "cn":  "远景路（上海市普陀区）",
+                               "city":  "上海市",
                                "comment":  "Проверить документы и номер поезда.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Жилье",
@@ -1669,6 +1900,8 @@ const days = [
                                "title":  "Скоростной поезд; билеты куплены",
                                "location":  "Shanghai Hongqiao → Beijing South",
                                "map":  "Beijing South Shanghai",
+                               "cn":  "上海虹桥站",
+                               "city":  "上海市",
                                "comment":  "24 358 RUB ÷ 3 × 2 ÷ 12 = 1353,22 CNY на вашу пару.",
                                "route":  "Yuanjing Road → Shanghai Hongqiao: Такси. Карты показывают около 30 минут без пробок; час заложен на воскресный трафик и выгрузку багажа. Shanghai Hongqiao Railway Station: Контроль, поиск платформы и посадка. На вокзале быть не позже 09:30.",
                                "category":  "Дорога",
@@ -1686,6 +1919,8 @@ const days = [
                                "title":  "Check-in, душ и короткий отдых",
                                "location":  "Xiaoyun Road / Sanyuanli",
                                "map":  "39.95631,116.45543 Beijing",
+                               "cn":  "霄云路（北京市朝阳区）",
+                               "city":  "北京市",
                                "comment":  "Вся бронь 09–14.08: 3000 CNY на две пары ÷ 2 = 1500 CNY на вашу пару.",
                                "route":  "Beijing South → Xiaoyun Road: Такси или Line 14 + короткое такси. Адрес: 39.95631 N, 116.45543 E. На автомобиле без пробок около 26 минут; заложен выход с вокзала и трафик.",
                                "category":  "Жилье",
@@ -1703,6 +1938,11 @@ const days = [
                                "title":  "Улица, магазины и лёгкая прогулка после поезда",
                                "location":  "Qianmen + Dashilan",
                                "map":  "Qianmen + Dashilan Beijing",
+                               "cn":  [
+                                          "前门大街",
+                                          "大栅栏商业街"
+                                      ],
+                               "city":  "北京市",
                                "comment":  "Не ставить музей в день переезда.",
                                "route":  "Xiaoyun Road → Qianmen: Метро Line 10 с пересадкой / такси. Около 45–55 минут с пешими участками.",
                                "category":  "Развлечения",
@@ -1720,6 +1960,8 @@ const days = [
                                "title":  "Ужин",
                                "location":  "Qianmen",
                                "map":  "Qianmen Beijing",
+                               "cn":  "前门大街",
+                               "city":  "北京市",
                                "comment":  "На двоих.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -1744,6 +1986,8 @@ const days = [
                                "title":  "Завтрак",
                                "location":  "Рядом с Xiaoyun Road",
                                "map":  "39.95631,116.45543 Beijing",
+                               "cn":  "霄云路（北京市朝阳区）",
+                               "city":  "北京市",
                                "comment":  "На двоих.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -1761,6 +2005,8 @@ const days = [
                                "title":  "Главная ось и боковые дворцы без гонки",
                                "location":  "Forbidden City",
                                "map":  "Forbidden City Beijing",
+                               "cn":  "故宫博物院",
+                               "city":  "北京市",
                                "comment":  "60 CNY × 2; билеты именные.",
                                "route":  "Xiaoyun Road → Forbidden City: Метро Line 10 с пересадкой; далее пешком к входу. Паспорт с собой; вход через Tiananmen. Tiananmen: Запас на контроль перед входом. Летом контроль может занять больше времени.",
                                "category":  "Развлечения",
@@ -1778,6 +2024,8 @@ const days = [
                                "title":  "Обед",
                                "location":  "К северу от дворца",
                                "map":  "К северу от дворца Beijing",
+                               "cn":  "景山公园",
+                               "city":  "北京市",
                                "comment":  "На двоих.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -1795,6 +2043,8 @@ const days = [
                                "title":  "Панорама крыш Запретного города",
                                "location":  "Jingshan Park",
                                "map":  "Jingshan Park Beijing",
+                               "cn":  "景山公园",
+                               "city":  "北京市",
                                "comment":  "Ориентир на двоих.",
                                "route":  "Forbidden City → Jingshan: Пешком от северного выхода. Парк находится напротив северного выхода дворца.",
                                "category":  "Развлечения",
@@ -1812,6 +2062,8 @@ const days = [
                                "title":  "Озеро, Белая пагода и передышка от толпы",
                                "location":  "Beihai Park",
                                "map":  "Beihai Park Beijing",
+                               "cn":  "北海公园",
+                               "city":  "北京市",
                                "comment":  "На двоих.",
                                "route":  "Jingshan → Beihai: Пешком / короткое такси. На двоих.",
                                "category":  "Развлечения",
@@ -1829,6 +2081,8 @@ const days = [
                                "title":  "Прогулка к Drum/Bell Tower и вдоль озёр",
                                "location":  "Shichahai + хутуны",
                                "map":  "Shichahai + хутуны Beijing",
+                               "cn":  "什刹海风景区",
+                               "city":  "北京市",
                                "comment":  "Можно пройти пешком без отдельного транспорта.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Развлечения",
@@ -1846,6 +2100,8 @@ const days = [
                                "title":  "Ужин",
                                "location":  "Shichahai",
                                "map":  "Shichahai Beijing",
+                               "cn":  "什刹海风景区",
+                               "city":  "北京市",
                                "comment":  "На двоих.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -1863,6 +2119,8 @@ const days = [
                                "title":  "Вечерние огни у воды",
                                "location":  "Houhai",
                                "map":  "Houhai Beijing",
+                               "cn":  "后海",
+                               "city":  "北京市",
                                "comment":  "Барные улицы можно пройти без посадки.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Развлечения",
@@ -1887,6 +2145,8 @@ const days = [
                                "title":  "Завтрак",
                                "location":  "Рядом с Xiaoyun Road",
                                "map":  "39.95631,116.45543 Beijing",
+                               "cn":  "霄云路（北京市朝阳区）",
+                               "city":  "北京市",
                                "comment":  "На двоих.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -1904,6 +2164,8 @@ const days = [
                                "title":  "Подъём, прогулка по стене, спуск",
                                "location":  "Великая Китайская стена, Mutianyu",
                                "map":  "Великая Китайская стена, Mutianyu Beijing",
+                               "cn":  "慕田峪长城",
+                               "city":  "北京市",
                                "comment":  "Вход + шаттл + канатка ориентировочно на двоих.",
                                "route":  "Xiaoyun Road → Mutianyu: Заказной автомобиль туда-обратно. Северо-восточная база удобнее центра; заложено около 1 ч 30 мин.",
                                "category":  "Развлечения",
@@ -1921,6 +2183,8 @@ const days = [
                                "title":  "Обед",
                                "location":  "Mutianyu",
                                "map":  "Mutianyu Beijing",
+                               "cn":  "慕田峪长城",
+                               "city":  "北京市",
                                "comment":  "На двоих.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -1938,6 +2202,8 @@ const days = [
                                "title":  "Душ и короткий отдых",
                                "location":  "Xiaoyun Road",
                                "map":  "39.95631,116.45543 Beijing",
+                               "cn":  "霄云路（北京市朝阳区）",
+                               "city":  "北京市",
                                "comment":  "После стены не ставить музей.",
                                "route":  "Mutianyu → Xiaoyun Road: Возвращение на автомобиле. Входит в стоимость машины.",
                                "category":  "Жилье",
@@ -1955,6 +2221,8 @@ const days = [
                                "title":  "Бани / hot spring: восстановление после стены",
                                "location":  "Beijing Chaoyabang Gaobeidianxiang",
                                "map":  "Beijing Chaoyabang Gaobeidianxiang Beijing",
+                               "cn":  "水裹·汤泉生活（北京四惠店）",
+                               "city":  "北京市",
                                "comment":  "По цене пользователя: будни 399 CNY × 2; пакет и время пребывания проверить.",
                                "route":  "Xiaoyun Road → бани Gaobeidian: Такси. Такси ориентировочно 30–40 минут в зависимости от трафика.",
                                "category":  "Развлечения",
@@ -1972,6 +2240,8 @@ const days = [
                                "title":  "Ужин внутри комплекса",
                                "location":  "Банный комплекс",
                                "map":  "Банный комплекс Beijing",
+                               "cn":  "水裹·汤泉生活（北京四惠店）",
+                               "city":  "北京市",
                                "comment":  "Часто входит в пакет, но состав тарифа обязательно проверить.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -1996,6 +2266,8 @@ const days = [
                                "title":  "Завтрак",
                                "location":  "Рядом с Xiaoyun Road",
                                "map":  "39.95631,116.45543 Beijing",
+                               "cn":  "霄云路（北京市朝阳区）",
+                               "city":  "北京市",
                                "comment":  "На двоих.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -2013,6 +2285,8 @@ const days = [
                                "title":  "Главные аттракционы с открытия",
                                "location":  "Universal Beijing Resort",
                                "map":  "Universal Beijing Resort Beijing",
+                               "cn":  "北京环球度假区",
+                               "city":  "北京市",
                                "comment":  "Билеты куплены: 17 573 RUB ÷ 3 × 2 ÷ 12 = 976,28 CNY на вашу пару.",
                                "route":  "Xiaoyun Road → Universal Beijing Resort: Line 10 → Shuangjing, Line 7 → Universal Resort. Такси без плотного трафика около 45 минут; метро надёжнее. Время открытия проверить накануне. Universal Beijing Resort: Контроль и вход. Билеты уже куплены.",
                                "category":  "Развлечения",
@@ -2030,6 +2304,8 @@ const days = [
                                "title":  "Обед",
                                "location":  "Universal Beijing Resort",
                                "map":  "Universal Beijing Resort Beijing",
+                               "cn":  "北京环球度假区",
+                               "city":  "北京市",
                                "comment":  "На двоих.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -2047,6 +2323,8 @@ const days = [
                                "title":  "Оставшиеся зоны и шоу",
                                "location":  "Universal Beijing Resort",
                                "map":  "Universal Beijing Resort Beijing",
+                               "cn":  "北京环球度假区",
+                               "city":  "北京市",
                                "comment":  "Express Pass не включён.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Развлечения",
@@ -2064,6 +2342,8 @@ const days = [
                                "title":  "Ужин",
                                "location":  "Universal CityWalk",
                                "map":  "Universal CityWalk Beijing",
+                               "cn":  "北京环球城市大道",
+                               "city":  "北京市",
                                "comment":  "На двоих.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -2088,6 +2368,8 @@ const days = [
                                "title":  "Завтрак",
                                "location":  "Рядом с Xiaoyun Road",
                                "map":  "39.95631,116.45543 Beijing",
+                               "cn":  "霄云路（北京市朝阳区）",
+                               "city":  "北京市",
                                "comment":  "На двоих.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -2105,6 +2387,8 @@ const days = [
                                "title":  "Панды в первую очередь, затем короткий маршрут",
                                "location":  "Beijing Zoo / 北京动物园",
                                "map":  "Beijing Zoo / 北京动物园 Beijing",
+                               "cn":  "北京动物园",
+                               "city":  "北京市",
                                "comment":  "Панды активнее утром; не пытаться обойти весь зоопарк.",
                                "route":  "Xiaoyun Road → Beijing Zoo: Метро к зоопарку. Liangmaqiao 亮马桥, Line 10 (голубая) → Haidian Huangzhuang 海淀黄庄; пересадка на Line 4 (бирюзовая) → Beijing Zoo 动物园. До Liangmaqiao при жаре доехать коротким такси.",
                                "category":  "Развлечения",
@@ -2122,6 +2406,8 @@ const days = [
                                "title":  "Главные павильоны и парк",
                                "location":  "Temple of Heaven / 天坛公园",
                                "map":  "Temple of Heaven / 天坛公园 Beijing",
+                               "cn":  "天坛公园",
+                               "city":  "北京市",
                                "comment":  "Полный билет на двоих; из-за дневной жары идти по главной оси и не растягивать маршрут.",
                                "route":  "Beijing Zoo → Temple of Heaven: Метро. Beijing Zoo 动物园, Line 4 (бирюзовая) → Xuanwumen 宣武门; Line 2 (синяя) → Chongwenmen 崇文门; Line 5 (бордовая) → Tiantandongmen 天坛东门.",
                                "category":  "Развлечения",
@@ -2139,6 +2425,8 @@ const days = [
                                "title":  "Обед",
                                "location":  "Рядом с Temple of Heaven",
                                "map":  "Temple of Heaven 天坛公园 Beijing",
+                               "cn":  "天坛公园",
+                               "city":  "北京市",
                                "comment":  "На двоих.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -2156,6 +2444,8 @@ const days = [
                                "title":  "Шопинг: Nike, Adidas, New Balance и масс-маркет",
                                "location":  "Beijing Scitech Premium Outlet / 北京赛特奥莱",
                                "map":  "Beijing Scitech Premium Outlet / 北京赛特奥莱 Beijing",
+                               "cn":  "北京赛特奥莱",
+                               "city":  "北京市",
                                "comment":  "Проверить скидки и tax refund на стойке информации; покупки в бюджет маршрута не включены.",
                                "route":  "Temple of Heaven → Beijing Scitech Premium Outlet: Такси. До 赛特奥莱, Xiangjiang North Road; общественный транспорт с пересадками займёт заметно дольше.",
                                "category":  "Развлечения",
@@ -2173,6 +2463,8 @@ const days = [
                                "title":  "Ужин",
                                "location":  "Аутлет",
                                "map":  "Аутлет Beijing",
+                               "cn":  "北京赛特奥莱",
+                               "city":  "北京市",
                                "comment":  "На двоих.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -2190,6 +2482,8 @@ const days = [
                                "title":  "Сбор чемоданов и онлайн-регистрация",
                                "location":  "Xiaoyun Road",
                                "map":  "39.95631,116.45543 Beijing",
+                               "cn":  "霄云路（北京市朝阳区）",
+                               "city":  "北京市",
                                "comment":  "Проверить норму багажа и Terminal 2.",
                                "route":  "Аутлет → Xiaoyun Road: Такси. Вечером около 35–50 минут в зависимости от трафика.",
                                "category":  "Жилье",
@@ -2214,6 +2508,8 @@ const days = [
                                "title":  "Завтрак",
                                "location":  "Рядом с Xiaoyun Road",
                                "map":  "39.95631,116.45543 Beijing",
+                               "cn":  "霄云路（北京市朝阳区）",
+                               "city":  "北京市",
                                "comment":  "На двоих.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Еда",
@@ -2231,6 +2527,8 @@ const days = [
                                "title":  "Check-out и финальная проверка багажа",
                                "location":  "Xiaoyun Road",
                                "map":  "39.95631,116.45543 Beijing",
+                               "cn":  "霄云路（北京市朝阳区）",
+                               "city":  "北京市",
                                "comment":  "Рейс HU7985 вылетает из Beijing Capital, Terminal 2.",
                                "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
                                "category":  "Жилье",
@@ -2248,6 +2546,8 @@ const days = [
                                "title":  "Прямой рейс Hainan Airlines HU7985; билеты куплены",
                                "location":  "PEK → Москва SVO",
                                "map":  "Москва SVO Beijing",
+                               "cn":  "北京首都国际机场2号航站楼",
+                               "city":  "北京市",
                                "comment":  "Плановое отправление 14:25.",
                                "route":  "Xiaoyun Road → PEK Terminal 2: Такси. Карты показывают около 20–25 минут без пробок; оставлен запас на утренний трафик. Beijing Capital Airport, T2: Регистрация, багаж, контроль и посадка. Международный рейс; быть у гейта заранее.",
                                "category":  "Дорога",
@@ -2261,22 +2561,43 @@ const days = [
     }
 ];
 
-function baiduSearchLink(query) {
+function baiduSearchLink(query, city = "全国") {
     const params = new URLSearchParams({
         query,
-        region: "全国",
+        region: city,
         output: "html",
         src: "Kitaitsiya-uletaistiya"
     });
     return "https://api.map.baidu.com/place/search?" + params.toString();
 }
 
-function amapSearchLink(query) {
+function amapSearchLink(query, city = "") {
     const params = new URLSearchParams({
         keyword: query,
+        city,
         callnative: "1"
     });
     return "https://uri.amap.com/search?" + params.toString();
+}
+
+function renderCopyButton(name) {
+    return `
+        <button class="cn-copy" type="button" data-cn="${encodeURIComponent(name)}" title="Скопировать китайское название">
+            <span class="cn-copy-text" lang="zh-CN">${name}</span>
+            <span class="cn-copy-action" aria-hidden="true">复制</span>
+        </button>
+    `;
+}
+
+function renderMapTargets(activity) {
+    const names = Array.isArray(activity.cn) ? activity.cn : [activity.cn || activity.map];
+    return names.map(name => `
+        <div class="map-target">
+            ${renderCopyButton(name)}
+            <a class="map-button" href="${baiduSearchLink(name, activity.city)}" target="_blank" rel="noopener">Baidu</a>
+            <a class="map-button" href="${amapSearchLink(name, activity.city)}" target="_blank" rel="noopener">AMap</a>
+        </div>
+    `).join("");
 }
 
 function renderActivity(activity) {
@@ -2305,8 +2626,7 @@ function renderActivity(activity) {
                 <p class="route"><strong>Как добраться:</strong> ${activity.route}</p>
                 ${cost}
                 <div class="map-actions">
-                    <a class="map-button" href="${baiduSearchLink(activity.map)}" target="_blank" rel="noopener">Baidu</a>
-                    <a class="map-button" href="${amapSearchLink(activity.map)}" target="_blank" rel="noopener">AMap</a>
+                    ${renderMapTargets(activity)}
                 </div>
                 <div>${tags}</div>
             </div>
@@ -2334,6 +2654,41 @@ function renderDay(day) {
 document.getElementById("bar-list").innerHTML = renderBars();
 document.getElementById("days").innerHTML = days.map(renderDay).join("");
 
+const copyToast = document.createElement("div");
+copyToast.className = "copy-toast";
+copyToast.setAttribute("role", "status");
+copyToast.setAttribute("aria-live", "polite");
+document.body.appendChild(copyToast);
+
+let copyToastTimer;
+document.addEventListener("click", async event => {
+    const button = event.target.closest(".cn-copy");
+    if (!button) return;
+
+    const name = decodeURIComponent(button.dataset.cn);
+    try {
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(name);
+        } else {
+            const textarea = document.createElement("textarea");
+            textarea.value = name;
+            textarea.style.position = "fixed";
+            textarea.style.opacity = "0";
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand("copy");
+            textarea.remove();
+        }
+        copyToast.textContent = `Скопировано: ${name}`;
+    } catch {
+        copyToast.textContent = `Удерживайте и скопируйте: ${name}`;
+    }
+
+    copyToast.classList.add("is-visible");
+    clearTimeout(copyToastTimer);
+    copyToastTimer = setTimeout(() => copyToast.classList.remove("is-visible"), 2200);
+});
+
 if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
         let reloading = false;
@@ -2343,7 +2698,7 @@ if ("serviceWorker" in navigator) {
             window.location.reload();
         });
         navigator.serviceWorker
-            .register("service-worker.js?v=4", { updateViaCache: "none" })
+            .register("service-worker.js?v=5", { updateViaCache: "none" })
             .then(registration => registration.update());
     });
 }

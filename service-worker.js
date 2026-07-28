@@ -1,10 +1,10 @@
-const CACHE_NAME = "china-trip-v4";
+const CACHE_NAME = "china-trip-v5";
 
 const urlsToCache = [
   "./",
-  "./?v=4",
+  "./?v=5",
   "./index.html",
-  "./manifest.json?v=4",
+  "./manifest.json?v=5",
   "./service-worker.js",
   "./icon1.jpg"
 ];
