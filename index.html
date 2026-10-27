@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#DCFF03">
-<title>Китайция-улетайция 2026</title>
+<title>Пекин, Чжанцзяцзе и Фужун · 2026</title>
 
 <link rel="manifest" href="manifest.json?v=5">
 <link rel="apple-touch-icon" href="icon1.jpg">
@@ -317,6 +317,15 @@ details[open] > summary::after { content: "-"; }
     color: var(--orange);
 }
 
+.activity.road-activity .activity-title {
+    color: var(--blue);
+}
+
+.activity.warning-activity {
+    border-color: #D14900;
+    background: #FFF4E8;
+}
+
 .activity > summary {
     padding: 12px;
 }
@@ -398,12 +407,14 @@ footer {
 <body>
 <main class="app">
     <header>
-        <h1>Китайция-улетайция_<br>2026</h1>
-        <p class="subtitle">Офлайн-маршрут по Шанхаю и Пекину: дни, активности, комментарии, дороги и быстрые ссылки на Baidu Maps и AMap.</p>
+        <h1>Пекин · Чжанцзяцзе · Фужун_<br>2026</h1>
+        <p class="subtitle">Офлайн-маршрут для двоих: перелёты, горы, шоу, поезда и Пекин с китайскими названиями для местных карт.</p>
         <div class="chips">
-            <span class="chip">31.07 - 14.08</span>
-            <span class="chip">Шанхай</span>
+            <span class="chip">27.10–06.11</span>
+            <span class="chip">2 человека</span>
             <span class="chip">Пекин</span>
+            <span class="chip">Чжанцзяцзе</span>
+            <span class="chip">Фужун</span>
             <span class="chip">PWA offline</span>
         </div>
     </header>
@@ -411,20 +422,17 @@ footer {
     <details class="intro" open>
         <summary>Аннотация</summary>
         <div class="panel">
-            <p>Китай - страна с закрытым интернетом, поэтому этот сайт лучше заранее добавить на экран iPhone и проверить без интернета.</p>
+            <p><strong>11 дней · взрослый и сын 15 лет · все часы указаны по местному времени.</strong> Сайт лучше заранее открыть на iPhone, добавить на экран «Домой» и один раз проверить в авиарежиме.</p>
             <ol>
                 <li>Откройте сайт в Safari.</li>
-                <li>Нажмите Share -> Add to Home Screen.</li>
-                <li>Откройте сайт через появившуюся иконку.</li>
-                <li>Выключите Wi-Fi и мобильную сеть, проверьте, что маршрут открывается офлайн.</li>
+                <li>Нажмите Share → Add to Home Screen.</li>
+                <li>Запустите маршрут через появившуюся иконку.</li>
+                <li>Включите авиарежим и убедитесь, что расписание открывается без сети.</li>
             </ol>
-            <p>План плотный, но не каменный. Если в моменте жарко, устали или хочется уйти в другую сторону - меняем маршрут, но предупреждаем друг друга заранее.</p>
-            <p>Важно: ссылки на карты требуют интернет, но само расписание должно открываться офлайн после первого запуска.</p>
-            <div class="bar-guide">
-                <h3>Бары по районам</h3>
-                <p class="bar-hint">Выбирайте по силам и ближайшей вечерней локации. Перед выходом проверьте часы и действующий вход в AMap или Dianping.</p>
-                <div id="bar-list" class="bar-list"></div>
-            </div>
+            <p>Кнопки Baidu и AMap требуют интернет. Рядом с ними есть китайское название: нажмите на него, чтобы скопировать и вставить в карты вручную.</p>
+            <div class="note"><strong>Критичные места:</strong> 28 октября Храм Неба только при очень быстрой выдаче багажа; рейс важнее. 31 октября полный маршрут B в Большом каньоне не помещается до поезда в 12:40 — нужен сокращённый вариант и выход не позже 10:00. Для обоих вечерних шоу сверить время по ваучеру.</div>
+            <div class="note"><strong>Не перепутать аэропорты:</strong> 2 ноября прилёт в PEK, терминал 3. 6 ноября вылет из PKX — Beijing Daxing.</div>
+            <div class="note"><strong>Для гор:</strong> нескользкая обувь, дождевики, тёплый слой, вода, пауэрбанк и паспорта. Погода в Чжанцзяцзе может быстро меняться.</div>
         </div>
     </details>
 
@@ -432,107 +440,28 @@ footer {
         <summary>Полезные ссылки</summary>
         <div class="panel">
             <ul class="links">
-                <li><a href="https://map.baidu.com/" target="_blank" rel="noopener">Baidu Maps</a> - местные карты и построение маршрутов</li>
-                <li><a href="https://www.12306.cn/en/index.html" target="_blank" rel="noopener">12306 China Railway</a> - поезда</li>
-                <li><a href="https://www.shanghaidisneyresort.com/en/" target="_blank" rel="noopener">Shanghai Disney Resort</a> - билеты и расписание</li>
-                <li><a href="https://www.universalbeijingresort.com/en" target="_blank" rel="noopener">Universal Beijing Resort</a> - билеты и расписание</li>
-                <li><a href="https://www.travelchinaguide.com/attraction/beijing/greatwall.htm" target="_blank" rel="noopener">Mutianyu Great Wall</a> - справка по Великой стене</li>
-                <li><a href="https://translate.baidu.com/" target="_blank" rel="noopener">Baidu Translate</a> - переводчик</li>
+                <li><a href="https://map.baidu.com/" target="_blank" rel="noopener">Baidu Maps</a> — местные карты и поиск по китайскому названию</li>
+                <li><a href="https://www.amap.com/" target="_blank" rel="noopener">AMap / Gaode</a> — маршруты, метро, такси и пробки</li>
+                <li><a href="https://www.12306.cn/en/index.html" target="_blank" rel="noopener">12306 China Railway</a> — поезда и вокзалы</li>
+                <li><a href="https://www.zjjdaxiagu.com/" target="_blank" rel="noopener">Zhangjiajie Grand Canyon</a> — официальная информация о каньоне и мосте</li>
+                <li><a href="https://www.universalbeijingresort.com/zh_CN/park-schedule" target="_blank" rel="noopener">Universal Beijing Resort</a> — актуальные часы работы</li>
+                <li><a href="https://bookingticket.dpm.org.cn/" target="_blank" rel="noopener">The Palace Museum</a> — билеты и правила Гугуна</li>
+                <li><a href="https://www.aeroflot.ru/" target="_blank" rel="noopener">Аэрофлот</a> и <a href="https://www.airchina.com.cn/" target="_blank" rel="noopener">Air China</a> — статусы рейсов</li>
+                <li><a href="https://translate.baidu.com/" target="_blank" rel="noopener">Baidu Translate</a> — переводчик</li>
             </ul>
-            <div class="note">В Китае часть привычных сервисов может не открываться. Перед вылетом проверьте VPN, eSIM, Alipay/WeChat Pay и офлайн-доступ к этому сайту.</div>
+            <div class="note">Перед поездкой сохранить офлайн ваучеры, адреса гостиниц, номера поездов и скриншоты билетов. Проверить Alipay/WeChat Pay, eSIM и доступ к официальным приложениям.</div>
         </div>
     </details>
 
     <section id="days"></section>
 
     <footer>
-        Китайция-улетайция 2026. Сайт хранит маршрут локально и не отправляет данные.
+        Пекин · Чжанцзяцзе · Фужун 2026. Маршрут хранится локально и не отправляет данные.
     </footer>
 </main>
 
 <script>
-const bars = [
-  {
-    city: "上海市",
-    group: "Шанхай · у дома, M50 / 1000 Trees",
-    name: "W BAR 艺术民谣鸡尾酒吧 (M50店)",
-    cn: "W BAR艺术民谣鸡尾酒吧（M50店）",
-    query: "W BAR艺术民谣鸡尾酒吧M50店 莫干山路50号M50创意园3号楼107",
-    note: "Самый близкий вариант: коктейли и живая музыка внутри M50, рядом с 1000 Trees."
-  },
-  {
-    city: "上海市",
-    group: "Шанхай · The Bund",
-    name: "The Captain 船长酒吧",
-    cn: "船长酒吧（福州路37号6楼）",
-    query: "The Captain船长酒吧 福州路37号6楼 上海",
-    note: "Неформальный rooftop с видом на Pudong; удобно после вечерней набережной."
-  },
-  {
-    city: "上海市",
-    group: "Шанхай · The Bund",
-    name: "The Fellas Terrace",
-    cn: "The Fellas Terrace（延安东路7号7楼）",
-    query: "The Fellas Terrace 延安东路7号7楼 上海",
-    note: "Терраса с панорамой, более нарядный вариант для коктейля или позднего ужина."
-  },
-  {
-    city: "上海市",
-    group: "Шанхай · Wukang / French Concession",
-    name: "The Union Trading Company",
-    cn: "The Union Trading Company（衡山路306号）",
-    query: "The Union Trading Company 衡山路306号 上海",
-    note: "Сильные авторские коктейли; удобно завершить маршрут по French Concession."
-  },
-  {
-    city: "上海市",
-    group: "Шанхай · Wukang / French Concession",
-    name: "Bar No. 3",
-    cn: "Bar No.3（兴国路277号）",
-    query: "Bar No.3 兴国路277号 上海",
-    note: "Тихий коктейльный бар напротив Wukang Mansion: подходит для спокойного nightcap."
-  },
-  {
-    city: "北京市",
-    group: "Пекин · у дома, Xiaoyun Road / Liangma River",
-    name: "Arrow Factory Brewing 箭厂啤酒",
-    cn: "箭厂啤酒（新东路1号）",
-    query: "Arrow Factory Brewing箭厂啤酒 新东路1号 北京",
-    note: "Ближайший к жилью вариант: крафтовое пиво, еда и терраса у Liangma River."
-  },
-  {
-    city: "北京市",
-    group: "Пекин · Sanlitun",
-    name: "Jing-A Brewing 京A (幸福村店)",
-    cn: "京A精酿啤酒（幸福村店）",
-    query: "京A精酿啤酒 幸福村中路57号 北京",
-    note: "Пекинское крафтовое пиво и BBQ; живой, но не клубный формат."
-  },
-  {
-    city: "北京市",
-    group: "Пекин · Sanlitun",
-    name: "Slow Boat 悠航鲜啤 (三里屯店)",
-    cn: "悠航鲜啤（南三里屯店）",
-    query: "悠航SLOWBOAT三里屯店 南三里屯路6号 北京",
-    note: "Непафосный паб с собственным пивом и бургерами, удобно для простого вечера."
-  },
-  {
-    city: "北京市",
-    group: "Пекин · Sanlitun",
-    name: "The Local",
-    cn: "The Local（三里屯南街4号院）",
-    query: "The Local 三里屯南街4号院 北京",
-    note: "Паб и events-пространство; хороший вариант, если хочется общения, еды и более шумного вечера."
-  },
-  {
-    city: "北京市",
-    group: "Пекин · Shichahai / Houhai",
-    name: "Great Leap Brewing #6 大跃啤酒",
-    cn: "大跃啤酒（豆角胡同6号）",
-    query: "大跃啤酒 豆角胡同6号 北京",
-    note: "Атмосферный дворик в хутунах недалеко от Shichahai; вход легко пройти мимо."
-  }
-];
+const bars = [];
 
 function baiduPlaceLink(item) {
     const params = new URLSearchParams({
@@ -581,1985 +510,939 @@ function renderBars() {
 }
 
 const days = [
-    {
-        "date":  "31.07, пятница",
-        "title":  "Вылет из Москвы",
-        "meta":  "Работа → Шереметьево → прямой рейс",
-        "activities":  [
-                           {
-                               "time":  "15:30",
-                               "end":  "16:00",
-                               "duration":  "0:30",
-                               "icon":  "✈️",
-                               "title":  "Выезд с работы в Шереметьево",
-                               "location":  "БЦ «Водный стадион»",
-                               "map":  "БЦ «Водный стадион» Moscow",
-                               "cn":  "莫斯科沃德内体育场商务中心",
-                               "city":  "莫斯科",
-                               "comment":  "Такси; заложен запас на пятничный трафик.",
-                               "route":  "Такси; заложен запас на пятничный трафик.",
-                               "category":  "Дорога",
-                               "cost":  1200,
-                               "tags":  [
-                                            "Дорога",
-                                            "Москва"
-                                        ]
-                           },
-                           {
-                               "time":  "16:30",
-                               "end":  "18:30",
-                               "duration":  "2:00",
-                               "icon":  "✈️",
-                               "title":  "Регистрация, багаж, контроль",
-                               "location":  "Шереметьево",
-                               "map":  "Шереметьево Moscow",
-                               "cn":  "谢列梅捷沃国际机场",
-                               "city":  "莫斯科",
-                               "comment":  "Быть в аэропорту не позднее 16:30.",
-                               "route":  "Быть в аэропорту не позднее 16:30.",
-                               "category":  "Дорога",
-                               "cost":  0,
-                               "tags":  [
-                                            "Дорога",
-                                            "Москва"
-                                        ]
-                           },
-                           {
-                               "time":  "20:00",
-                               "end":  "09:50",
-                               "duration":  "перелёт",
-                               "icon":  "✈️",
-                               "title":  "Прямой перелёт; билеты уже куплены",
-                               "location":  "Москва → Шанхай",
-                               "map":  "Шанхай Moscow",
-                               "cn":  "上海浦东国际机场",
-                               "city":  "上海市",
-                               "comment":  "Прилёт 01.08 в 09:50 по местному времени.",
-                               "route":  "Прилёт 01.08 в 09:50 по местному времени.",
-                               "category":  "Дорога",
-                               "cost":  0,
-                               "tags":  [
-                                            "Дорога",
-                                            "Москва"
-                                        ]
-                           }
-                       ]
-    },
-    {
-        "date":  "01.08, суббота",
-        "title":  "Прилёт, M50 и 1000 Trees",
-        "meta":  "Заселение на Yuanjing Road и лёгкий первый вечер",
-        "activities":  [
-                           {
-                               "time":  "12:30",
-                               "end":  "13:00",
-                               "duration":  "0:30",
-                               "icon":  "🏠",
-                               "title":  "Check-in и багаж",
-                               "location":  "Yuanjing Road, Putuo",
-                               "map":  "31.25511,121.44139 Shanghai",
-                               "cn":  "远景路（上海市普陀区）",
-                               "city":  "上海市",
-                               "comment":  "Вся бронь 01–09.08: 5900 CNY на две пары ÷ 2 = 2950 CNY на вашу пару.",
-                               "route":  "Аэропорт Пудун (PVG): Паспортный контроль, багаж, eSIM/наличные. Не планировать билеты с жёстким временем до обеда. PVG → Yuanjing Road: Метро Line 2 → Line 4 до Zhongtan Road, затем пешком. Адрес проживания: 31.25511 N, 121.44139 E. Такси после перелёта займёт примерно 55–75 минут и будет заметно дороже.",
-                               "category":  "Жилье",
-                               "cost":  2950,
-                               "tags":  [
-                                            "Жилье",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "13:00",
-                               "end":  "14:00",
-                               "duration":  "1:00",
-                               "icon":  "🍜",
-                               "title":  "Обед без очередей",
-                               "location":  "Рядом с Yuanjing Road",
-                               "map":  "31.25511,121.44139 Shanghai",
-                               "cn":  "远景路（上海市普陀区）",
-                               "city":  "上海市",
-                               "comment":  "Примерно на двоих.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  120,
-                               "tags":  [
-                                            "Еда",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "14:00",
-                               "end":  "16:00",
-                               "duration":  "2:00",
-                               "icon":  "✈️",
-                               "title":  "Душ, сон и восстановление после перелёта",
-                               "location":  "Апартаменты",
-                               "map":  "31.25511,121.44139 Shanghai",
-                               "cn":  "远景路（上海市普陀区）",
-                               "city":  "上海市",
-                               "comment":  "Не сокращать отдых: впереди прогулка и ранний старт в Disney.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Жилье",
-                               "cost":  0,
-                               "tags":  [
-                                            "Жилье",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "16:20",
-                               "end":  "17:50",
-                               "duration":  "1:30",
-                               "icon":  "🖼️",
-                               "title":  "Галереи, граффити и индустриальные дворы",
-                               "location":  "M50 Creative Park",
-                               "map":  "M50 Creative Park Shanghai",
-                               "cn":  "M50创意园（莫干山路50号）",
-                               "city":  "上海市",
-                               "comment":  "Некоторые галереи закрываются около 18:00.",
-                               "route":  "Yuanjing Road → M50: Пешком. Близкая к жилью активность; маршрут около Suzhou Creek.",
-                               "category":  "Развлечения",
-                               "cost":  0,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "18:10",
-                               "end":  "19:40",
-                               "duration":  "1:30",
-                               "icon":  "🛍️",
-                               "title":  "Архитектура, террасы, магазины и фотографии на закате",
-                               "location":  "Tian An 1000 Trees",
-                               "map":  "Tian An 1000 Trees Shanghai",
-                               "cn":  "天安千树（莫干山路600号）",
-                               "city":  "上海市",
-                               "comment":  "Лучшие общие ракурсы есть с противоположного берега.",
-                               "route":  "M50 → Tian An 1000 Trees: Пешком вдоль Suzhou Creek. Около 15–20 минут.",
-                               "category":  "Развлечения",
-                               "cost":  0,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "19:40",
-                               "end":  "21:00",
-                               "duration":  "1:20",
-                               "icon":  "🍜",
-                               "title":  "Ужин",
-                               "location":  "Tian An 1000 Trees",
-                               "map":  "Tian An 1000 Trees Shanghai",
-                               "cn":  "天安千树（莫干山路600号）",
-                               "city":  "上海市",
-                               "comment":  "На двоих.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  200,
-                               "tags":  [
-                                            "Еда",
-                                            "Шанхай"
-                                        ]
-                           }
-                       ]
-    },
-    {
-        "date":  "02.08, воскресенье",
-        "title":  "EKA Tianwu и встреча с Келли",
-        "meta":  "Свободный вечер без жёстких бронирований",
-        "activities":  [
-                           {
-                               "time":  "08:30",
-                               "end":  "09:10",
-                               "duration":  "0:40",
-                               "icon":  "🍜",
-                               "title":  "Завтрак",
-                               "location":  "Рядом с Yuanjing Road",
-                               "map":  "31.25511,121.44139 Shanghai",
-                               "cn":  "远景路（上海市普陀区）",
-                               "city":  "上海市",
-                               "comment":  "На двоих; день перед Disney держим без жёсткой вечерней программы.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  60,
-                               "tags":  [
-                                            "Еда",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "10:30",
-                               "end":  "12:00",
-                               "duration":  "1:30",
-                               "icon":  "🖼️",
-                               "title":  "Самостоятельная прогулка до встречи с Келли",
-                               "location":  "EKA Tianwu, 金桥路535号",
-                               "map":  "EKA Tianwu, 金桥路535号 Shanghai",
-                               "cn":  "EKA·天物（金桥路535号）",
-                               "city":  "上海市",
-                               "comment":  "Сначала пройти индустриальные корпуса и наметить кафе; адрес встречи: No. 535 Jinqiao Road, Pudong New Area.",
-                               "route":  "Yuanjing Road → EKA Tianwu: Метро до EKA Tianwu. Zhongtan Road 中潭路, Line 4 (фиолетовая) → Century Avenue 世纪大道; пересадка на Line 6 (розовая) → Jinqiao Road 金桥路, выход 3; затем 15–20 минут пешком или короткая поездка на велосипеде/такси.",
-                               "category":  "Развлечения",
-                               "cost":  0,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "12:00",
-                               "end":  "13:30",
-                               "duration":  "1:30",
-                               "icon":  "🍜",
-                               "title":  "Встреча и обед с Келли",
-                               "location":  "EKA Tianwu",
-                               "map":  "EKA Tianwu Shanghai",
-                               "cn":  "EKA·天物（金桥路535号）",
-                               "city":  "上海市",
-                               "comment":  "Бюджет на вашу пару; расходы Келли не включены.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  180,
-                               "tags":  [
-                                            "Еда",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "13:30",
-                               "end":  "16:30",
-                               "duration":  "3:00",
-                               "icon":  "🖼️",
-                               "title":  "Прогулка с Келли по кварталу",
-                               "location":  "EKA Tianwu",
-                               "map":  "EKA Tianwu Shanghai",
-                               "cn":  "EKA·天物（金桥路535号）",
-                               "city":  "上海市",
-                               "comment":  "Не бронировать на вторую половину дня активности с фиксированным временем.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Развлечения",
-                               "cost":  0,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "16:30",
-                               "end":  "22:00",
-                               "duration":  "5:30",
-                               "icon":  "🍸",
-                               "title":  "Свободный вечер с Келли; опционально бар или прогулка",
-                               "location":  "По выбору Келли / EKA Tianwu",
-                               "map":  "EKA Tianwu 金桥路535号 Shanghai",
-                               "cn":  "EKA·天物（金桥路535号）",
-                               "city":  "上海市",
-                               "comment":  "Можно остаться в EKA либо поехать в выбранный Келли район. Бар оставить опцией без брони.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Развлечения",
-                               "cost":  0,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "18:30",
-                               "end":  "20:00",
-                               "duration":  "1:30",
-                               "icon":  "🍜",
-                               "title":  "Ужин и, при желании, напитки",
-                               "location":  "По плану Келли",
-                               "map":  "EKA Tianwu 金桥路535号 Shanghai",
-                               "cn":  "EKA·天物（金桥路535号）",
-                               "city":  "上海市",
-                               "comment":  "Ориентировочный бюджет на двоих; скорректировать по факту.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  250,
-                               "tags":  [
-                                            "Еда",
-                                            "Шанхай"
-                                        ]
-                           }
-                       ]
-    },
-    {
-        "date":  "03.08, понедельник",
-        "title":  "День рождения в Shanghai Disneyland",
-        "meta":  "Билеты куплены, полный день в парке",
-        "activities":  [
-                           {
-                               "time":  "06:30",
-                               "end":  "07:00",
-                               "duration":  "0:30",
-                               "icon":  "🍜",
-                               "title":  "Завтрак",
-                               "location":  "Рядом с Yuanjing Road",
-                               "map":  "31.25511,121.44139 Shanghai",
-                               "cn":  "远景路（上海市普陀区）",
-                               "city":  "上海市",
-                               "comment":  "На двоих.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  50,
-                               "tags":  [
-                                            "Еда",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "08:30",
-                               "end":  "09:00",
-                               "duration":  "0:30",
-                               "icon":  "🏰",
-                               "title":  "Контроль и вход; получить birthday button",
-                               "location":  "Shanghai Disneyland",
-                               "map":  "Shanghai Disneyland Shanghai",
-                               "cn":  "上海迪士尼乐园",
-                               "city":  "上海市",
-                               "comment":  "Паспорт и билеты держать под рукой.",
-                               "route":  "Yuanjing Road → Shanghai Disney Resort: Zhongtan Road Line 4 → Caoyang Road Line 11 → Disney Resort. На автомобиле без пробок около 40 минут; метро надёжнее утром. Проверить время открытия парка накануне.",
-                               "category":  "Развлечения",
-                               "cost":  0,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "09:00",
-                               "end":  "12:30",
-                               "duration":  "3:30",
-                               "icon":  "🏰",
-                               "title":  "День рождения: главные аттракционы с утра",
-                               "location":  "Shanghai Disneyland",
-                               "map":  "Shanghai Disneyland Shanghai",
-                               "cn":  "上海迪士尼乐园",
-                               "city":  "上海市",
-                               "comment":  "Билеты куплены: 23 569 RUB ÷ 3 × 2 ÷ 12 = 1309,39 CNY на вашу пару.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Развлечения",
-                               "cost":  1309.39,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "12:30",
-                               "end":  "13:15",
-                               "duration":  "0:45",
-                               "icon":  "🍜",
-                               "title":  "Праздничный обед",
-                               "location":  "Shanghai Disneyland",
-                               "map":  "Shanghai Disneyland Shanghai",
-                               "cn":  "上海迪士尼乐园",
-                               "city":  "上海市",
-                               "comment":  "На двоих.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  280,
-                               "tags":  [
-                                            "Еда",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "13:15",
-                               "end":  "17:30",
-                               "duration":  "4:15",
-                               "icon":  "🏰",
-                               "title":  "Аттракционы, шоу и фотографии",
-                               "location":  "Shanghai Disneyland",
-                               "map":  "Shanghai Disneyland Shanghai",
-                               "cn":  "上海迪士尼乐园",
-                               "city":  "上海市",
-                               "comment":  "Premier Access не включён в бюджет.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Развлечения",
-                               "cost":  0,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "17:30",
-                               "end":  "18:15",
-                               "duration":  "0:45",
-                               "icon":  "🍜",
-                               "title":  "Ужин",
-                               "location":  "Shanghai Disneyland",
-                               "map":  "Shanghai Disneyland Shanghai",
-                               "cn":  "上海迪士尼乐园",
-                               "city":  "上海市",
-                               "comment":  "На двоих.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  300,
-                               "tags":  [
-                                            "Еда",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "18:15",
-                               "end":  "21:00",
-                               "duration":  "2:45",
-                               "icon":  "🏰",
-                               "title":  "Вечерние зоны, парад и финальное шоу",
-                               "location":  "Shanghai Disneyland",
-                               "map":  "Shanghai Disneyland Shanghai",
-                               "cn":  "上海迪士尼乐园",
-                               "city":  "上海市",
-                               "comment":  "Точное время шоу проверить в приложении Disney.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Развлечения",
-                               "cost":  0,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Шанхай"
-                                        ]
-                           }
-                       ]
-    },
-    {
-        "date":  "04.08, вторник",
-        "title":  "Nanjing Road, SPACELAB и Skywalk",
-        "meta":  "The Louis, закат в Jin Mao и The Bund",
-        "activities":  [
-                           {
-                               "time":  "09:30",
-                               "end":  "10:10",
-                               "duration":  "0:40",
-                               "icon":  "🍜",
-                               "title":  "Поздний завтрак после Disney",
-                               "location":  "Рядом с Yuanjing Road",
-                               "map":  "31.25511,121.44139 Shanghai",
-                               "cn":  "远景路（上海市普陀区）",
-                               "city":  "上海市",
-                               "comment":  "На двоих.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  80,
-                               "tags":  [
-                                            "Еда",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "11:00",
-                               "end":  "11:40",
-                               "duration":  "0:40",
-                               "icon":  "🛍️",
-                               "title":  "Осмотреть корабль Louis Vuitton и сделать фотографии",
-                               "location":  "The Louis, HKRI Taikoo Hui",
-                               "map":  "The Louis, HKRI Taikoo Hui Shanghai",
-                               "cn":  "路易号（上海兴业太古汇）",
-                               "city":  "上海市",
-                               "comment":  "Шопинг не планируется; утром обычно комфортнее фотографировать фасад.",
-                               "route":  "Yuanjing Road → Nanjing West Road: Метро к The Louis. Zhongtan Road 中潭路, Line 4 (фиолетовая) → Jinshajiang Road 金沙江路; пересадка на Line 13 (розовая) → West Nanjing Road 南京西路.",
-                               "category":  "Развлечения",
-                               "cost":  0,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "11:40",
-                               "end":  "12:30",
-                               "duration":  "0:50",
-                               "icon":  "🍜",
-                               "title":  "Кофе и осмотр большой обжарочной",
-                               "location":  "Starbucks Reserve Roastery",
-                               "map":  "Starbucks Reserve Roastery Shanghai",
-                               "cn":  "星巴克臻选上海烘焙工坊",
-                               "city":  "上海市",
-                               "comment":  "Nanjing West Road 789; идти пешком около 8–10 минут от The Louis.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  140,
-                               "tags":  [
-                                            "Еда",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "13:00",
-                               "end":  "14:30",
-                               "duration":  "1:30",
-                               "icon":  "🍜",
-                               "title":  "Обед: блюда приезжают по рельсам под потолком",
-                               "location":  "SPACELAB, Century Link Mall",
-                               "map":  "SPACELAB, Century Link Mall Shanghai",
-                               "cn":  "SPACELAB失重餐厅（世纪汇店）",
-                               "city":  "上海市",
-                               "comment":  "Century Avenue 1192, Century Link Mall L3; выход 11/12. В будний день очередь обычно мягче.",
-                               "route":  "West Nanjing Road → Century Avenue: Метро к SPACELAB. West Nanjing Road 南京西路, Line 2 (зелёная) → Century Avenue 世纪大道, без пересадок.",
-                               "category":  "Еда",
-                               "cost":  260,
-                               "tags":  [
-                                            "Еда",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "15:00",
-                               "end":  "17:10",
-                               "duration":  "2:10",
-                               "icon":  "🛍️",
-                               "title":  "Пешеходная улица и набережная без шопинга",
-                               "location":  "Nanjing East Road → The Bund",
-                               "map":  "The Bund Shanghai",
-                               "cn":  [
-                                          "南京东路步行街",
-                                          "上海外滩"
-                                      ],
-                               "city":  "上海市",
-                               "comment":  "В жару делать паузы в кондиционируемых помещениях; этот блок объединяет всю запланированную прогулку по Nanjing Road.",
-                               "route":  "Century Avenue → East Nanjing Road: Метро к началу прогулки. Century Avenue 世纪大道, Line 2 (зелёная) → East Nanjing Road 南京东路, без пересадок.",
-                               "category":  "Развлечения",
-                               "cost":  0,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "18:30",
-                               "end":  "19:15",
-                               "duration":  "0:45",
-                               "icon":  "🌇",
-                               "title":  "Jin Mao Skywalk на закате",
-                               "location":  "Jin Mao Tower, 88F",
-                               "map":  "Jin Mao Tower, 88F Shanghai",
-                               "cn":  "金茂云中漫步",
-                               "city":  "上海市",
-                               "comment":  "Рекомендуемый слот 18:30: закат 04.08 ориентировочно в 18:47, поэтому будут дневной вид, закат и первые огни. 288 CNY × 2; бронировать заранее.",
-                               "route":  "The Bund → Jin Mao Tower: Метро и пешком до Skywalk. East Nanjing Road 南京东路, Line 2 (зелёная) → Lujiazui 陆家嘴; затем 12–15 минут пешком до Jin Mao Tower. Jin Mao Tower: Регистрация, контроль и запас перед Skywalk. Прибыть минимум за 30 минут; активность зависит от погоды и ветра.",
-                               "category":  "Развлечения",
-                               "cost":  576,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "19:45",
-                               "end":  "21:00",
-                               "duration":  "1:15",
-                               "icon":  "🍜",
-                               "title":  "Ужин после Skywalk",
-                               "location":  "The Bund",
-                               "map":  "The Bund Shanghai",
-                               "cn":  "金茂云中漫步",
-                               "city":  "上海市",
-                               "comment":  "Выбирать место в одном-двух кварталах от первой линии: обычно дешевле и меньше ожидание.",
-                               "route":  "Jin Mao Tower → The Bund: Возвращение на западный берег. Lujiazui 陆家嘴, Line 2 (зелёная) → East Nanjing Road 南京东路; метро надёжнее парома по времени.",
-                               "category":  "Еда",
-                               "cost":  250,
-                               "tags":  [
-                                            "Еда",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "21:00",
-                               "end":  "22:30",
-                               "duration":  "1:30",
-                               "icon":  "🍸",
-                               "title":  "Ночная набережная; опционально The Captain или The Fellas",
-                               "location":  "The Bund",
-                               "map":  "The Bund Shanghai",
-                               "cn":  "上海外滩",
-                               "city":  "上海市",
-                               "comment":  "Бар не бронировать заранее: оставить по силам и погоде.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Развлечения",
-                               "cost":  0,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "21:30",
-                               "end":  "22:30",
-                               "duration":  "до 1:00",
-                               "icon":  "🍜",
-                               "title":  "Напитки с видом",
-                               "location":  "Бар у The Bund, опционально",
-                               "map":  "Бар у The Bund, опционально Shanghai",
-                               "cn":  "上海外滩",
-                               "city":  "上海市",
-                               "comment":  "Бюджет только если решите зайти; при пропуске поставить 0.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  240,
-                               "tags":  [
-                                            "Еда",
-                                            "Шанхай"
-                                        ]
-                           }
-                       ]
-    },
-    {
-        "date":  "05.08, среда",
-        "title":  "Chemichen и баня-спа",
-        "meta":  "Восстановительный день: Cheersum или Young·SPACE",
-        "activities":  [
-                           {
-                               "time":  "09:30",
-                               "end":  "10:15",
-                               "duration":  "0:45",
-                               "icon":  "🍜",
-                               "title":  "Неспешный завтрак",
-                               "location":  "Рядом с Yuanjing Road",
-                               "map":  "31.25511,121.44139 Shanghai",
-                               "cn":  "远景路（上海市普陀区）",
-                               "city":  "上海市",
-                               "comment":  "Восстановительный день после Disney и Skywalk.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  80,
-                               "tags":  [
-                                            "Еда",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "11:00",
-                               "end":  "13:00",
-                               "duration":  "2:00",
-                               "icon":  "🏍️",
-                               "title":  "Мотоциклетный магазин и шоурум",
-                               "location":  "Chemichen / 车迷辰",
-                               "map":  "Chemichen / 车迷辰 Shanghai",
-                               "cn":  "车迷辰（上海）摩托车用品有限公司",
-                               "city":  "上海市",
-                               "comment":  "Проверить часы и действующий вход в Amap/Dianping накануне.",
-                               "route":  "Yuanjing Road → Chemichen: Такси. Координаты 31.23261 N, 121.36709 E; 上海市普陀区交暨路207弄5号齐成创业园A座1层108室.",
-                               "category":  "Развлечения",
-                               "cost":  0,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "13:00",
-                               "end":  "14:00",
-                               "duration":  "1:00",
-                               "icon":  "🍜",
-                               "title":  "Обед",
-                               "location":  "Putuo",
-                               "map":  "Putuo Shanghai",
-                               "cn":  "上海市普陀区",
-                               "city":  "上海市",
-                               "comment":  "На двоих.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  160,
-                               "tags":  [
-                                            "Еда",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "14:30",
-                               "end":  "21:00",
-                               "duration":  "6:30",
-                               "icon":  "🚄",
-                               "title":  "Баня-спа: выбрать один вариант в день поездки",
-                               "location":  "Cheersum 浅深·休闲 или Young·SPACE 漾·SPACE汤泉生活",
-                               "map":  "Cheersum 浅深休闲 Putuo Shanghai",
-                               "cn":  [
-                                          "浅深休闲会所（浅深上海普陀店）",
-                                          "漾·SPACE汤泉生活"
-                                      ],
-                               "city":  "上海市",
-                               "comment":  "В своде заложен базовый бюджет Cheersum около 198 CNY × 2. Если выберете Young·SPACE, заменить сумму на фактическую: ориентир 598–798 CNY на пару.",
-                               "route":  "Putuo → выбранная баня: Такси; выбрать один из двух вариантов. Cheersum ближе и логичнее по маршруту; Young·SPACE находится в Pudong и потребует больше времени на дорогу.",
-                               "category":  "Развлечения",
-                               "cost":  396,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "18:30",
-                               "end":  "19:30",
-                               "duration":  "1:00",
-                               "icon":  "🍜",
-                               "title":  "Ужин и напитки",
-                               "location":  "В выбранной бане",
-                               "map":  "Cheersum 浅深休闲 Putuo Shanghai",
-                               "cn":  [
-                                          "浅深休闲会所（浅深上海普陀店）",
-                                          "漾·SPACE汤泉生活"
-                                      ],
-                               "city":  "上海市",
-                               "comment":  "Проверить, включён ли буфет в выбранный тариф; при включённом питании поставить 0.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  220,
-                               "tags":  [
-                                            "Еда",
-                                            "Шанхай"
-                                        ]
-                           }
-                       ]
-    },
-    {
-        "date":  "06.08, четверг",
-        "title":  "Peoples Square, Yu Garden и Xintiandi",
-        "meta":  "Музей, 3号仓库 и опциональное караоке",
-        "activities":  [
-                           {
-                               "time":  "08:30",
-                               "end":  "09:10",
-                               "duration":  "0:40",
-                               "icon":  "🍜",
-                               "title":  "Завтрак",
-                               "location":  "Рядом с Yuanjing Road",
-                               "map":  "31.25511,121.44139 Shanghai",
-                               "cn":  "远景路（上海市普陀区）",
-                               "city":  "上海市",
-                               "comment":  "На двоих.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  60,
-                               "tags":  [
-                                            "Еда",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "09:50",
-                               "end":  "11:00",
-                               "duration":  "1:10",
-                               "icon":  "📍",
-                               "title":  "Площадь, парк и городской центр",
-                               "location":  "Peoples Square + Peoples Park",
-                               "map":  "Peoples Square + Peoples Park Shanghai",
-                               "cn":  [
-                                          "上海人民广场",
-                                          "人民公园"
-                                      ],
-                               "city":  "上海市",
-                               "comment":  "Начать с открытого пространства до усиления жары.",
-                               "route":  "Yuanjing Road → Peoples Square: Метро. Zhongtan Road 中潭路, Line 4 (фиолетовая) → Shanghai Railway Station 上海火车站; пересадка на Line 1 (красная) → Peoples Square 人民广场.",
-                               "category":  "Развлечения",
-                               "cost":  0,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "11:00",
-                               "end":  "12:30",
-                               "duration":  "1:30",
-                               "icon":  "🖼️",
-                               "title":  "Музей, опционально по предварительной записи",
-                               "location":  "Shanghai Museum, Peoples Square",
-                               "map":  "Shanghai Museum, Peoples Square Shanghai",
-                               "cn":  "上海博物馆（人民广场馆）",
-                               "city":  "上海市",
-                               "comment":  "Если нет записи или не хочется музея, оставить время на New World City и отдых в кондиционере.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Развлечения",
-                               "cost":  0,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "12:30",
-                               "end":  "13:40",
-                               "duration":  "1:10",
-                               "icon":  "🍜",
-                               "title":  "Обед: огненные рёбра, милкшейки и блюда с трюфелем",
-                               "location":  "3号仓库, New World City",
-                               "map":  "3号仓库, New World City Shanghai",
-                               "cn":  "3号仓库·创意中国菜（新世界城店）",
-                               "city":  "上海市",
-                               "comment":  "New World City, 4F A29; заказать рёбра заранее и проверить очередь в Dianping.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  400,
-                               "tags":  [
-                                            "Еда",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "14:10",
-                               "end":  "17:15",
-                               "duration":  "3:05",
-                               "icon":  "🏮",
-                               "title":  "Сад, старые улицы, чайные и фотографии",
-                               "location":  "Yu Garden + City God Temple",
-                               "map":  "Yu Garden + City God Temple Shanghai",
-                               "cn":  [
-                                          "豫园",
-                                          "上海城隍庙"
-                                      ],
-                               "city":  "上海市",
-                               "comment":  "Ориентир 40 CNY с человека; сначала пройти платный сад, затем торговые улицы.",
-                               "route":  "Peoples Square → Yuyuan Garden: Метро. Peoples Square 人民广场, Line 8 (синяя) → Dashijie 大世界; пересадка на Line 14 (оливковая) → Yuyuan Garden 豫园. При жаре такси проще.",
-                               "category":  "Развлечения",
-                               "cost":  80,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "17:40",
-                               "end":  "19:30",
-                               "duration":  "1:50",
-                               "icon":  "📍",
-                               "title":  "Прогулка по кварталам и старым переулкам",
-                               "location":  "Xintiandi + шикумэнь",
-                               "map":  "Xintiandi + шикумэнь Shanghai",
-                               "cn":  "上海新天地",
-                               "city":  "上海市",
-                               "comment":  "Вечером температура переносится легче.",
-                               "route":  "Yuyuan Garden → Xintiandi: Метро. Yuyuan Garden 豫园, Line 10 (сиреневая) → Xintiandi 新天地, без пересадок.",
-                               "category":  "Развлечения",
-                               "cost":  0,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "19:30",
-                               "end":  "20:30",
-                               "duration":  "1:00",
-                               "icon":  "🍜",
-                               "title":  "Ужин",
-                               "location":  "Xintiandi",
-                               "map":  "Xintiandi Shanghai",
-                               "cn":  "上海新天地",
-                               "city":  "上海市",
-                               "comment":  "На двоих.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  220,
-                               "tags":  [
-                                            "Еда",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "21:00",
-                               "end":  "23:00",
-                               "duration":  "2:00",
-                               "icon":  "🎤",
-                               "title":  "Караоке, опционально",
-                               "location":  "Chun K / 纯K, Dapuqiao",
-                               "map":  "Chun K / 纯K, Dapuqiao Shanghai",
-                               "cn":  "纯K（打浦桥店）",
-                               "city":  "上海市",
-                               "comment":  "Sun Moon Light Center, Xujiahui Road 618. Проверить пакет и свободные комнаты в Dianping в тот же день; если устали, пропустить и поставить 0.",
-                               "route":  "Xintiandi → Chun K Dapuqiao: Метро к караоке. Xintiandi 新天地, Line 13 (розовая) → Madang Road 马当路; пересадка на Line 9 (голубая) → Dapuqiao 打浦桥.",
-                               "category":  "Развлечения",
-                               "cost":  500,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Шанхай"
-                                        ]
-                           }
-                       ]
-    },
-    {
-        "date":  "07.08, пятница",
-        "title":  "Однодневная поездка в Сучжоу",
-        "meta":  "Сад, каналы, музей и Shantang Street",
-        "activities":  [
-                           {
-                               "time":  "07:15",
-                               "end":  "07:45",
-                               "duration":  "0:30",
-                               "icon":  "🍜",
-                               "title":  "Завтрак",
-                               "location":  "Рядом с Yuanjing Road",
-                               "map":  "31.25511,121.44139 Shanghai",
-                               "cn":  "远景路（上海市普陀区）",
-                               "city":  "上海市",
-                               "comment":  "На двоих.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  60,
-                               "tags":  [
-                                            "Еда",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "10:00",
-                               "end":  "12:00",
-                               "duration":  "2:00",
-                               "icon":  "🏮",
-                               "title":  "Главный классический сад Сучжоу",
-                               "location":  "Humble Administrators Garden / 拙政园",
-                               "map":  "Humble Administrators Garden / 拙政园 Shanghai",
-                               "cn":  "拙政园",
-                               "city":  "苏州市",
-                               "comment":  "Ориентир 80 CNY × 2; купить билет заранее, прийти до дневной жары.",
-                               "route":  "Yuanjing Road → Shanghai Railway Station: Такси или метро. Ближайший удобный вокзал. На метро: Zhongtan Road 中潭路, Line 4 (фиолетовая) → Shanghai Railway Station 上海火车站, одна остановка. Shanghai Railway Station: Контроль, билет и посадка. Купить день-в-день можно при наличии мест, но пятница и летние каникулы повышают риск. Для фиксированного утреннего поезда лучше купить в 12306 за 1–3 дня; билет привязан к паспорту. Shanghai Station → Suzhou Station: Скоростной поезд, 2-й класс. Ориентир 40 CNY × 2 в одну сторону; выбрать поезд, прибывающий на Suzhou 苏州, не Suzhou North. Suzhou Station → Humble Administrators Garden: Метро / короткое такси. Метро Line 4 → Beisita 北寺塔, затем 15–20 минут пешком; такси быстрее.",
-                               "category":  "Развлечения",
-                               "cost":  160,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "12:00",
-                               "end":  "13:00",
-                               "duration":  "1:00",
-                               "icon":  "🍜",
-                               "title":  "Обед",
-                               "location":  "Pingjiang Road",
-                               "map":  "Pingjiang Road Shanghai",
-                               "cn":  "平江路历史街区",
-                               "city":  "上海市",
-                               "comment":  "На двоих.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  160,
-                               "tags":  [
-                                            "Еда",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "13:00",
-                               "end":  "15:15",
-                               "duration":  "2:15",
-                               "icon":  "📍",
-                               "title":  "Каналы, переулки, чайные и мостики",
-                               "location":  "Pingjiang Road / 平江路",
-                               "map":  "Pingjiang Road / 平江路 Shanghai",
-                               "cn":  "平江路历史街区",
-                               "city":  "苏州市",
-                               "comment":  "Идти медленно и заходить в помещения в самые жаркие часы.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Развлечения",
-                               "cost":  0,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "15:15",
-                               "end":  "16:45",
-                               "duration":  "1:30",
-                               "icon":  "🖼️",
-                               "title":  "Музей Бэй Юймина, опционально по записи",
-                               "location":  "Suzhou Museum / 苏州博物馆",
-                               "map":  "Suzhou Museum / 苏州博物馆 Shanghai",
-                               "cn":  "苏州博物馆本馆",
-                               "city":  "苏州市",
-                               "comment":  "Вход обычно бесплатный, но нужен слот. Если записи нет, заменить на Lion Grove Garden / 狮子林.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Развлечения",
-                               "cost":  0,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "17:20",
-                               "end":  "19:00",
-                               "duration":  "1:40",
-                               "icon":  "📍",
-                               "title":  "Канал и вечерняя подсветка",
-                               "location":  "Shantang Street / 山塘街",
-                               "map":  "Shantang Street / 山塘街 Shanghai",
-                               "cn":  "七里山塘景区",
-                               "city":  "苏州市",
-                               "comment":  "Пятничным вечером людно; держаться подальше от узкого главного входа.",
-                               "route":  "Suzhou Museum → Shantang Street: Такси / метро. Такси экономит силы; на метро идти через Beisita и Shantang Jie.",
-                               "category":  "Развлечения",
-                               "cost":  0,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "19:00",
-                               "end":  "20:00",
-                               "duration":  "1:00",
-                               "icon":  "🍜",
-                               "title":  "Ужин",
-                               "location":  "Shantang Street",
-                               "map":  "Shantang Street Shanghai",
-                               "cn":  "七里山塘景区",
-                               "city":  "上海市",
-                               "comment":  "На двоих.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  180,
-                               "tags":  [
-                                            "Еда",
-                                            "Шанхай"
-                                        ]
-                           }
-                       ]
-    },
-    {
-        "date":  "08.08, суббота",
-        "title":  "French Concession и кофейни",
-        "meta":  "To Summer, Wukang, CUBIC 3 и La Cour",
-        "activities":  [
-                           {
-                               "time":  "08:45",
-                               "end":  "09:25",
-                               "duration":  "0:40",
-                               "icon":  "🍜",
-                               "title":  "Завтрак",
-                               "location":  "Рядом с Yuanjing Road",
-                               "map":  "31.25511,121.44139 Shanghai",
-                               "cn":  "远景路（上海市普陀区）",
-                               "city":  "上海市",
-                               "comment":  "На двоих.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  60,
-                               "tags":  [
-                                            "Еда",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "10:10",
-                               "end":  "11:20",
-                               "duration":  "1:10",
-                               "icon":  "☕",
-                               "title":  "Парфюмерный магазин в исторической вилле",
-                               "location":  "To Summer, 湖南路111号",
-                               "map":  "To Summer, 湖南路111号 Shanghai",
-                               "cn":  "观夏闲庭（湖南路111号）",
-                               "city":  "上海市",
-                               "comment":  "Прийти к открытию; магазин небольшой, в выходной возможна очередь.",
-                               "route":  "Yuanjing Road → Shanghai Library: Метро. Zhongtan Road 中潭路, Line 4 (фиолетовая) → Hailun Road 海伦路; пересадка на Line 10 (сиреневая) → Shanghai Library 上海图书馆.",
-                               "category":  "Развлечения",
-                               "cost":  0,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "11:20",
-                               "end":  "13:00",
-                               "duration":  "1:40",
-                               "icon":  "🛍️",
-                               "title":  "Французская концессия, виллы и книжные магазины",
-                               "location":  "Wukang Road + Anfu Road",
-                               "map":  "Wukang Road + Anfu Road Shanghai",
-                               "cn":  [
-                                          "武康路历史文化名街",
-                                          "安福路"
-                                      ],
-                               "city":  "上海市",
-                               "comment":  "Маршрут пешком; воду купить до выхода на Wukang Road.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Развлечения",
-                               "cost":  0,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "13:00",
-                               "end":  "14:00",
-                               "duration":  "1:00",
-                               "icon":  "🍜",
-                               "title":  "Обед",
-                               "location":  "Wukang / Anfu Road",
-                               "map":  "Wukang / Anfu Road Shanghai",
-                               "cn":  "武康路历史文化名街",
-                               "city":  "上海市",
-                               "comment":  "На двоих.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  180,
-                               "tags":  [
-                                            "Еда",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "14:35",
-                               "end":  "15:20",
-                               "duration":  "0:45",
-                               "icon":  "🍜",
-                               "title":  "Кофе в замороженном стаканчике",
-                               "location":  "CUBIC 3, Yongkang Road 58",
-                               "map":  "CUBIC 3, Yongkang Road 58 Shanghai",
-                               "cn":  "CUBIC 3（永康路58号）",
-                               "city":  "上海市",
-                               "comment":  "Проверить действующий филиал и часы в Dianping накануне.",
-                               "route":  "Wukang Road → Yongkang Road: Пешком. Около 30–35 минут; при сильной жаре резерв: велосипед или такси 15–25 CNY.",
-                               "category":  "Еда",
-                               "cost":  100,
-                               "tags":  [
-                                            "Еда",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "15:45",
-                               "end":  "17:00",
-                               "duration":  "1:15",
-                               "icon":  "🍜",
-                               "title":  "Кофе, десерт и альпака",
-                               "location":  "La Cour Bar \u0026 Café, 长乐路462号",
-                               "map":  "La Cour Bar \u0026 Café, 长乐路462号 Shanghai",
-                               "cn":  "LA COUR BAR\u0026CAFE（长乐路462号）",
-                               "city":  "上海市",
-                               "comment":  "Не кормить животное без разрешения персонала; проверить актуальные часы.",
-                               "route":  "Yongkang Road → La Cour: Пешком. Идти по тихим улицам French Concession; при жаре взять короткое такси.",
-                               "category":  "Еда",
-                               "cost":  180,
-                               "tags":  [
-                                            "Еда",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "17:00",
-                               "end":  "19:00",
-                               "duration":  "2:00",
-                               "icon":  "📍",
-                               "title":  "Вечерняя прогулка по French Concession",
-                               "location":  "Fuxing Park + Sinan Mansions",
-                               "map":  "Fuxing Park + Sinan Mansions Shanghai",
-                               "cn":  [
-                                          "复兴公园",
-                                          "思南公馆"
-                                      ],
-                               "city":  "上海市",
-                               "comment":  "Логичное продолжение пешего маршрута без возврата на Nanjing Road.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Развлечения",
-                               "cost":  0,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "19:00",
-                               "end":  "20:15",
-                               "duration":  "1:15",
-                               "icon":  "🍜",
-                               "title":  "Ужин",
-                               "location":  "French Concession",
-                               "map":  "French Concession Shanghai",
-                               "cn":  "上海衡复历史文化风貌区",
-                               "city":  "上海市",
-                               "comment":  "Выбрать ближайшее место по Dianping, чтобы не добавлять лишний переезд.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  220,
-                               "tags":  [
-                                            "Еда",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "20:15",
-                               "end":  "22:00",
-                               "duration":  "1:45",
-                               "icon":  "🍸",
-                               "title":  "Опционально бар: Union Trading Company или Bar No. 3",
-                               "location":  "French Concession",
-                               "map":  "French Concession Shanghai",
-                               "cn":  [
-                                          "The Union Trading Company（衡山路306号）",
-                                          "Bar No.3（兴国路277号）"
-                                      ],
-                               "city":  "上海市",
-                               "comment":  "Оба варианта удобны после прогулки; кальянная исключена, бронирование не обязательно.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Развлечения",
-                               "cost":  0,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "20:30",
-                               "end":  "22:00",
-                               "duration":  "до 1:30",
-                               "icon":  "🍜",
-                               "title":  "Напитки",
-                               "location":  "Выбранный бар, опционально",
-                               "map":  "Выбранный бар, опционально Shanghai",
-                               "cn":  [
-                                          "The Union Trading Company（衡山路306号）",
-                                          "Bar No.3（兴国路277号）"
-                                      ],
-                               "city":  "上海市",
-                               "comment":  "Если бар пропускаете, поставить 0.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  240,
-                               "tags":  [
-                                            "Еда",
-                                            "Шанхай"
-                                        ]
-                           },
-                           {
-                               "time":  "22:45",
-                               "end":  "23:15",
-                               "duration":  "0:30",
-                               "icon":  "🚄",
-                               "title":  "Сбор вещей перед поездом",
-                               "location":  "Yuanjing Road",
-                               "map":  "31.25511,121.44139 Shanghai",
-                               "cn":  "远景路（上海市普陀区）",
-                               "city":  "上海市",
-                               "comment":  "Паспорта и билеты положить отдельно.",
-                               "route":  "French Concession → Yuanjing Road: Такси. Последний вечер в Шанхае; после возвращения собрать вещи.",
-                               "category":  "Жилье",
-                               "cost":  0,
-                               "tags":  [
-                                            "Жилье",
-                                            "Шанхай"
-                                        ]
-                           }
-                       ]
-    },
-    {
-        "date":  "09.08, воскресенье",
-        "title":  "Поезд в Пекин",
-        "meta":  "Shanghai Hongqiao → Beijing South, затем Qianmen",
-        "activities":  [
-                           {
-                               "time":  "07:30",
-                               "end":  "08:10",
-                               "duration":  "0:40",
-                               "icon":  "🍜",
-                               "title":  "Завтрак",
-                               "location":  "Рядом с Yuanjing Road",
-                               "map":  "31.25511,121.44139 Shanghai",
-                               "cn":  "远景路（上海市普陀区）",
-                               "city":  "上海市",
-                               "comment":  "На двоих.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  60,
-                               "tags":  [
-                                            "Еда",
-                                            "Пекин"
-                                        ]
-                           },
-                           {
-                               "time":  "08:10",
-                               "end":  "08:30",
-                               "duration":  "0:20",
-                               "icon":  "🏠",
-                               "title":  "Check-out",
-                               "location":  "Yuanjing Road",
-                               "map":  "31.25511,121.44139 Shanghai",
-                               "cn":  "远景路（上海市普陀区）",
-                               "city":  "上海市",
-                               "comment":  "Проверить документы и номер поезда.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Жилье",
-                               "cost":  0,
-                               "tags":  [
-                                            "Жилье",
-                                            "Пекин"
-                                        ]
-                           },
-                           {
-                               "time":  "11:00",
-                               "end":  "15:31",
-                               "duration":  "4:31",
-                               "icon":  "🚄",
-                               "title":  "Скоростной поезд; билеты куплены",
-                               "location":  "Shanghai Hongqiao → Beijing South",
-                               "map":  "Beijing South Shanghai",
-                               "cn":  "上海虹桥站",
-                               "city":  "上海市",
-                               "comment":  "24 358 RUB ÷ 3 × 2 ÷ 12 = 1353,22 CNY на вашу пару.",
-                               "route":  "Yuanjing Road → Shanghai Hongqiao: Такси. Карты показывают около 30 минут без пробок; час заложен на воскресный трафик и выгрузку багажа. Shanghai Hongqiao Railway Station: Контроль, поиск платформы и посадка. На вокзале быть не позже 09:30.",
-                               "category":  "Дорога",
-                               "cost":  1353.22,
-                               "tags":  [
-                                            "Дорога",
-                                            "Пекин"
-                                        ]
-                           },
-                           {
-                               "time":  "16:25",
-                               "end":  "17:15",
-                               "duration":  "0:50",
-                               "icon":  "🏠",
-                               "title":  "Check-in, душ и короткий отдых",
-                               "location":  "Xiaoyun Road / Sanyuanli",
-                               "map":  "39.95631,116.45543 Beijing",
-                               "cn":  "霄云路（北京市朝阳区）",
-                               "city":  "北京市",
-                               "comment":  "Вся бронь 09–14.08: 3000 CNY на две пары ÷ 2 = 1500 CNY на вашу пару.",
-                               "route":  "Beijing South → Xiaoyun Road: Такси или Line 14 + короткое такси. Адрес: 39.95631 N, 116.45543 E. На автомобиле без пробок около 26 минут; заложен выход с вокзала и трафик.",
-                               "category":  "Жилье",
-                               "cost":  1500,
-                               "tags":  [
-                                            "Жилье",
-                                            "Пекин"
-                                        ]
-                           },
-                           {
-                               "time":  "18:10",
-                               "end":  "20:00",
-                               "duration":  "1:50",
-                               "icon":  "🚄",
-                               "title":  "Улица, магазины и лёгкая прогулка после поезда",
-                               "location":  "Qianmen + Dashilan",
-                               "map":  "Qianmen + Dashilan Beijing",
-                               "cn":  [
-                                          "前门大街",
-                                          "大栅栏商业街"
-                                      ],
-                               "city":  "北京市",
-                               "comment":  "Не ставить музей в день переезда.",
-                               "route":  "Xiaoyun Road → Qianmen: Метро Line 10 с пересадкой / такси. Около 45–55 минут с пешими участками.",
-                               "category":  "Развлечения",
-                               "cost":  0,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Пекин"
-                                        ]
-                           },
-                           {
-                               "time":  "20:00",
-                               "end":  "21:00",
-                               "duration":  "1:00",
-                               "icon":  "🍜",
-                               "title":  "Ужин",
-                               "location":  "Qianmen",
-                               "map":  "Qianmen Beijing",
-                               "cn":  "前门大街",
-                               "city":  "北京市",
-                               "comment":  "На двоих.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  180,
-                               "tags":  [
-                                            "Еда",
-                                            "Пекин"
-                                        ]
-                           }
-                       ]
-    },
-    {
-        "date":  "10.08, понедельник",
-        "title":  "Forbidden City и пекинские парки",
-        "meta":  "Jingshan, Beihai, Shichahai и Houhai",
-        "activities":  [
-                           {
-                               "time":  "06:45",
-                               "end":  "07:15",
-                               "duration":  "0:30",
-                               "icon":  "🍜",
-                               "title":  "Завтрак",
-                               "location":  "Рядом с Xiaoyun Road",
-                               "map":  "39.95631,116.45543 Beijing",
-                               "cn":  "霄云路（北京市朝阳区）",
-                               "city":  "北京市",
-                               "comment":  "На двоих.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  60,
-                               "tags":  [
-                                            "Еда",
-                                            "Пекин"
-                                        ]
-                           },
-                           {
-                               "time":  "08:30",
-                               "end":  "12:30",
-                               "duration":  "4:00",
-                               "icon":  "📍",
-                               "title":  "Главная ось и боковые дворцы без гонки",
-                               "location":  "Forbidden City",
-                               "map":  "Forbidden City Beijing",
-                               "cn":  "故宫博物院",
-                               "city":  "北京市",
-                               "comment":  "60 CNY × 2; билеты именные.",
-                               "route":  "Xiaoyun Road → Forbidden City: Метро Line 10 с пересадкой; далее пешком к входу. Паспорт с собой; вход через Tiananmen. Tiananmen: Запас на контроль перед входом. Летом контроль может занять больше времени.",
-                               "category":  "Развлечения",
-                               "cost":  120,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Пекин"
-                                        ]
-                           },
-                           {
-                               "time":  "12:30",
-                               "end":  "13:15",
-                               "duration":  "0:45",
-                               "icon":  "🍜",
-                               "title":  "Обед",
-                               "location":  "К северу от дворца",
-                               "map":  "К северу от дворца Beijing",
-                               "cn":  "景山公园",
-                               "city":  "北京市",
-                               "comment":  "На двоих.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  140,
-                               "tags":  [
-                                            "Еда",
-                                            "Пекин"
-                                        ]
-                           },
-                           {
-                               "time":  "13:35",
-                               "end":  "14:45",
-                               "duration":  "1:10",
-                               "icon":  "🏮",
-                               "title":  "Панорама крыш Запретного города",
-                               "location":  "Jingshan Park",
-                               "map":  "Jingshan Park Beijing",
-                               "cn":  "景山公园",
-                               "city":  "北京市",
-                               "comment":  "Ориентир на двоих.",
-                               "route":  "Forbidden City → Jingshan: Пешком от северного выхода. Парк находится напротив северного выхода дворца.",
-                               "category":  "Развлечения",
-                               "cost":  20,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Пекин"
-                                        ]
-                           },
-                           {
-                               "time":  "15:05",
-                               "end":  "17:00",
-                               "duration":  "1:55",
-                               "icon":  "🏮",
-                               "title":  "Озеро, Белая пагода и передышка от толпы",
-                               "location":  "Beihai Park",
-                               "map":  "Beihai Park Beijing",
-                               "cn":  "北海公园",
-                               "city":  "北京市",
-                               "comment":  "На двоих.",
-                               "route":  "Jingshan → Beihai: Пешком / короткое такси. На двоих.",
-                               "category":  "Развлечения",
-                               "cost":  40,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Пекин"
-                                        ]
-                           },
-                           {
-                               "time":  "17:00",
-                               "end":  "19:00",
-                               "duration":  "2:00",
-                               "icon":  "📍",
-                               "title":  "Прогулка к Drum/Bell Tower и вдоль озёр",
-                               "location":  "Shichahai + хутуны",
-                               "map":  "Shichahai + хутуны Beijing",
-                               "cn":  "什刹海风景区",
-                               "city":  "北京市",
-                               "comment":  "Можно пройти пешком без отдельного транспорта.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Развлечения",
-                               "cost":  0,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Пекин"
-                                        ]
-                           },
-                           {
-                               "time":  "19:00",
-                               "end":  "20:00",
-                               "duration":  "1:00",
-                               "icon":  "🍜",
-                               "title":  "Ужин",
-                               "location":  "Shichahai",
-                               "map":  "Shichahai Beijing",
-                               "cn":  "什刹海风景区",
-                               "city":  "北京市",
-                               "comment":  "На двоих.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  180,
-                               "tags":  [
-                                            "Еда",
-                                            "Пекин"
-                                        ]
-                           },
-                           {
-                               "time":  "20:00",
-                               "end":  "21:00",
-                               "duration":  "1:00",
-                               "icon":  "📍",
-                               "title":  "Вечерние огни у воды",
-                               "location":  "Houhai",
-                               "map":  "Houhai Beijing",
-                               "cn":  "后海",
-                               "city":  "北京市",
-                               "comment":  "Барные улицы можно пройти без посадки.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Развлечения",
-                               "cost":  0,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Пекин"
-                                        ]
-                           }
-                       ]
-    },
-    {
-        "date":  "11.08, вторник",
-        "title":  "Великая стена Mutianyu",
-        "meta":  "Ранний старт и бани после стены",
-        "activities":  [
-                           {
-                               "time":  "06:30",
-                               "end":  "07:00",
-                               "duration":  "0:30",
-                               "icon":  "🍜",
-                               "title":  "Завтрак",
-                               "location":  "Рядом с Xiaoyun Road",
-                               "map":  "39.95631,116.45543 Beijing",
-                               "cn":  "霄云路（北京市朝阳区）",
-                               "city":  "北京市",
-                               "comment":  "На двоих.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  50,
-                               "tags":  [
-                                            "Еда",
-                                            "Пекин"
-                                        ]
-                           },
-                           {
-                               "time":  "08:30",
-                               "end":  "12:30",
-                               "duration":  "4:00",
-                               "icon":  "🧱",
-                               "title":  "Подъём, прогулка по стене, спуск",
-                               "location":  "Великая Китайская стена, Mutianyu",
-                               "map":  "Великая Китайская стена, Mutianyu Beijing",
-                               "cn":  "慕田峪长城",
-                               "city":  "北京市",
-                               "comment":  "Вход + шаттл + канатка ориентировочно на двоих.",
-                               "route":  "Xiaoyun Road → Mutianyu: Заказной автомобиль туда-обратно. Северо-восточная база удобнее центра; заложено около 1 ч 30 мин.",
-                               "category":  "Развлечения",
-                               "cost":  360,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Пекин"
-                                        ]
-                           },
-                           {
-                               "time":  "12:30",
-                               "end":  "13:30",
-                               "duration":  "1:00",
-                               "icon":  "🍜",
-                               "title":  "Обед",
-                               "location":  "Mutianyu",
-                               "map":  "Mutianyu Beijing",
-                               "cn":  "慕田峪长城",
-                               "city":  "北京市",
-                               "comment":  "На двоих.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  160,
-                               "tags":  [
-                                            "Еда",
-                                            "Пекин"
-                                        ]
-                           },
-                           {
-                               "time":  "15:00",
-                               "end":  "16:30",
-                               "duration":  "1:30",
-                               "icon":  "🏠",
-                               "title":  "Душ и короткий отдых",
-                               "location":  "Xiaoyun Road",
-                               "map":  "39.95631,116.45543 Beijing",
-                               "cn":  "霄云路（北京市朝阳区）",
-                               "city":  "北京市",
-                               "comment":  "После стены не ставить музей.",
-                               "route":  "Mutianyu → Xiaoyun Road: Возвращение на автомобиле. Входит в стоимость машины.",
-                               "category":  "Жилье",
-                               "cost":  0,
-                               "tags":  [
-                                            "Жилье",
-                                            "Пекин"
-                                        ]
-                           },
-                           {
-                               "time":  "17:10",
-                               "end":  "23:00",
-                               "duration":  "5:20",
-                               "icon":  "♨️",
-                               "title":  "Бани / hot spring: восстановление после стены",
-                               "location":  "Beijing Chaoyabang Gaobeidianxiang",
-                               "map":  "Beijing Chaoyabang Gaobeidianxiang Beijing",
-                               "cn":  "水裹·汤泉生活（北京四惠店）",
-                               "city":  "北京市",
-                               "comment":  "По цене пользователя: будни 399 CNY × 2; пакет и время пребывания проверить.",
-                               "route":  "Xiaoyun Road → бани Gaobeidian: Такси. Такси ориентировочно 30–40 минут в зависимости от трафика.",
-                               "category":  "Развлечения",
-                               "cost":  798,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Пекин"
-                                        ]
-                           },
-                           {
-                               "time":  "19:30",
-                               "end":  "20:15",
-                               "duration":  "0:45",
-                               "icon":  "🍜",
-                               "title":  "Ужин внутри комплекса",
-                               "location":  "Банный комплекс",
-                               "map":  "Банный комплекс Beijing",
-                               "cn":  "水裹·汤泉生活（北京四惠店）",
-                               "city":  "北京市",
-                               "comment":  "Часто входит в пакет, но состав тарифа обязательно проверить.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  0,
-                               "tags":  [
-                                            "Еда",
-                                            "Пекин"
-                                        ]
-                           }
-                       ]
-    },
-    {
-        "date":  "12.08, среда",
-        "title":  "Universal Beijing Resort",
-        "meta":  "Билеты куплены, полный день в парке",
-        "activities":  [
-                           {
-                               "time":  "06:30",
-                               "end":  "07:00",
-                               "duration":  "0:30",
-                               "icon":  "🍜",
-                               "title":  "Завтрак",
-                               "location":  "Рядом с Xiaoyun Road",
-                               "map":  "39.95631,116.45543 Beijing",
-                               "cn":  "霄云路（北京市朝阳区）",
-                               "city":  "北京市",
-                               "comment":  "На двоих.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  60,
-                               "tags":  [
-                                            "Еда",
-                                            "Пекин"
-                                        ]
-                           },
-                           {
-                               "time":  "09:00",
-                               "end":  "12:30",
-                               "duration":  "3:30",
-                               "icon":  "🎢",
-                               "title":  "Главные аттракционы с открытия",
-                               "location":  "Universal Beijing Resort",
-                               "map":  "Universal Beijing Resort Beijing",
-                               "cn":  "北京环球度假区",
-                               "city":  "北京市",
-                               "comment":  "Билеты куплены: 17 573 RUB ÷ 3 × 2 ÷ 12 = 976,28 CNY на вашу пару.",
-                               "route":  "Xiaoyun Road → Universal Beijing Resort: Line 10 → Shuangjing, Line 7 → Universal Resort. Такси без плотного трафика около 45 минут; метро надёжнее. Время открытия проверить накануне. Universal Beijing Resort: Контроль и вход. Билеты уже куплены.",
-                               "category":  "Развлечения",
-                               "cost":  976.28,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Пекин"
-                                        ]
-                           },
-                           {
-                               "time":  "12:30",
-                               "end":  "13:15",
-                               "duration":  "0:45",
-                               "icon":  "🍜",
-                               "title":  "Обед",
-                               "location":  "Universal Beijing Resort",
-                               "map":  "Universal Beijing Resort Beijing",
-                               "cn":  "北京环球度假区",
-                               "city":  "北京市",
-                               "comment":  "На двоих.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  260,
-                               "tags":  [
-                                            "Еда",
-                                            "Пекин"
-                                        ]
-                           },
-                           {
-                               "time":  "13:15",
-                               "end":  "18:30",
-                               "duration":  "5:15",
-                               "icon":  "🎢",
-                               "title":  "Оставшиеся зоны и шоу",
-                               "location":  "Universal Beijing Resort",
-                               "map":  "Universal Beijing Resort Beijing",
-                               "cn":  "北京环球度假区",
-                               "city":  "北京市",
-                               "comment":  "Express Pass не включён.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Развлечения",
-                               "cost":  0,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Пекин"
-                                        ]
-                           },
-                           {
-                               "time":  "18:30",
-                               "end":  "19:30",
-                               "duration":  "1:00",
-                               "icon":  "🍜",
-                               "title":  "Ужин",
-                               "location":  "Universal CityWalk",
-                               "map":  "Universal CityWalk Beijing",
-                               "cn":  "北京环球城市大道",
-                               "city":  "北京市",
-                               "comment":  "На двоих.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  260,
-                               "tags":  [
-                                            "Еда",
-                                            "Пекин"
-                                        ]
-                           }
-                       ]
-    },
-    {
-        "date":  "13.08, четверг",
-        "title":  "Панды, Temple of Heaven и аутлет",
-        "meta":  "Сначала зоопарк, затем храм и шопинг",
-        "activities":  [
-                           {
-                               "time":  "06:45",
-                               "end":  "07:15",
-                               "duration":  "0:30",
-                               "icon":  "🍜",
-                               "title":  "Завтрак",
-                               "location":  "Рядом с Xiaoyun Road",
-                               "map":  "39.95631,116.45543 Beijing",
-                               "cn":  "霄云路（北京市朝阳区）",
-                               "city":  "北京市",
-                               "comment":  "На двоих.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  60,
-                               "tags":  [
-                                            "Еда",
-                                            "Пекин"
-                                        ]
-                           },
-                           {
-                               "time":  "08:10",
-                               "end":  "10:30",
-                               "duration":  "2:20",
-                               "icon":  "🐼",
-                               "title":  "Панды в первую очередь, затем короткий маршрут",
-                               "location":  "Beijing Zoo / 北京动物园",
-                               "map":  "Beijing Zoo / 北京动物园 Beijing",
-                               "cn":  "北京动物园",
-                               "city":  "北京市",
-                               "comment":  "Панды активнее утром; не пытаться обойти весь зоопарк.",
-                               "route":  "Xiaoyun Road → Beijing Zoo: Метро к зоопарку. Liangmaqiao 亮马桥, Line 10 (голубая) → Haidian Huangzhuang 海淀黄庄; пересадка на Line 4 (бирюзовая) → Beijing Zoo 动物园. До Liangmaqiao при жаре доехать коротким такси.",
-                               "category":  "Развлечения",
-                               "cost":  40,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Пекин"
-                                        ]
-                           },
-                           {
-                               "time":  "11:30",
-                               "end":  "13:30",
-                               "duration":  "2:00",
-                               "icon":  "🏮",
-                               "title":  "Главные павильоны и парк",
-                               "location":  "Temple of Heaven / 天坛公园",
-                               "map":  "Temple of Heaven / 天坛公园 Beijing",
-                               "cn":  "天坛公园",
-                               "city":  "北京市",
-                               "comment":  "Полный билет на двоих; из-за дневной жары идти по главной оси и не растягивать маршрут.",
-                               "route":  "Beijing Zoo → Temple of Heaven: Метро. Beijing Zoo 动物园, Line 4 (бирюзовая) → Xuanwumen 宣武门; Line 2 (синяя) → Chongwenmen 崇文门; Line 5 (бордовая) → Tiantandongmen 天坛东门.",
-                               "category":  "Развлечения",
-                               "cost":  68,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Пекин"
-                                        ]
-                           },
-                           {
-                               "time":  "13:30",
-                               "end":  "14:15",
-                               "duration":  "0:45",
-                               "icon":  "🍜",
-                               "title":  "Обед",
-                               "location":  "Рядом с Temple of Heaven",
-                               "map":  "Temple of Heaven 天坛公园 Beijing",
-                               "cn":  "天坛公园",
-                               "city":  "北京市",
-                               "comment":  "На двоих.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  160,
-                               "tags":  [
-                                            "Еда",
-                                            "Пекин"
-                                        ]
-                           },
-                           {
-                               "time":  "15:20",
-                               "end":  "19:00",
-                               "duration":  "3:40",
-                               "icon":  "🛍️",
-                               "title":  "Шопинг: Nike, Adidas, New Balance и масс-маркет",
-                               "location":  "Beijing Scitech Premium Outlet / 北京赛特奥莱",
-                               "map":  "Beijing Scitech Premium Outlet / 北京赛特奥莱 Beijing",
-                               "cn":  "北京赛特奥莱",
-                               "city":  "北京市",
-                               "comment":  "Проверить скидки и tax refund на стойке информации; покупки в бюджет маршрута не включены.",
-                               "route":  "Temple of Heaven → Beijing Scitech Premium Outlet: Такси. До 赛特奥莱, Xiangjiang North Road; общественный транспорт с пересадками займёт заметно дольше.",
-                               "category":  "Развлечения",
-                               "cost":  0,
-                               "tags":  [
-                                            "Развлечения",
-                                            "Пекин"
-                                        ]
-                           },
-                           {
-                               "time":  "19:00",
-                               "end":  "20:00",
-                               "duration":  "1:00",
-                               "icon":  "🍜",
-                               "title":  "Ужин",
-                               "location":  "Аутлет",
-                               "map":  "Аутлет Beijing",
-                               "cn":  "北京赛特奥莱",
-                               "city":  "北京市",
-                               "comment":  "На двоих.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  180,
-                               "tags":  [
-                                            "Еда",
-                                            "Пекин"
-                                        ]
-                           },
-                           {
-                               "time":  "20:45",
-                               "end":  "21:45",
-                               "duration":  "1:00",
-                               "icon":  "🏠",
-                               "title":  "Сбор чемоданов и онлайн-регистрация",
-                               "location":  "Xiaoyun Road",
-                               "map":  "39.95631,116.45543 Beijing",
-                               "cn":  "霄云路（北京市朝阳区）",
-                               "city":  "北京市",
-                               "comment":  "Проверить норму багажа и Terminal 2.",
-                               "route":  "Аутлет → Xiaoyun Road: Такси. Вечером около 35–50 минут в зависимости от трафика.",
-                               "category":  "Жилье",
-                               "cost":  0,
-                               "tags":  [
-                                            "Жилье",
-                                            "Пекин"
-                                        ]
-                           }
-                       ]
-    },
-    {
-        "date":  "14.08, пятница",
-        "title":  "Вылет в Москву",
-        "meta":  "PEK Terminal 2 → SVO, Hainan Airlines 14:25",
-        "activities":  [
-                           {
-                               "time":  "08:00",
-                               "end":  "08:40",
-                               "duration":  "0:40",
-                               "icon":  "🍜",
-                               "title":  "Завтрак",
-                               "location":  "Рядом с Xiaoyun Road",
-                               "map":  "39.95631,116.45543 Beijing",
-                               "cn":  "霄云路（北京市朝阳区）",
-                               "city":  "北京市",
-                               "comment":  "На двоих.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Еда",
-                               "cost":  60,
-                               "tags":  [
-                                            "Еда",
-                                            "Пекин"
-                                        ]
-                           },
-                           {
-                               "time":  "08:40",
-                               "end":  "09:20",
-                               "duration":  "0:40",
-                               "icon":  "🏠",
-                               "title":  "Check-out и финальная проверка багажа",
-                               "location":  "Xiaoyun Road",
-                               "map":  "39.95631,116.45543 Beijing",
-                               "cn":  "霄云路（北京市朝阳区）",
-                               "city":  "北京市",
-                               "comment":  "Рейс HU7985 вылетает из Beijing Capital, Terminal 2.",
-                               "route":  "Активность находится в текущем районе; отдельный переезд не требуется.",
-                               "category":  "Жилье",
-                               "cost":  0,
-                               "tags":  [
-                                            "Жилье",
-                                            "Пекин"
-                                        ]
-                           },
-                           {
-                               "time":  "14:25",
-                               "end":  "",
-                               "duration":  "перелёт",
-                               "icon":  "✈️",
-                               "title":  "Прямой рейс Hainan Airlines HU7985; билеты куплены",
-                               "location":  "PEK → Москва SVO",
-                               "map":  "Москва SVO Beijing",
-                               "cn":  "北京首都国际机场2号航站楼",
-                               "city":  "北京市",
-                               "comment":  "Плановое отправление 14:25.",
-                               "route":  "Xiaoyun Road → PEK Terminal 2: Такси. Карты показывают около 20–25 минут без пробок; оставлен запас на утренний трафик. Beijing Capital Airport, T2: Регистрация, багаж, контроль и посадка. Международный рейс; быть у гейта заранее.",
-                               "category":  "Дорога",
-                               "cost":  0,
-                               "tags":  [
-                                            "Дорога",
-                                            "Пекин"
-                                        ]
-                           }
-                       ]
-    }
-];
+  {
+    "date": "27.10.2026",
+    "title": "Москва · вылет в Пекин",
+    "meta": "Шереметьево C · SU204",
+    "activities": [
+      {
+        "time": "18:00",
+        "end": "21:05",
+        "duration": "3 ч 05 мин",
+        "icon": "🛫",
+        "title": "Шереметьево: регистрация и посадка",
+        "location": "Аэропорт Шереметьево, терминал C",
+        "cn": "谢列梅捷沃国际机场C航站楼",
+        "city": "莫斯科",
+        "comment": "Приехать к 18:00. Сдать багаж по 23 кг на человека, пройти паспортный контроль и быть у выхода на посадку заранее. Места 18A и 18B.",
+        "route": "Из Москвы удобнее Аэроэкспресс + автобус до терминала C либо такси. Перед выездом проверить пробки и терминал в приложении Аэрофлота.",
+        "costText": "Билеты оплачены",
+        "category": "Дорога",
+        "tags": ["SVO C", "паспорт", "багаж 23 кг"]
+      },
+      {
+        "time": "21:05",
+        "end": "09:50",
+        "duration": "перелёт + смена часового пояса",
+        "icon": "✈️",
+        "title": "Рейс SU204 Москва → Пекин-Дасин",
+        "location": "SVO → Beijing Daxing International Airport (PKX)",
+        "cn": "北京大兴国际机场",
+        "city": "北京市",
+        "comment": "Ночной прямой рейс. Время прилёта 09:50 уже по пекинскому времени 28 октября.",
+        "route": "После посадки следовать по указателям International Arrivals / 入境 и приготовить адрес следующего рейса и гостиницы.",
+        "costText": "Билеты оплачены",
+        "category": "Дорога",
+        "tags": ["SU204", "PKX", "местное время"]
+      }
+    ]
+  },
+  {
+    "date": "28.10.2026",
+    "title": "Пекин-Дасин → Чжанцзяцзе → Улинъюань",
+    "meta": "стыковка · CA8609 · позднее заселение",
+    "activities": [
+      {
+        "time": "09:50",
+        "end": "12:00",
+        "duration": "2 ч 10 мин",
+        "icon": "🛬",
+        "title": "Прилёт в Пекин-Дасин",
+        "location": "Beijing Daxing International Airport (PKX)",
+        "cn": "北京大兴国际机场",
+        "city": "北京市",
+        "comment": "Паспортный контроль, получение багажа и ориентация в огромном терминале. Сразу оценить фактическое время: от него зависит, возможен ли выезд в город.",
+        "route": "После получения багажа держаться зоны внутренних вылетов. Камеры хранения и стойки информации находятся в терминале; точное место проверить на схеме аэропорта.",
+        "category": "Дорога",
+        "tags": ["PKX", "багаж", "стыковка"]
+      },
+      {
+        "time": "12:00",
+        "end": "14:45",
+        "duration": "до 2 ч 45 мин",
+        "icon": "🏯",
+        "title": "Храм Неба — только если всё идёт идеально",
+        "location": "Temple of Heaven / 天坛公园",
+        "cn": ["天坛公园", "天坛公园东门"],
+        "city": "北京市",
+        "comment": "Необязательная экскурсия. Ехать только если с багажом и паспортным контролем закончено примерно до 11:15. В 14:45 нужно уже разворачиваться к аэропорту; вечерний рейс важнее. Безопасная альтернатива — обед и отдых в PKX.",
+        "route": "С багажом разумно только такси через AMap/DiDi: ориентир 50–90 минут в каждую сторону в зависимости от трафика. Общественный транспорт для этой короткой стыковки не советую.",
+        "costText": "Такси и вход — по факту",
+        "category": "Развлечения",
+        "warning": true,
+        "tags": ["опционально", "не рисковать рейсом", "вернуться в PKX"]
+      },
+      {
+        "time": "15:30",
+        "end": "18:35",
+        "duration": "3 ч 05 мин",
+        "icon": "🎫",
+        "title": "Регистрация на CA8609",
+        "location": "Beijing Daxing International Airport (PKX)",
+        "cn": "北京大兴国际机场",
+        "city": "北京市",
+        "comment": "Вернуться в аэропорт с запасом, зарегистрироваться на внутренний рейс Air China и пройти контроль.",
+        "route": "В такси выбрать именно 北京大兴国际机场. В терминале следовать к Domestic Departures / 国内出发.",
+        "costText": "Билеты оплачены",
+        "category": "Дорога",
+        "tags": ["CA8609", "PKX", "Air China"]
+      },
+      {
+        "time": "18:35",
+        "end": "20:50",
+        "duration": "2 ч 15 мин",
+        "icon": "✈️",
+        "title": "Перелёт Пекин-Дасин → Чжанцзяцзе",
+        "location": "PKX → Zhangjiajie Hehua Airport (DYG)",
+        "cn": "张家界荷花国际机场",
+        "city": "张家界市",
+        "comment": "Внутренний рейс CA8609. После посадки сразу получить багаж и вызвать машину в Улинъюань.",
+        "route": "В аэропорту DYG выйти к официальной зоне такси/DiDi. Покажите водителю китайское название отеля.",
+        "costText": "Билеты оплачены",
+        "category": "Дорога",
+        "tags": ["CA8609", "DYG"]
+      },
+      {
+        "time": "20:50",
+        "end": "22:45",
+        "duration": "около 1 ч 55 мин",
+        "icon": "🏨",
+        "title": "Трансфер и заселение в Days Hotel",
+        "location": "Days Hotel by Wyndham Zhangjiajie Wulingyuan",
+        "cn": "戴斯温德姆酒店(张家界武陵源标志门店)",
+        "city": "张家界市",
+        "comment": "Четыре ночи, номер с двумя кроватями. Адрес: No. 8 Wuling Avenue. На ресепшене сразу уточнить завтрак, хранение вещей и самый быстрый путь к Восточным воротам.",
+        "route": "Такси/DiDi из аэропорта DYG в район 武陵源, ориентир 45–60 минут. Ночью заложен дополнительный запас.",
+        "costText": "Гостиница оплачена",
+        "category": "Жилье",
+        "tags": ["28.10–01.11", "Улинъюань", "поздний заезд"]
+      }
+    ]
+  },
+  {
+    "date": "29.10.2026",
+    "title": "Горы Аватара",
+    "meta": "Байлун · Юаньцзяцзе · Тяньцзышань",
+    "activities": [
+      {
+        "time": "07:30",
+        "end": "08:10",
+        "duration": "40 мин",
+        "icon": "🥣",
+        "title": "Завтрак и сборы",
+        "location": "Days Hotel by Wyndham Wulingyuan",
+        "cn": "戴斯温德姆酒店(张家界武陵源标志门店)",
+        "city": "张家界市",
+        "comment": "Плотно позавтракать, взять воду, дождевики, пауэрбанк и паспорта. В горах температура и дождь меняются быстро.",
+        "route": "Завтрак в отеле или ближайшее кафе; выйти не позднее 08:20.",
+        "category": "Еда",
+        "tags": ["вода", "дождевики", "паспорта"]
+      },
+      {
+        "time": "08:20",
+        "end": "09:00",
+        "duration": "40 мин",
+        "icon": "🚕",
+        "title": "Дорога к Восточным воротам",
+        "location": "Zhangjiajie National Forest Park East Gate",
+        "cn": "张家界国家森林公园东门(吴家峪门票站)",
+        "city": "张家界市",
+        "comment": "Первый вход по билету разрешён с 09:00 до 10:00. Приехать к 08:45, чтобы спокойно пройти проверку документов.",
+        "route": "Такси/DiDi от отеля до 武家峪门票站; это Восточные ворота, не Южные. Покажите китайское название.",
+        "category": "Дорога",
+        "tags": ["East Gate", "вход 09:00–10:00"]
+      },
+      {
+        "time": "09:00",
+        "end": "12:30",
+        "duration": "3 ч 30 мин",
+        "icon": "⛰️",
+        "title": "Лифт Байлун и Юаньцзяцзе",
+        "location": "Bailong Elevator → Yuanjiajie Scenic Area",
+        "cn": ["百龙天梯", "袁家界景区"],
+        "city": "张家界市",
+        "comment": "Подъём на лифте Байлун, каменные столбы и основные смотровые Юаньцзяцзе. До поездки отдельно подтвердить, что билет на лифт оформлен для обоих.",
+        "route": "От Восточных ворот ехать на внутреннем шаттле к 百龙天梯, подняться и продолжить по указателям 袁家界. Внутри парка ориентироваться по шаттлам и табличкам.",
+        "costText": "Входной билет на 4 дня куплен; лифт проверить",
+        "category": "Развлечения",
+        "tags": ["Аватар", "Байлун", "смотровые"]
+      },
+      {
+        "time": "12:30",
+        "end": "13:30",
+        "duration": "1 ч",
+        "icon": "🍜",
+        "title": "Обед в парке",
+        "location": "Юаньцзяцзе / зона пересадки шаттлов",
+        "cn": "袁家界景区",
+        "city": "张家界市",
+        "comment": "Не затягивать: дальше длинный участок к Тяньцзышань. Сохранить воду и небольшой перекус на вторую половину дня.",
+        "route": "Выбрать кафе рядом с туристическим узлом и остановкой шаттлов.",
+        "costText": "100–160 CNY на двоих",
+        "category": "Еда",
+        "tags": ["обед", "в парке"]
+      },
+      {
+        "time": "13:30",
+        "end": "17:00",
+        "duration": "3 ч 30 мин",
+        "icon": "🌄",
+        "title": "Тяньцзышань и спуск",
+        "location": "Tianzi Mountain Scenic Area",
+        "cn": ["天子山风景区", "天子山索道"],
+        "city": "张家界市",
+        "comment": "Основные смотровые Тяньцзышань и спуск на канатной дороге. Если очередь или туман съедают время, не добавлять Янцзяцзе и Десятимильную галерею.",
+        "route": "Шаттл 袁家界 → 天子山. После прогулки спуск на 天子山索道, затем внутренний автобус обратно к Восточным воротам.",
+        "category": "Развлечения",
+        "tags": ["канатная дорога", "не перегружать маршрут"]
+      },
+      {
+        "time": "17:00",
+        "end": "19:00",
+        "duration": "2 ч",
+        "icon": "🍲",
+        "title": "Возвращение, отдых и ужин",
+        "location": "Улинъюань, рядом с отелем",
+        "cn": "武陵源区",
+        "city": "张家界市",
+        "comment": "После гор оставить вечер спокойным: горячий ужин, сушить обувь и подготовить лёгкий маршрут на следующий день.",
+        "route": "От Восточных ворот пешком или короткое такси до отеля и ресторанов на Wuling Avenue.",
+        "category": "Еда",
+        "tags": ["свободный вечер", "отдых"]
+      }
+    ]
+  },
+  {
+    "date": "30.10.2026",
+    "title": "Золотой Кнут и VIP-шоу",
+    "meta": "лёгкая прогулка · отдых · Romance Park",
+    "activities": [
+      {
+        "time": "09:30",
+        "end": "12:00",
+        "duration": "2 ч 30 мин",
+        "icon": "🌿",
+        "title": "Короткий маршрут по ручью Золотой Кнут",
+        "location": "Gold Whip Stream",
+        "cn": ["金鞭溪", "金鞭溪(水绕四门入口)"],
+        "city": "张家界市",
+        "comment": "Идти только живописный короткий участок, без обязательного прохождения всей долины. Развернуться по самочувствию и погоде.",
+        "route": "От отеля к Восточным воротам, далее внутренний шаттл к 水绕四门 и прогулка вдоль ручья туда-обратно. Точный шаттл уточнить у сотрудников парка.",
+        "category": "Развлечения",
+        "tags": ["лёгкий день", "короткий маршрут"]
+      },
+      {
+        "time": "12:00",
+        "end": "13:30",
+        "duration": "1 ч 30 мин",
+        "icon": "🍚",
+        "title": "Обед",
+        "location": "Улинъюань",
+        "cn": "武陵源区",
+        "city": "张家界市",
+        "comment": "Вернуться в район отеля, нормально поесть и не планировать тяжёлую активность перед вечерним шоу.",
+        "route": "Шаттл к Восточным воротам, затем пешком или короткое такси к отелю.",
+        "category": "Еда",
+        "tags": ["обед", "отдых"]
+      },
+      {
+        "time": "13:30",
+        "end": "18:00",
+        "duration": "4 ч 30 мин",
+        "icon": "🛏️",
+        "title": "Свободное время и отдых",
+        "location": "Days Hotel / Улинъюань",
+        "cn": "戴斯温德姆酒店(张家界武陵源标志门店)",
+        "city": "张家界市",
+        "comment": "Запас на сон, стирку, чай или неспешную прогулку рядом. Это полезная пауза перед очень насыщенной субботой.",
+        "route": "Оставаться рядом с отелем; к 18:00 быть готовыми к ужину и выезду.",
+        "category": "Отдых",
+        "tags": ["без обязательной программы"]
+      },
+      {
+        "time": "18:30",
+        "end": "19:30",
+        "duration": "1 ч",
+        "icon": "🍛",
+        "title": "Ранний ужин",
+        "location": "Рядом с Zhangjiajie Romance Park",
+        "cn": "张家界千古情景区",
+        "city": "张家界市",
+        "comment": "Выбрать быстрое место и закончить до 19:30. К театру нужно подойти заранее.",
+        "route": "Из отеля короткое такси/DiDi к 张家界千古情景区; ресторан выбрать рядом с комплексом.",
+        "category": "Еда",
+        "tags": ["не опаздывать", "быстрый ужин"]
+      },
+      {
+        "time": "19:30",
+        "end": "20:10",
+        "duration": "40 мин",
+        "icon": "🎟️",
+        "title": "Вход в театр и поиск мест",
+        "location": "Zhangjiajie Romance Park",
+        "cn": "张家界千古情景区",
+        "city": "张家界市",
+        "comment": "Показать ваучер, получить или подтвердить места VIP и заранее найти зал. Точные номера кресел пока не указаны.",
+        "route": "Вход в комплекс по китайскому названию; держать паспорта и ваучер офлайн.",
+        "category": "Развлечения",
+        "tags": ["VIP", "ваучер", "прийти заранее"]
+      },
+      {
+        "time": "20:20",
+        "end": "21:30",
+        "duration": "около 70 мин",
+        "icon": "🎭",
+        "title": "Шоу Zhangjiajie Romance Park",
+        "location": "Zhangjiajie Romance Park / 千古情",
+        "cn": "张家界千古情景区",
+        "city": "张家界市",
+        "comment": "Два VIP-билета оплачены. Обязательно ещё раз сверить в ваучере дату, действительность сеанса 20:20 и правила обмена билета перед выездом.",
+        "route": "После шоу вызвать DiDi/такси к Days Hotel; из-за наплыва людей удобно отойти от главного выхода на обозначенную точку посадки.",
+        "costText": "4 151,42 RUB за двоих — оплачено",
+        "category": "Развлечения",
+        "warning": true,
+        "tags": ["20:20", "VIP", "проверить ваучер"]
+      }
+    ]
+  },
+  {
+    "date": "31.10.2026",
+    "title": "Стеклянный мост и Фужун",
+    "meta": "самый плотный день · два поезда",
+    "activities": [
+      {
+        "time": "06:15",
+        "end": "06:45",
+        "duration": "30 мин",
+        "icon": "🥪",
+        "title": "Ранний завтрак и сбор дневного рюкзака",
+        "location": "Days Hotel by Wyndham Wulingyuan",
+        "cn": "戴斯温德姆酒店(张家界武陵源标志门店)",
+        "city": "张家界市",
+        "comment": "Взять паспорта, билеты на каньон и поезда, воду, перекус и пауэрбанк. Основной багаж остаётся в отеле.",
+        "route": "В 07:00 уже выехать на машине.",
+        "category": "Еда",
+        "tags": ["очень ранний старт", "дневной рюкзак"]
+      },
+      {
+        "time": "07:00",
+        "end": "10:00",
+        "duration": "3 ч вместе с дорогой",
+        "icon": "🌉",
+        "title": "Большой каньон и Стеклянный мост",
+        "location": "Zhangjiajie Grand Canyon Glass Bridge",
+        "cn": ["张家界大峡谷玻璃桥", "张家界大峡谷景区"],
+        "city": "张家界市",
+        "comment": "Критичный участок: официальный вход обычно начинается в 08:00, а полный маршрут B занимает около 3,5 часа и не помещается до поезда. На месте выбрать самый короткий разрешённый вариант/мост и выйти не позже 10:00. Полный каньон в этот день проходить нельзя.",
+        "route": "Такси/DiDi из Улинъюаня, ориентир 35–50 минут. Водителю показать 张家界大峡谷玻璃桥. Заранее уточнить, можно ли по купленному билету пройти сокращённый маршрут B1 или только мост.",
+        "costText": "Билеты взрослому и подростку куплены",
+        "category": "Развлечения",
+        "warning": true,
+        "tags": ["главный риск дня", "выйти до 10:00", "не проходить полный B"]
+      },
+      {
+        "time": "10:00",
+        "end": "12:10",
+        "duration": "2 ч 10 мин",
+        "icon": "🚕",
+        "title": "Переезд на Zhangjiajie West",
+        "location": "Zhangjiajie West Railway Station",
+        "cn": "张家界西站",
+        "city": "张家界市",
+        "comment": "Поезд в 12:40 нельзя переносить. Покинуть каньон не позже 10:00–10:10; запас нужен на трафик, вход в вокзал и паспортный контроль.",
+        "route": "Заранее заказать машину 张家界大峡谷 → 张家界西站. Ориентир 50–75 минут, но заложено больше из-за риска очередей.",
+        "category": "Дорога",
+        "warning": true,
+        "tags": ["поезд 12:40", "паспорта", "без остановок"]
+      },
+      {
+        "time": "12:40",
+        "end": "13:03",
+        "duration": "23 мин",
+        "icon": "🚄",
+        "title": "Поезд в Фужунчжэнь",
+        "location": "Zhangjiajie West → Furongzhen Station",
+        "cn": ["张家界西站", "芙蓉镇站"],
+        "city": "张家界市",
+        "comment": "Быстрый поезд до Фужунчжэнь. На китайских вокзалах билет привязан к паспорту; держать паспорта под рукой.",
+        "route": "На табло найти номер поезда из билета, пройти к своему выходу и вагону заранее.",
+        "costText": "Билеты куплены",
+        "category": "Дорога",
+        "tags": ["12:40", "паспорт вместо билета"]
+      },
+      {
+        "time": "13:03",
+        "end": "13:40",
+        "duration": "37 мин",
+        "icon": "🚕",
+        "title": "От станции к древнему городу",
+        "location": "Furongzhen Railway Station → Furong Ancient Town",
+        "cn": ["芙蓉镇站", "芙蓉镇景区"],
+        "city": "湘西土家族苗族自治州",
+        "comment": "После выхода со станции не тратить время: сразу ехать к главному входу в старый город.",
+        "route": "Такси/DiDi или официальный шаттл от 芙蓉镇站 до 芙蓉镇景区, обычно 15–25 минут без ожидания.",
+        "category": "Дорога",
+        "tags": ["короткая пересадка", "главный вход"]
+      },
+      {
+        "time": "13:40",
+        "end": "18:30",
+        "duration": "4 ч 50 мин",
+        "icon": "🏘️",
+        "title": "Древний город Фужун",
+        "location": "Furong Ancient Town Scenic Area",
+        "cn": ["芙蓉镇景区", "芙蓉镇大瀑布"],
+        "city": "湘西土家族苗族自治州",
+        "comment": "Водопад, старые улицы, дома на склоне и смотровые. Сначала пройти дальние точки при дневном свете, затем постепенно возвращаться к водопаду и подсветке.",
+        "route": "Маршрут внутри пешеходный. Сразу отметить на карте выход и место посадки такси обратно к станции.",
+        "category": "Развлечения",
+        "tags": ["водопад", "исторические улицы", "много ступеней"]
+      },
+      {
+        "time": "18:30",
+        "end": "20:15",
+        "duration": "1 ч 45 мин",
+        "icon": "🏮",
+        "title": "Ужин и вечерняя подсветка",
+        "location": "Фужун, район водопада",
+        "cn": "芙蓉镇景区",
+        "city": "湘西土家族苗族自治州",
+        "comment": "Поужинать с видом и посмотреть подсветку, но не терять контроль времени: к станции нужно уехать заранее.",
+        "route": "В 20:15 выйти к заранее выбранной точке посадки такси/шаттла.",
+        "category": "Еда",
+        "tags": ["подсветка", "ужин", "контроль времени"]
+      },
+      {
+        "time": "20:15",
+        "end": "21:10",
+        "duration": "55 мин",
+        "icon": "🚕",
+        "title": "Возвращение на станцию Фужунчжэнь",
+        "location": "Furong Ancient Town → Furongzhen Station",
+        "cn": "芙蓉镇站",
+        "city": "湘西土家族苗族自治州",
+        "comment": "Оставлен запас на вечерний трафик, поиск машины и контроль на вокзале.",
+        "route": "Такси/DiDi к 芙蓉镇站. Не соглашаться на маршрут с заездом в другие места.",
+        "category": "Дорога",
+        "tags": ["поезд 21:32", "приехать заранее"]
+      },
+      {
+        "time": "21:32",
+        "end": "21:55",
+        "duration": "23 мин",
+        "icon": "🚄",
+        "title": "Поезд обратно в Чжанцзяцзе",
+        "location": "Furongzhen → Zhangjiajie West",
+        "cn": ["芙蓉镇站", "张家界西站"],
+        "city": "张家界市",
+        "comment": "Обратный поезд. После прибытия сразу вызвать машину в Улинъюань.",
+        "route": "На выходе 张家界西站 идти к официальной зоне такси/DiDi.",
+        "costText": "Билеты куплены",
+        "category": "Дорога",
+        "tags": ["21:32", "последний переезд дня"]
+      },
+      {
+        "time": "21:55",
+        "end": "22:45",
+        "duration": "около 50 мин",
+        "icon": "🏨",
+        "title": "Возвращение в Days Hotel",
+        "location": "Days Hotel by Wyndham Wulingyuan",
+        "cn": "戴斯温德姆酒店(张家界武陵源标志门店)",
+        "city": "张家界市",
+        "comment": "Позднее возвращение после самого насыщенного дня. Сразу собрать багаж для утреннего переезда 1 ноября.",
+        "route": "Такси/DiDi 张家界西站 → отель в 武陵源, ориентир 40–55 минут.",
+        "category": "Дорога",
+        "tags": ["поздно", "собрать багаж"]
+      }
+    ]
+  },
+  {
+    "date": "01.11.2026",
+    "title": "Тяньмэнь и Fox Fairy",
+    "meta": "смена отеля · линия C · вечернее шоу",
+    "activities": [
+      {
+        "time": "08:30",
+        "end": "10:00",
+        "duration": "1 ч 30 мин",
+        "icon": "🧳",
+        "title": "Выезд из Улинъюаня и багаж в новом отеле",
+        "location": "Hampton by Hilton Zhangjiajie Tianmen Mountain",
+        "cn": "张家界天门山希尔顿欢朋酒店",
+        "city": "张家界市",
+        "comment": "Выселиться из Days Hotel и переехать в центр. До поездки написать Hampton и подтвердить, что багаж примут до официального заселения.",
+        "route": "Такси/DiDi из 武陵源 до 张家界天门山希尔顿欢朋酒店, ориентир 45–60 минут.",
+        "costText": "Одна ночь оплачена",
+        "category": "Жилье",
+        "tags": ["смена отеля", "хранение багажа"]
+      },
+      {
+        "time": "10:00",
+        "end": "10:40",
+        "duration": "40 мин",
+        "icon": "🥟",
+        "title": "Ранний обед или перекус",
+        "location": "Рядом с Hampton / станцией канатной дороги",
+        "cn": "天门山索道下站",
+        "city": "张家界市",
+        "comment": "Поесть до подъёма: на горе выбор дороже и времени будет меньше. Взять воду и небольшой перекус.",
+        "route": "Выбрать кафе по пути от отеля к точке входа линии C.",
+        "category": "Еда",
+        "tags": ["до горы", "вода"]
+      },
+      {
+        "time": "11:00",
+        "end": "16:30",
+        "duration": "5 ч 30 мин",
+        "icon": "🚡",
+        "title": "Гора Тяньмэнь · линия C",
+        "location": "Tianmen Mountain National Forest Park",
+        "cn": ["天门山国家森林公园", "天门山索道下站"],
+        "city": "张家界市",
+        "comment": "Забронированное окно входа 11:00–12:00, линия C. Следовать именно схеме C из ваучера: направление канатной дороги и автобусов может отличаться. Взять тёплый слой и нескользкую обувь.",
+        "route": "От Hampton короткое такси или пешком до указанного в ваучере входа. Внутри парка двигаться по разметке Line C / C线 и не менять линию без согласования с персоналом.",
+        "costText": "Билеты куплены",
+        "category": "Развлечения",
+        "tags": ["вход 11:00–12:00", "линия C", "проверить ваучер"]
+      },
+      {
+        "time": "16:30",
+        "end": "17:00",
+        "duration": "30 мин",
+        "icon": "🏨",
+        "title": "Заселение и короткий отдых",
+        "location": "Hampton by Hilton Zhangjiajie Tianmen Mountain",
+        "cn": "张家界天门山希尔顿欢朋酒店",
+        "city": "张家界市",
+        "comment": "Получить багаж, заселиться и уточнить у ресепшена актуальное время начала Fox Fairy и обратное такси.",
+        "route": "Короткое такси/пешком от нижней станции к отелю.",
+        "category": "Жилье",
+        "tags": ["заселение", "уточнить шоу"]
+      },
+      {
+        "time": "17:00",
+        "end": "18:30",
+        "duration": "1 ч 30 мин",
+        "icon": "🍲",
+        "title": "Ужин и отдых",
+        "location": "Центр Чжанцзяцзе",
+        "cn": "张家界市永定区",
+        "city": "张家界市",
+        "comment": "Поесть до театра и взять тёплую одежду: шоу проходит вечером у подножия горы и может быть прохладно.",
+        "route": "Ресторан рядом с отелем; к 19:20 заказать машину.",
+        "category": "Еда",
+        "tags": ["тёплая одежда", "ранний ужин"]
+      },
+      {
+        "time": "19:20",
+        "end": "20:05",
+        "duration": "45 мин",
+        "icon": "🚕",
+        "title": "Дорога в театр Tianmen Fox Fairy",
+        "location": "Tianmen Fox Fairy Grand Theatre",
+        "cn": "天门狐仙大剧场",
+        "city": "张家界市",
+        "comment": "Приехать минимум за 30 минут, обменять ваучер и найти VIP-зону A. Точное время начала ещё раз сверить в день шоу.",
+        "route": "Такси/DiDi до 天门狐仙大剧场. Обратно может быть очередь — спросить у водителя, где удобнее встретиться после шоу.",
+        "category": "Дорога",
+        "tags": ["VIP A", "ваучер", "приехать заранее"]
+      },
+      {
+        "time": "20:20",
+        "end": "21:50",
+        "duration": "около 1 ч 30 мин",
+        "icon": "🦊",
+        "title": "Шоу Tianmen Fox Fairy",
+        "location": "Tianmen Fox Fairy Grand Theatre",
+        "cn": "天门狐仙大剧场",
+        "city": "张家界市",
+        "comment": "Плановое время 20:20, VIP-зона A. Это ориентир: точное начало и погодные условия обязательно проверить по ваучеру и у гостиницы.",
+        "route": "После представления такси/DiDi обратно в Hampton; держать китайское название отеля скопированным.",
+        "costText": "Билет куплен",
+        "category": "Развлечения",
+        "warning": true,
+        "tags": ["время проверить", "открытая площадка", "VIP A"]
+      }
+    ]
+  },
+  {
+    "date": "02.11.2026",
+    "title": "Возвращение в Пекин",
+    "meta": "DYG → PEK · Ванфуцзин",
+    "activities": [
+      {
+        "time": "08:15",
+        "end": "09:20",
+        "duration": "1 ч 05 мин",
+        "icon": "🚕",
+        "title": "Трансфер в аэропорт Чжанцзяцзе",
+        "location": "Zhangjiajie Hehua Airport, Terminal 2",
+        "cn": "张家界荷花国际机场T2航站楼",
+        "city": "张家界市",
+        "comment": "Выселиться и выехать с запасом. Рейс внутренний, но нужен паспорт и время на багаж.",
+        "route": "Такси/DiDi от Hampton до 张家界荷花国际机场T2航站楼, обычно 15–25 минут; запас оставлен на регистрацию.",
+        "category": "Дорога",
+        "tags": ["DYG T2", "багаж"]
+      },
+      {
+        "time": "11:20",
+        "end": "13:50",
+        "duration": "2 ч 30 мин",
+        "icon": "✈️",
+        "title": "Рейс CA1954 в Пекин-Столичный",
+        "location": "DYG T2 → Beijing Capital Airport PEK T3",
+        "cn": "北京首都国际机场T3航站楼",
+        "city": "北京市",
+        "comment": "Обратите внимание: прилёт в PEK, а обратный международный рейс 6 ноября будет из другого аэропорта — PKX.",
+        "route": "После посадки получить багаж в T3 и следовать к официальной зоне такси/DiDi.",
+        "costText": "Билеты оплачены",
+        "category": "Дорога",
+        "tags": ["CA1954", "PEK T3", "не PKX"]
+      },
+      {
+        "time": "13:50",
+        "end": "16:30",
+        "duration": "до 2 ч 40 мин",
+        "icon": "🏨",
+        "title": "Дорога и заселение в Jingyuan Courtyard Hotel",
+        "location": "Jingyuan Courtyard Hotel, No. 35 Xitangzi Hutong",
+        "cn": "左府婧园酒店(北京天安门王府井店)",
+        "city": "北京市",
+        "comment": "Четыре ночи, район Ванфуцзин. Сохранить адрес офлайн и попросить на ресепшене карточку отеля с китайским адресом.",
+        "route": "Такси/DiDi из PEK T3 прямо к отелю, ориентир 50–90 минут по трафику. Альтернатива: Airport Express до Dongzhimen, затем такси.",
+        "costText": "Гостиница оплачена",
+        "category": "Жилье",
+        "tags": ["02.11–06.11", "Ванфуцзин", "хутун"]
+      },
+      {
+        "time": "17:00",
+        "end": "19:30",
+        "duration": "2 ч 30 мин",
+        "icon": "🏙️",
+        "title": "Ванфуцзин и ужин",
+        "location": "Wangfujing Pedestrian Street",
+        "cn": "王府井步行街",
+        "city": "北京市",
+        "comment": "Спокойная прогулка после перелёта: пешеходная улица, магазины, ужин и раннее возвращение в отель.",
+        "route": "От отеля около 10–20 минут пешком в зависимости от выбранной точки улицы. Обратно также пешком через освещённые центральные улицы.",
+        "category": "Развлечения",
+        "tags": ["пешком", "лёгкий вечер", "ужин"]
+      }
+    ]
+  },
+  {
+    "date": "03.11.2026",
+    "title": "Великая Китайская стена · Бадалин",
+    "meta": "поезд или такси · свободный вечер",
+    "activities": [
+      {
+        "time": "06:45",
+        "end": "07:20",
+        "duration": "35 мин",
+        "icon": "🥣",
+        "title": "Завтрак",
+        "location": "Рядом с Jingyuan Courtyard Hotel",
+        "cn": "左府婧园酒店(北京天安门王府井店)",
+        "city": "北京市",
+        "comment": "Взять воду, перекус, тёплый слой, перчатки при холодной погоде и паспорта для поезда и входа.",
+        "route": "Закончить завтрак к 07:20 и выехать без задержки.",
+        "category": "Еда",
+        "tags": ["паспорта", "тёплая одежда"]
+      },
+      {
+        "time": "07:30",
+        "end": "09:30",
+        "duration": "2 ч",
+        "icon": "🚄",
+        "title": "Дорога к Бадалину",
+        "location": "Badaling Great Wall Railway Station",
+        "cn": ["八达岭长城站", "八达岭长城"],
+        "city": "北京市",
+        "comment": "Предпочтительный вариант — заранее подобрать скоростной поезд до 八达岭长城站. Если подходящих билетов нет, заказать прямое такси/машину. Это именно Бадалин, не Мутяньюй.",
+        "route": "Поезд: такси от отеля к 北京北站 или 清河站, затем скоростной поезд до 八达岭长城站. Авто: DiDi прямо до 八达岭长城, ориентир 1,5–2 часа с трафиком.",
+        "category": "Дорога",
+        "warning": true,
+        "tags": ["купить поезд заранее", "Бадалин", "не Мутяньюй"]
+      },
+      {
+        "time": "09:30",
+        "end": "13:00",
+        "duration": "3 ч 30 мин",
+        "icon": "🧱",
+        "title": "Великая Китайская стена",
+        "location": "Badaling Great Wall",
+        "cn": "八达岭长城",
+        "city": "北京市",
+        "comment": "Билеты забронированы. Выбрать северный или южный участок по погоде и очередям, не пытаться пройти всё. На камне может быть скользко.",
+        "route": "От станции идти по указателям к туристическому входу. Если планируется канатная дорога, проверить, входит ли она в билет.",
+        "costText": "Входные билеты куплены",
+        "category": "Развлечения",
+        "tags": ["Бадалин", "канатную дорогу проверить"]
+      },
+      {
+        "time": "13:00",
+        "end": "16:30",
+        "duration": "3 ч 30 мин",
+        "icon": "🍜",
+        "title": "Обед и возвращение в Пекин",
+        "location": "Бадалин → Ванфуцзин",
+        "cn": ["八达岭长城站", "王府井"],
+        "city": "北京市",
+        "comment": "Пообедать у стены или взять еду с собой в зависимости от времени поезда. После возвращения вечер свободный.",
+        "route": "Обратно тем же способом: поезд со станции 八达岭长城站 либо заранее заказанная машина до отеля.",
+        "category": "Еда",
+        "tags": ["проверить обратный поезд", "свободный вечер"]
+      },
+      {
+        "time": "17:00",
+        "duration": "без фиксированного конца",
+        "icon": "🌙",
+        "title": "Свободный вечер",
+        "location": "Ванфуцзин / район отеля",
+        "cn": "王府井",
+        "city": "北京市",
+        "comment": "Оставить вечер для отдыха, ужина и раннего сна перед Universal. При силах можно пройтись по хутунам рядом с отелем.",
+        "route": "Пешком в районе отеля; без дальних переездов.",
+        "category": "Отдых",
+        "tags": ["по самочувствию"]
+      }
+    ]
+  },
+  {
+    "date": "04.11.2026",
+    "title": "Universal Beijing Resort",
+    "meta": "полный день в парке",
+    "activities": [
+      {
+        "time": "07:00",
+        "end": "07:40",
+        "duration": "40 мин",
+        "icon": "🥐",
+        "title": "Завтрак и сборы",
+        "location": "Район Ванфуцзин",
+        "cn": "王府井",
+        "city": "北京市",
+        "comment": "Взять паспорта, билеты, пауэрбанк, воду по правилам парка и лёгкий дождевик. Проверить часы работы и временно закрытые аттракционы.",
+        "route": "Выйти из отеля не позже 08:00.",
+        "category": "Еда",
+        "tags": ["билеты", "пауэрбанк", "проверить часы"]
+      },
+      {
+        "time": "08:00",
+        "end": "09:00",
+        "duration": "около 1 ч",
+        "icon": "🚇",
+        "title": "Метро до Universal",
+        "location": "Universal Resort Station",
+        "cn": "环球度假区地铁站",
+        "city": "北京市",
+        "comment": "Маршрут без такси и пробок. В AMap перед выходом проверить, нет ли изменений работы метро.",
+        "route": "Пешком/такси до 灯市口 Dengshikou → линия 5 (бордовая) на юг до 磁器口 Ciqikou → пересадка на линию 7 (жёлтая) на восток → конечная 环球度假区 Universal Resort.",
+        "category": "Дорога",
+        "tags": ["линия 5", "пересадка 磁器口", "линия 7"]
+      },
+      {
+        "time": "09:00",
+        "end": "19:30",
+        "duration": "10 ч 30 мин",
+        "icon": "🎢",
+        "title": "Universal Beijing Resort",
+        "location": "Universal Beijing Resort",
+        "cn": "北京环球度假区",
+        "city": "北京市",
+        "comment": "Билеты забронированы. 09:00–19:30 — плановое окно, не подтверждённые часы парка на 4 ноября. Накануне открыть официальный календарь и скорректировать выезд.",
+        "route": "От метро пройти по указателям к входу. С утра идти к самым важным аттракционам, днём использовать шоу и крытые зоны, вечером повторить любимое при короткой очереди.",
+        "costText": "Билеты куплены",
+        "category": "Развлечения",
+        "warning": true,
+        "tags": ["часы проверить", "полный день", "официальное приложение"]
+      },
+      {
+        "time": "19:30",
+        "end": "21:00",
+        "duration": "1 ч 30 мин",
+        "icon": "🍔",
+        "title": "Ужин и возвращение",
+        "location": "Universal CityWalk Beijing",
+        "cn": "北京环球城市大道",
+        "city": "北京市",
+        "comment": "Поужинать на CityWalk или взять еду перед метро. Если парк закрывается раньше, перенести ужин ближе к отелю.",
+        "route": "Метро 环球度假区 → линия 7 до 磁器口 → линия 5 до 灯市口 → пешком к отелю.",
+        "category": "Еда",
+        "tags": ["CityWalk", "линия 7 → 5"]
+      }
+    ]
+  },
+  {
+    "date": "05.11.2026",
+    "title": "Запретный город и аутлет",
+    "meta": "Гугун · массовые бренды · сборы",
+    "activities": [
+      {
+        "time": "07:00",
+        "end": "07:40",
+        "duration": "40 мин",
+        "icon": "🥣",
+        "title": "Завтрак",
+        "location": "Район отеля",
+        "cn": "王府井",
+        "city": "北京市",
+        "comment": "Взять паспорта и подтверждение входа в Гугун. Большие сумки лучше оставить в отеле.",
+        "route": "После завтрака выйти к 08:00.",
+        "category": "Еда",
+        "tags": ["паспорт", "билет Гугун"]
+      },
+      {
+        "time": "08:00",
+        "end": "09:00",
+        "duration": "1 ч",
+        "icon": "🚕",
+        "title": "Дорога ко входу в Запретный город",
+        "location": "Meridian Gate / вход 午门",
+        "cn": "故宫博物院午门",
+        "city": "北京市",
+        "comment": "Не ехать к северному выходу 神武门: стандартный туристический вход находится у 午门. Оставить время на проверки безопасности.",
+        "route": "От отеля удобно пешком + короткое такси до зоны 天安门东, затем идти по указателям к 午门. Точка высадки может быть ограничена полицией.",
+        "category": "Дорога",
+        "tags": ["вход 午门", "не северные ворота"]
+      },
+      {
+        "time": "09:00",
+        "end": "12:30",
+        "duration": "3 ч 30 мин",
+        "icon": "🏯",
+        "title": "Запретный город · музей Гугун",
+        "location": "The Palace Museum",
+        "cn": ["故宫博物院", "故宫博物院午门"],
+        "city": "北京市",
+        "comment": "Билеты забронированы; сверить точное окно входа. Идти по центральной оси и выбрать несколько боковых дворцов, не пытаясь осмотреть всё. Выход — через северные ворота 神武门.",
+        "route": "Вход 午门 → центральные залы → Императорский сад → выход 神武门. Паспорт используется для прохода.",
+        "costText": "Билеты куплены",
+        "category": "Развлечения",
+        "tags": ["вход 午门", "выход 神武门", "паспорт"]
+      },
+      {
+        "time": "12:30",
+        "end": "14:00",
+        "duration": "1 ч 30 мин",
+        "icon": "🍜",
+        "title": "Обед и отдых",
+        "location": "Район северного выхода Гугун",
+        "cn": "故宫博物院神武门",
+        "city": "北京市",
+        "comment": "После выхода перейти в спокойное кафе и дать ногам отдохнуть перед шопингом.",
+        "route": "От 神武门 отойти от туристического потока к доступной точке такси или кафе.",
+        "category": "Еда",
+        "tags": ["отдых", "перед аутлетом"]
+      },
+      {
+        "time": "14:00",
+        "end": "15:00",
+        "duration": "около 1 ч",
+        "icon": "🚕",
+        "title": "Дорога в Yansha Outlets",
+        "location": "Yansha Outlets Shopping Center",
+        "cn": "燕莎奥特莱斯购物中心(北京店)",
+        "city": "北京市",
+        "comment": "Выбран городской аутлет с Nike, Adidas и другими массовыми спортивными брендами; он логичнее дальних комплексов за городом.",
+        "route": "Самый удобный вариант после Гугуна — такси/DiDi, ориентир 30–50 минут. Метро: добраться до линии 14 и выйти на 北工大西门 Beigongda Ximen, затем короткая прогулка/такси.",
+        "category": "Дорога",
+        "tags": ["линия 14", "北工大西门", "масс-маркет"]
+      },
+      {
+        "time": "15:00",
+        "end": "19:00",
+        "duration": "4 ч",
+        "icon": "🛍️",
+        "title": "Шопинг в Yansha Outlets",
+        "location": "Yansha Outlets Shopping Center",
+        "cn": "燕莎奥特莱斯购物中心(北京店)",
+        "city": "北京市",
+        "comment": "Сначала проверить спортивные корпуса и нужные размеры, затем остальное. Паспорт может пригодиться для tax refund, если магазин участвует в программе.",
+        "route": "Комплекс большой: сохранить вход, у которого высадило такси. Перед покупкой сравнить финальную цену с Alipay-скидками.",
+        "category": "Шопинг",
+        "tags": ["Nike", "Adidas", "New Balance проверить"]
+      },
+      {
+        "time": "19:00",
+        "end": "20:30",
+        "duration": "1 ч 30 мин",
+        "icon": "🧳",
+        "title": "Возвращение и сборы",
+        "location": "Jingyuan Courtyard Hotel",
+        "cn": "左府婧园酒店(北京天安门王府井店)",
+        "city": "北京市",
+        "comment": "Вернуться, поужинать по пути и полностью собрать багаж. На ресепшене заказать раннее такси на 06:45 до аэропорта Дасин.",
+        "route": "Такси/DiDi от аутлета до отеля. Проверить, что в заказе на утро указан 北京大兴国际机场, а не PEK.",
+        "category": "Дорога",
+        "tags": ["заказать такси", "PKX", "собрать багаж"]
+      }
+    ]
+  },
+  {
+    "date": "06.11.2026",
+    "title": "Пекин → Москва",
+    "meta": "PKX · SU205 · Шереметьево C",
+    "activities": [
+      {
+        "time": "06:45",
+        "end": "09:00",
+        "duration": "до 2 ч 15 мин",
+        "icon": "🚕",
+        "title": "Выезд в аэропорт Пекин-Дасин",
+        "location": "Beijing Daxing International Airport (PKX)",
+        "cn": "北京大兴国际机场",
+        "city": "北京市",
+        "comment": "Важно: вылет из PKX, не из PEK, куда вы прилетели 2 ноября. Выехать в 06:45 даже при хорошем прогнозе трафика.",
+        "route": "Заранее заказанное такси/DiDi от отеля до 北京大兴国际机场. Проверить номер рейса SU205 и зону международных вылетов.",
+        "category": "Дорога",
+        "warning": true,
+        "tags": ["PKX", "не PEK", "ранний выезд"]
+      },
+      {
+        "time": "09:00",
+        "end": "11:20",
+        "duration": "2 ч 20 мин",
+        "icon": "🎫",
+        "title": "Регистрация, багаж и паспортный контроль",
+        "location": "Beijing Daxing International Airport",
+        "cn": "北京大兴国际机场国际出发",
+        "city": "北京市",
+        "comment": "Сдать багаж, пройти выездной контроль и быть у выхода на посадку заранее. Не тратить запас времени на дальние зоны терминала.",
+        "route": "Следовать указателям International Departures / 国际出发 и информации по SU205 на табло.",
+        "category": "Дорога",
+        "tags": ["SU205", "международный вылет"]
+      },
+      {
+        "time": "11:50",
+        "end": "15:20",
+        "duration": "перелёт; прибытие по Москве",
+        "icon": "✈️",
+        "title": "Рейс SU205 Пекин → Москва",
+        "location": "PKX → Sheremetyevo Terminal C",
+        "cn": "谢列梅捷沃国际机场C航站楼",
+        "city": "莫斯科",
+        "comment": "Прилёт в Шереметьево в 15:20 по московскому времени.",
+        "route": "После прилёта пройти паспортный контроль, получить багаж и выбрать Аэроэкспресс или такси домой.",
+        "costText": "Билеты оплачены",
+        "category": "Дорога",
+        "tags": ["SU205", "SVO C", "московское время"]
+      }
+    ]
+  }
+]
+;
 
 function baiduSearchLink(query, city = "全国") {
     const params = new URLSearchParams({
@@ -2605,12 +1488,18 @@ function renderActivity(activity) {
     const time = activity.end
         ? `${activity.time}–${activity.end} · ${activity.duration}`
         : `${activity.time} · ${activity.duration}`;
-    const cost = activity.cost > 0
-        ? `<p><strong>Бюджет:</strong> ~${Number(activity.cost).toLocaleString("ru-RU", { maximumFractionDigits: 2 })} CNY на двоих</p>`
-        : "";
-    const categoryClass = activity.category === "Еда" ? " food-activity" : "";
+    const cost = activity.costText
+        ? `<p><strong>Стоимость:</strong> ${activity.costText}</p>`
+        : activity.cost > 0
+            ? `<p><strong>Бюджет:</strong> ~${Number(activity.cost).toLocaleString("ru-RU", { maximumFractionDigits: 2 })} CNY на двоих</p>`
+            : "";
+    const categoryClasses = [
+        activity.category === "Еда" ? "food-activity" : "",
+        activity.category === "Дорога" ? "road-activity" : "",
+        activity.warning ? "warning-activity" : ""
+    ].filter(Boolean).join(" ");
     return `
-        <details class="activity${categoryClass}">
+        <details class="activity${categoryClasses ? ` ${categoryClasses}` : ""}">
             <summary>
                 <span class="activity-row">
                     <span class="icon" aria-hidden="true">${activity.icon}</span>
@@ -2651,7 +1540,7 @@ function renderDay(day) {
     `;
 }
 
-document.getElementById("bar-list").innerHTML = renderBars();
+const barList = document.getElementById("bar-list"); if (barList) barList.innerHTML = renderBars();
 document.getElementById("days").innerHTML = days.map(renderDay).join("");
 
 const copyToast = document.createElement("div");
@@ -2698,7 +1587,7 @@ if ("serviceWorker" in navigator) {
             window.location.reload();
         });
         navigator.serviceWorker
-            .register("service-worker.js?v=5", { updateViaCache: "none" })
+            .register("service-worker.js?v=6", { updateViaCache: "none" })
             .then(registration => registration.update());
     });
 }

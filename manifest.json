@@ -1,9 +1,9 @@
 {
-  "name": "Китайция-улетайция 2026",
-  "short_name": "Китайция",
-  "description": "Офлайн-маршрут по Шанхаю и Пекину",
+  "name": "Пекин, Чжанцзяцзе и Фужун 2026",
+  "short_name": "Китай 2026",
+  "description": "Офлайн-маршрут по Пекину, Чжанцзяцзе и Фужуну",
   "id": "/Kitaitsiya-uletaistiya/",
-  "start_url": "./?v=5",
+  "start_url": "./?v=6",
   "scope": "./",
   "display": "standalone",
   "background_color": "#DCFF03",
